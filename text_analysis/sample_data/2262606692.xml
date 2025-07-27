@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>2262606692</GOID>
+   
+   <Obj>
+      <SourceRollupType>Newspapers</SourceRollupType>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="EXT">News</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt HTMLContent="true">
+         <Title>HIGHLIGHT: IOWA</Title>
+      </TitleAtt>
+      <NumericDate>2019-07-24</NumericDate>
+      <StartDate>2019-07-24</StartDate>
+      <EndDate>2019-07-24</EndDate>
+      <AlphaDate>Jul 24, 2019</AlphaDate>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright USA Today, a division of Gannett Satellite Information Network, Inc. Jul 24, 2019</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <StartPage>B.5</StartPage>
+         <DocSection>MONEY</DocSection>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID>
+            <PMID>7631</PMID>
+         </ObjectID>
+         <ObjectID>
+            <PCID>PQ_7631_Jul242019______</PCID>
+         </ObjectID>
+         <ObjectID>
+            <MSTARLegacyID>USATUSAT20190724ADP0FRGS</MSTARLegacyID>
+         </ObjectID>
+      </ObjectIDs>
+      <LexileScore>1170</LexileScore>
+      <Terms>
+         <CompanyTerm TermSource="AutoCatNstein">
+            <CompanyNameAtt TermVocab="CORP">
+               <CompanyName>National Aeronautics &amp; Space Administration--NASA</CompanyName>
+            </CompanyNameAtt>
+            <CompanyNAICAtt>
+               <CompanyNAIC>927110</CompanyNAIC>
+            </CompanyNAICAtt>
+         </CompanyTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Government grants</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Humanities</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Parks &amp; recreation areas</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Litigation</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Water quality</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Fatalities</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Moon</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Homeless people</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Farms</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Cemeteries</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Secondary schools</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Bridges</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>National parks</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Rain</GenSubjValue>
+         </GenSubjTerm>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Pittsburgh Pennsylvania</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Indiana</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Alaska</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Louisiana</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Detroit Michigan</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Arkansas</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Idaho</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Hawaii</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Florida</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Iowa City Iowa</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Texas</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>New Mexico</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>United States--US</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Mississippi</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Illinois</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Oregon</Geographic>
+         </Term>
+      </Terms>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="1555">&lt;html&gt;&lt;head&gt;&lt;meta name='ValidationSchema' content='http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd'/&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;
+&lt;p width="0" align="left"&gt;&lt;b&gt;Alabama&lt;/b&gt; &lt;b&gt;Montgomery: &lt;/b&gt;A Department of Corrections narcotics dog died last weekend after he had an allergic reaction to a substance inside an Elmore County prison.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Alaska&lt;/b&gt; &lt;b&gt;Fairbanks: &lt;/b&gt;An Alaska company is completing plans to acquire and develop a site for mining metals for foreign markets. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Arizona&lt;/b&gt; &lt;b&gt;Phoenix: &lt;/b&gt;The state landed $90million in federal grants for a project to widen Interstate 17 north of Phoenix in hopes of easing congestion and cutting down on the number of wrecks, according to Gov. Doug Ducey's office. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Arkansas&lt;/b&gt; &lt;b&gt;Little Rock: &lt;/b&gt;A meat-alternative food company is suing in federal court claiming a state law that bans the use of "meat" in labeling plant-based foods violates free speech rights. Oregon-based Tofurky Co. filed the lawsuit Monday against Arkansas' Bureau of Standards. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;California&lt;/b&gt; &lt;b&gt;Los Angeles: &lt;/b&gt; Her name was "Lucille," and in B.B. King's hands she gave voice to the "King of the Blues." Julien's Auctions announced Tuesday that King's black Gibson ES-345 prototype guitar is among the items from his estate that will go up for bid on Sept. 21. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Colorado&lt;/b&gt; &lt;b&gt;Denver: &lt;/b&gt;Public health officials say four homeless people have been diagnosed with hepatitis A this year, so the city is stepping up free vaccinations. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Connecticut&lt;/b&gt; &lt;b&gt;Hartford: &lt;/b&gt;Heavy rainfall and thunderstorms that raced across the state Monday caused major flooding and a fire in a dorm at a private school. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Delaware&lt;/b&gt; &lt;b&gt;Georgetown: &lt;/b&gt;A Confederate flag and monument honoring those who fought for the South in the Civil War has cost a local historical society more than $14,000 in state funding. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;District of Columbia&lt;/b&gt; &lt;b&gt;Washington: &lt;/b&gt;A D.C. council member who voted for a no-bid sports gambling contract says he wasn't aware of documentation connecting his cousin to the contract. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Florida&lt;/b&gt; &lt;b&gt;Cocoa: &lt;/b&gt;Trafford Realty, which had been in operation for 102 years, closed July 1. The business was the oldest continuously operating retail office in Florida, says Margot Trafford Hester, a former realtor whose late father, Al, was chairman. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Georgia&lt;/b&gt; &lt;b&gt;Dallas: &lt;/b&gt;A K-9 was fatally shot by a deputy during a foot chase of a suspect. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Hawaii&lt;/b&gt; &lt;b&gt;Hilo: &lt;/b&gt;Hawaii County officials say reconstruction of a Big Island highway covered in lava is on schedule. The Hawaii Tribune-Herald reported Sunday that the Department of Public Works says construction on parts of Highway 132 is expected to be completed in a few weeks. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Idaho&lt;/b&gt; &lt;b&gt;Caldwell: &lt;/b&gt;The Idaho Statesman reports the 2017 Census of Agriculture released earlier this year shows about one-third of Idaho farms are run by women.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Illinois&lt;/b&gt; &lt;b&gt;Ford Heights: &lt;/b&gt;Illinois officials say the youth enrolled at Booker T. Washington Alternative High School at Harrisburg youth center constructed four library boxes to be placed throughout Ford Heights. The boxes will continually be replenished with books through a partnership with a bookstore. Ford Heights had to close its library decades ago over funding issues. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Indiana&lt;/b&gt; &lt;b&gt;Indianapolis: &lt;/b&gt;Indiana State Fairgrounds officials say a $50million project will replace its nearly century-old swine barn with a new building that can hold events around the year. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Kansas&lt;/b&gt; &lt;b&gt;Wichita: &lt;/b&gt;State officials are recommending alternatives for municipal water operators to treat toxic blue-green algal blooms. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Kentucky&lt;/b&gt; &lt;b&gt;Ashland: &lt;/b&gt;Planning is underway for a monument that that would list the names of all Boyd County residents who served in World War II. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Louisiana&lt;/b&gt; &lt;b&gt;Lake Charles: &lt;/b&gt;Hurricane Barry brought a 7-foot storm surge in some parts of south Louisiana and dropped more than 20 inches of rain in one parish, according to a preliminary report from the National Weather Service. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Maine&lt;/b&gt; &lt;b&gt;Madawaska: &lt;/b&gt;The state will receive $36million to help pay for the replacement of an aging bridge that connects one of its northernmost communities with the Canadian province of New Brunswick. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Maryland&lt;/b&gt; &lt;b&gt;Baltimore: &lt;/b&gt;The state will receive a $125million federal grant for long-sought improvements to the Howard Street Tunnel. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Massachusetts&lt;/b&gt; &lt;b&gt;Worcester: &lt;/b&gt;The largest furniture and flooring store in New England has been acquired. Vystar Corp. announced Monday that it has signed a definitive agreement to acquire Worcester-based Rotmans Furniture and Carpet. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Michigan&lt;/b&gt; &lt;b&gt;Detroit: &lt;/b&gt;Fire has claimed the building that once housed the Gold Dollar, the bar where the White Stripes played their first show and other bands cut their teeth in the late 1990s as Detroit's garage-rock phenomenon took flight. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Minnesota&lt;/b&gt; &lt;b&gt;Collegeville: &lt;/b&gt;A St. John's University monk has been named 2019 Jefferson Lecturer in the Humanities by the National Endowment for the Humanities.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Mississippi&lt;/b&gt; &lt;b&gt;Jackson: &lt;/b&gt;The Mississippi Department of Education says a $1,500 raise for teachers will cost $18.5million more than it originally told lawmakers.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Missouri&lt;/b&gt; &lt;b&gt;Rocheport: &lt;/b&gt;The Department of Transportation will receive an $81million federal grant to help pay for replacement of the I-70 bridge over the Missouri River.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Montana&lt;/b&gt; &lt;b&gt;Missoula: &lt;/b&gt;Wildlife officials are asking people who are traveling near Glacier National Park to report sightings of animals crossing the road. Officials plan to use the data to help find locations for dedicated wildlife crossings and for other efforts to ease animals' migration between the park and the Flathead National Forest. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Nebraska&lt;/b&gt; &lt;b&gt;Lincoln: &lt;/b&gt;A poultry farm that could house up to 380,000 chickens has been proposed for Lancaster County as the county considers new regulations for large livestock operations. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Nevada&lt;/b&gt; &lt;b&gt;Las Vegas: &lt;/b&gt;Retired engineer Gary George was a NASA intern in 1976 when he paid $218 at a government auction for three truckloads of film reels. On Saturday, three film reels of the Apollo 11 moon mission were sold at a Sotheby's auction for $1.82million. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;New Hampshire&lt;/b&gt; &lt;b&gt;Concord: &lt;/b&gt;Three public school teachers have received fellowships as part of a program aimed at retaining educators in the northern part of the state. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;New Jersey&lt;/b&gt; &lt;b&gt;Voorhees:&lt;/b&gt; Residents of a nursing home have returned to their rooms after a malfunctioning air conditioning system forced them to be evacuated for several hours during last weekend's heatwave.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;New Mexico&lt;/b&gt; &lt;b&gt;Albuquerque: &lt;/b&gt; Five trees planted in New Mexico from seeds taken to the moon during Apollo 14 and given to the state by NASA have died or been forgotten. KOAT-TV reports officials  admit they have lost track of the trees. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;New York&lt;/b&gt; &lt;b&gt;Buffalo: &lt;/b&gt;After more than 20 years and $50million, the restoration of an estate designed by architect Frank Lloyd Wright for a patron in Buffalo is complete.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;North Carolina&lt;/b&gt; &lt;b&gt;Raleigh: &lt;/b&gt;Lawmakers are cracking down on robocalls and telephone scammers in a bill that has passed both chambers of the General Assembly. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;North Dakota&lt;/b&gt; &lt;b&gt;Northwood:&lt;/b&gt; Sheriff's officials say an overweight semitrailer loaded with dried beans caused a more-than-century-old bridge to collapse. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Ohio&lt;/b&gt; &lt;b&gt;Columbus: &lt;/b&gt;Gov. Mike DeWine has declared a state of emergency in 63 counties where severe weather caused serious highway damage last month. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Oklahoma&lt;/b&gt; &lt;b&gt;Edmond: &lt;/b&gt;First-degree murder charges have been filed against two people in the shooting death of the manager of a medical marijuana dispensary. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Oregon&lt;/b&gt; &lt;b&gt;Astoria: &lt;/b&gt;Wildlife officials have proposed new regulations to avoid entangling whales in commercial fishing gear used by the state's Dungeness crab industry. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Pennsylvania&lt;/b&gt; &lt;b&gt;Pittsburgh: &lt;/b&gt;Scores of police officers, officials and members of the community gathered to pay their respects to an off-duty Pittsburgh police officer shot to death in a street confrontation more than a week ago.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Rhode Island&lt;/b&gt; &lt;b&gt;Newport: &lt;/b&gt;A developer wants to demolish the former Newport Grand slots parlor and build hotels, apartment buildings, offices and retail space. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;South Carolina&lt;/b&gt; &lt;b&gt;Columbia: &lt;/b&gt;Highway crews are closing a lane on the main highway north out of downtown as they prepare to build a bridge. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;South Dakota&lt;/b&gt; &lt;b&gt;Sioux Falls: &lt;/b&gt;The leader of Jefferson High School will be hired a full year before the Sioux Falls School District's newest high school even opens, school officials announced Monday.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Tennessee&lt;/b&gt; &lt;b&gt;Johnson City: &lt;/b&gt;East Tennessee State University researchers have developed a device to measure environmental preferences of salamanders that live in southern Appalachia. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Texas&lt;/b&gt; &lt;b&gt;Corpus Christi: &lt;/b&gt;A south Texas state park has reopened for overnight camping nearly two years after Hurricane Harvey battered the coastal area. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Utah&lt;/b&gt; &lt;b&gt;Cedar City: &lt;/b&gt;Officials are considering whether to preserve a painted image of a Native American and the name "Redmen" on a water tank or allow it to be changed.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Vermont&lt;/b&gt; &lt;b&gt;Bakersfield: &lt;/b&gt;The community has dedicated a memorial pavilion to a U.S. Marine killed overseas. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Virginia&lt;/b&gt; &lt;b&gt;Richmond: &lt;/b&gt;The state Department of Health says the number of people in the state needing medical treatment for heat-related illnesses has nearly doubled compared with last July.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Washington&lt;/b&gt; &lt;b&gt;Bainbridge Island: &lt;/b&gt;A no-contact advisory for the city's eastern shoreline north to Indianola has been lifted following a large spill at a Seattle sewage treatment plant.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;West Virginia&lt;/b&gt; &lt;b&gt;Wheeling: &lt;/b&gt;Officials say a suspension bridge will remain closed for another month so crews can make needed repairs and improvements.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Wisconsin&lt;/b&gt; &lt;b&gt;Madison: &lt;/b&gt;The state Department of Natural Resources is asking wastewater treatment plants to test for polyfluoroalkyl pollution. &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Wyoming&lt;/b&gt; &lt;b&gt;Cody: &lt;/b&gt;State officials encourage people who enter the backcountry to carry bear spray, but they declined to make it a requirement. &lt;/p&gt;
+&lt;p&gt;&lt;i&gt;From USA TODAY Network and wire reports&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Iowa City: &lt;/b&gt;The area's Muslim community is growing quickly, so is the need for a new Islamic cemetery, mosque leaders say. The Iowa City Mosque spent years establishing the Al-Iman Cemetery in southwest Iowa City, and is now in the slow process of beautifying the space and putting in necessary physical infrastructure. The new cemetery allows for loved ones to be buried facing Mecca, the birthplace of Islam, and coffins or caskets are not mandated, like they are with other cemeteries. The Al-Iman Cemetery will serve the small slice of residents who identify as Muslim in Iowa City, Coralville and North Liberty.&lt;/p&gt;
+&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>USA TODAY</Title>
+         <MpubId>15008</MpubId>
+         <SortTitle>USA TODAY</SortTitle>
+         <Qualifier>McLean, Va.</Qualifier>
+         <JournalCode>USA</JournalCode>
+         <SourceType>Newspapers</SourceType>
+         <StartDate>19820101</StartDate>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>USA Today, a division of Gannett Satellite Information Network, Inc.</PublisherName>
+            <PublisherAddress>
+               <Address1>7950 Jones Branch Drive</Address1>
+               <City>MacLean</City>
+               <Province>VA</Province>
+               <ZipCode>22108</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+            <URL>http://www.usatoday.com/</URL>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>7631</Name>
+            </Locator>
+            <Locator Type="ISSN">
+               <Name>07347456</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>60430.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">Y</Flag>
+            <Flag Type="ALERTING_FLAG">Y</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PEERREVIEWEDFLAG">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>USA TODAY</Title>
+            <SortTitle>USA TODAY</SortTitle>
+            <Qualifier>McLean, Va.</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>7631</Name>
+               </Locator>
+               <Locator Type="ISSN">
+                  <Name>07347456</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>60430.00</CatalogNum>
+         </CurrentTitle>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>1</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Jan 2, 1989</AlphaStartDate>
+            <AlphaEndDate>Current</AlphaEndDate>
+            <NumericStartDate>19890102</NumericStartDate>
+            <NumericEndDate>99990101</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Jul 24, 2019</AlphaDate>
+         <StartDate>2019-07-24</StartDate>
+         <EndDate>2019-07-24</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>PQ_7631_Jul242019______</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>

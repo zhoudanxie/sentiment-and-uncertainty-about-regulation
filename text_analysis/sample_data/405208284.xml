@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>405208284</GOID>
+   
+   <Obj>
+      <SourceRollupType>Newspapers</SourceRollupType>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="Publication">NEWSPAPER</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt>
+         <Title>Flipping a Switch at Edison as Competition Dawns, Giant Utility Sees the Light</Title>
+      </TitleAtt>
+      <NumericDate>1998-03-03</NumericDate>
+      <StartDate>1998-03-03</StartDate>
+      <EndDate>1998-03-03</EndDate>
+      <AlphaDate>Mar 3, 1998</AlphaDate>
+      <PageCount>0</PageCount>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright Boston Globe Newspaper Mar 3, 1998</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <StartPage>A.1</StartPage>
+         <Pagination>A.1</Pagination>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID IDOrigin="PQ">
+            <DOCID>44805128</DOCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PCID>796401</PCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PMID>7560</PMID>
+         </ObjectID>
+         <ObjectID>
+            <ProvJournalCode>BOST</ProvJournalCode>
+         </ObjectID>
+         <ObjectID IDOrigin="BDL">
+            <AccNum>98-73276</AccNum>
+         </ObjectID>
+      </ObjectIDs>
+      <LexileScore>1400</LexileScore>
+      <Contributors>
+         <Contributor ContribOrder="1">
+            <Author>
+               <NormalizedDisplayForm>Mohl, Bruce</NormalizedDisplayForm>
+               <LastNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <LastName>Mohl</LastName>
+               </LastNameAtt>
+               <FirstNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <FirstName>Bruce</FirstName>
+               </FirstNameAtt>
+               <OriginalFormAtt ContribOrigin="pqauth">
+                  <OriginalForm>Mohl, Bruce</OriginalForm>
+               </OriginalFormAtt>
+            </Author>
+         </Contributor>
+      </Contributors>
+      <Terms>
+         <CompanyTerm PndxHeader="true" TermSource="ABI">
+            <CompanyNameAtt>
+               <CompanyName>Boston Edison Co</CompanyName>
+            </CompanyNameAtt>
+            <CompanyDUNSAtt>
+               <CompanyDUNS>00-695-1552</CompanyDUNS>
+            </CompanyDUNSAtt>
+            <CompanySICAtt>
+               <CompanySIC>4911</CompanySIC>
+            </CompanySICAtt>
+            <CompanyTickerAtt>
+               <CompanyTicker>BSE</CompanyTicker>
+            </CompanyTickerAtt>
+         </CompanyTerm>
+         <GenSubjTerm PndxHeader="true" TermSource="ABI">
+            <GenSubjValue>Electric utilities</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm PndxHeader="true" TermSource="ABI">
+            <GenSubjValue>Deregulation</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm PndxHeader="true" TermSource="ABI">
+            <GenSubjValue>Competition</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm PndxHeader="true" TermSource="ABI">
+            <GenSubjValue>Quality of service</GenSubjValue>
+         </GenSubjTerm>
+         <Term PndxHeader="true" TermSource="ABI">
+            <Geographic>Boston</Geographic>
+         </Term>
+         <Term PndxHeader="true" TermSource="ABI">
+            <Geographic>MA</Geographic>
+         </Term>
+         <Term PndxHeader="true" TermSource="ABI">
+            <Geographic>US</Geographic>
+         </Term>
+         <Term PndxHeader="true" TermSource="ABI">
+            <Geographic>New England</Geographic>
+         </Term>
+      </Terms>
+      <Abstract>
+         <Short WordCount="97">
+            <AbsText HTMLContent="true">&lt;html&gt;            &lt;head&gt;              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;              &lt;title&gt; &lt;/title&gt;            &lt;/head&gt;            &lt;body&gt;              &lt;p&gt;Just ask John [Thomas] and Karen Thomas of Newton. Nine months ago, they could not get Edison to take out a second meter that was no longer in use. Estimated bills mushroomed out of control. Edison employees did not return phone calls. Twice, Edison threatened to shut off the couple's power, and in December the Thomases received a bill at their three-bedroom apartment for more than $506,000.&lt;/p&gt;              &lt;p&gt;But last week, after the Thomases contacted their state representative and The Boston Globe, Edison started acting like a totally different company, one that now knows it has competition.&lt;/p&gt;            &lt;/body&gt;          &lt;/html&gt;</AbsText>
+         </Short>
+      </Abstract>
+      <LegacyDataMapping>
+         <MappingVersion>$Header: $</MappingVersion>
+      </LegacyDataMapping>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="894">&lt;html&gt;            &lt;head&gt;              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;              &lt;title&gt; &lt;/title&gt;            &lt;/head&gt;            &lt;body&gt;              &lt;p&gt;Whatever they say about utility deregulation, there is no disputing the effect it has had at Boston Edison.&lt;/p&gt;              &lt;p&gt;Just ask John and Karen Thomas of Newton. Nine months ago, they could not get Edison to take out a second meter that was no longer in use. Estimated bills mushroomed out of control. Edison employees did not return phone calls. Twice, Edison threatened to shut off the couple's power, and in December the Thomases received a bill at their three-bedroom apartment for more than $506,000.&lt;/p&gt;              &lt;p&gt;But last week, after the Thomases contacted their state representative and The Boston Globe, Edison started acting like a totally different company, one that now knows it has competition.&lt;/p&gt;              &lt;p&gt;Three men -- two managers in suits and one technician -- came out last Wednesday to remove the unneeded meter and apologized. On Thursday, a dozen pink roses arrived. And on Friday a two-page letter of apology was hand-delivered. It not only erased all past charges but included one check for $218 and another for an eye-popping amount that John Thomas will only describe as a "sizable contribution" to his infant daughter's college tuition fund.&lt;/p&gt;              &lt;p&gt;Edison's response was undoubtedly motivated in part by the fear of negative publicity, but company officials say it also reflects a new attitude at a company that for years has taken its customers for granted.&lt;/p&gt;              &lt;p&gt;David Samuel, who was hired by Edison in January and given the new title of "vice president of customer care," says electric power deregulation has thrust the utility into a new competitive environment where customers have to come first.&lt;/p&gt;              &lt;p&gt;"There is absolutely no excuse for the experience the Thomases have had over the last seven months. I'm not going to give you any excuses. There are none," he said. "This kind of failure is a failure to understand that our business begins and ends with customer relationships."&lt;/p&gt;              &lt;p&gt;Samuel, a customer service consultant before joining Edison, says he was brought in to shake things up. He has spent the last month talking to employees at all levels of the company trying to promote a whole new way of thinking.&lt;/p&gt;              &lt;p&gt;Deregulation, which went into effect on Sunday, will allow competing power producers to sell electricity to Edison customers -- although the Thomases don't yet have that option -- and also allow the utility to compete in new, unrelated ventures like cable television and telephone service.&lt;/p&gt;              &lt;p&gt;As the Thomas saga illustrates, much work remains to be done. It all began innocently enough back in July. The Thomases replaced an electric hot water heater with a gas one. Since their apartment had a second meter tied directly to the water heater, they called Edison to have it removed.&lt;/p&gt;              &lt;p&gt;An Edison representative promised to adjust their bill and have a service representative contact them in two weeks to remove the meter. Instead, a comedy of errors began. No service representative called back and the monthly bills, continuing to reflect estimated meter readings on a meter no longer drawing electricity, started spiraling upward.&lt;/p&gt;              &lt;p&gt;Karen Dalton-Thomas called back several times, but usually had to start from scratch to explain the situation. One field representative came in October, but instead of removing the old meter -- he replaced it with a new one.&lt;/p&gt;              &lt;p&gt;Samuel said Edison is investing in new technology that should help the company better serve its customers. "We are investing in becoming customer-centric," Samuel said.&lt;/p&gt;              &lt;p&gt;For example, Samuel said the computer systems supporting Edison's customer service are 20 years old and don't allow billing and field service representatives to communicate effectively.&lt;/p&gt;              &lt;p&gt;That's apparently why Dalton-Thomas had to repeat her story each time she called and why promises made by a billing representative often weren't communicated to employees in the field.&lt;/p&gt;              &lt;p&gt;"All too often the left hand doesn't know what the right hand is doing," Samuel said.&lt;/p&gt;              &lt;p&gt;Edison is also investing in a new meter network that will eliminate all bill estimates. Samuel declined to discuss the new system in any detail, but he said it will require either replacing or retrofitting meters for all customers.&lt;/p&gt;              &lt;p&gt;John Thomas said he was pleasantly surprised at the turn of events last week and attributed the flowers and compensation to good timing.&lt;/p&gt;              &lt;p&gt;"I think that it was probably due to our saga coming at a time when the industry is beginning deregulation," he said. "I think, quite frankly, that Edison might have reacted very differently 10 years ago."&lt;/p&gt;              &lt;p&gt;Representative Rachel Kaprielian (D-Watertown), who contacted the state Department of Telecommunications and Energy on the Thomases' behalf, says she was surprised.&lt;/p&gt;              &lt;p&gt;"That's a first. I've never heard of a utility company sending roses. That's amazing," she says.&lt;/p&gt;              &lt;p&gt;The Thomases, who have now seen both faces of Edison, still aren't sure which one they'll deal with next time there is a problem.&lt;/p&gt;              &lt;p&gt;"Maybe Edison's changing. Maybe this guy Samuel is going to move the company in a different direction. But by the same token, look what I did here," said John Thomas, referring to his letters to Kaprielian and the Globe. "How much of it was a threat and how much of it was the company moving in a new direction? I don't know.&lt;/p&gt;              &lt;p&gt;Textual Illustration:&lt;/p&gt;              &lt;p&gt;PHOTO; Caption: GLOBE STAFF PHOTO/FRANK O'BRIEN / John Thomas and his wife, Karen, with their newborn daughter Erica, showing the roses they received from Boston Edison.&lt;/p&gt;            &lt;/body&gt;          &lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>Boston Globe</Title>
+         <MpubId>46045</MpubId>
+         <SortTitle>Boston Globe</SortTitle>
+         <Qualifier>Boston, Mass.</Qualifier>
+         <JournalCode>BOST</JournalCode>
+         <SourceType>Newspapers</SourceType>
+         <StartDate>19600101</StartDate>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>Boston Globe Media Partners, LLC</PublisherName>
+            <PublisherAddress>
+               <Address1>One Exchange Place</Address1>
+               <City>BOSTON</City>
+               <Province>MA</Province>
+               <ZipCode>02109</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>7560</Name>
+            </Locator>
+            <Locator Type="ISSN">
+               <Name>07431791</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>60494.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">Y</Flag>
+            <Flag Type="ALERTING_FLAG">Y</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PEERREVIEWEDFLAG">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>Boston Globe</Title>
+            <SortTitle>Boston Globe</SortTitle>
+            <Qualifier>Boston, Mass.</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>7560</Name>
+               </Locator>
+               <Locator Type="ISSN">
+                  <Name>07431791</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>60494.00</CatalogNum>
+         </CurrentTitle>
+         <PubHistory>
+            <History>
+               <Title>Boston Daily Globe</Title>
+               <Qualifier>Boston, Mass.</Qualifier>
+               <EndIssueDate>19600424</EndIssueDate>
+               <CatalogNum>60494.A0</CatalogNum>
+            </History>
+         </PubHistory>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>0</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Jan 1, 1989</AlphaStartDate>
+            <AlphaEndDate>Current</AlphaEndDate>
+            <NumericStartDate>19890101</NumericStartDate>
+            <NumericEndDate>99990101</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Mar 3, 1998</AlphaDate>
+         <StartDate>1998-03-03</StartDate>
+         <EndDate>1998-03-03</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>796401</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>2311715262</GOID>
+   
+   <Obj>
+      <SourceRollupType>Newspapers</SourceRollupType>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="EXT">News</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt HTMLContent="true">
+         <Title>Top CDC official suggests legal marijuana regulations can mitigate vaping injuries</Title>
+      </TitleAtt>
+      <NumericDate>2019-11-04</NumericDate>
+      <StartDate>2019-11-04</StartDate>
+      <EndDate>2019-11-04</EndDate>
+      <AlphaDate>Nov 4, 2019</AlphaDate>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright Boston Globe Media Partners, LLC Nov 4, 2019</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <DocSection>Metro</DocSection>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID>
+            <PMID>269029</PMID>
+         </ObjectID>
+         <ObjectID>
+            <PCID>PQ_269029_Nov42019</PCID>
+         </ObjectID>
+         <ObjectID>
+            <MSTARLegacyID>BOGLBGNL20191104HxIIv7ci34uupXbH1xZtRO</MSTARLegacyID>
+         </ObjectID>
+         <ObjectID>
+            <PublisherXID>BOGLBGNL20191104HxIIv7ci34uupXbH1xZtRO</PublisherXID>
+         </ObjectID>
+      </ObjectIDs>
+      <Terms>
+         <CompanyTerm TermSource="AutoCatNstein">
+            <CompanyNameAtt TermVocab="CORP">
+               <CompanyName>Food &amp; Drug Administration--FDA</CompanyName>
+            </CompanyNameAtt>
+            <CompanyNAICAtt>
+               <CompanyNAIC>922190</CompanyNAIC>
+            </CompanyNAICAtt>
+         </CompanyTerm>
+         <CompanyTerm TermSource="AutoCatNstein">
+            <CompanyNameAtt TermVocab="CORP">
+               <CompanyName>Centers for Disease Control &amp; Prevention--CDC</CompanyName>
+            </CompanyNameAtt>
+            <CompanyNAICAtt>
+               <CompanyNAIC>923120</CompanyNAIC>
+            </CompanyNAICAtt>
+         </CompanyTerm>
+         <CompanyTerm TermSource="AutoCatNstein">
+            <CompanyNameAtt TermVocab="CORP">
+               <CompanyName>C-SPAN</CompanyName>
+            </CompanyNameAtt>
+            <CompanyNAICAtt>
+               <CompanyNAIC>515210</CompanyNAIC>
+            </CompanyNAICAtt>
+         </CompanyTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Electronic cigarettes</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Clinics</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Consumers</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Disease control</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Injuries</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Marijuana</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Descriptive labeling</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="Editorial" TermVocab="PQSUBJ">
+            <GenSubjValue>Vaping</GenSubjValue>
+         </GenSubjTerm>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>United States--US</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="PERS">
+            <Personal>Gottlieb, Scott</Personal>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="PERS">
+            <Personal>Schuchat, Anne</Personal>
+         </Term>
+      </Terms>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="620">&lt;html&gt;&lt;head&gt;&lt;meta name='ValidationSchema' content='http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd'/&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;
+&lt;em class="i"&gt;Marijuana Moment is a wire service assembled by Tom Angell, a marijuana legalization activist and journalist covering marijuana reform nationwide. The views expressed by Angell or Marijuana Moment are neither endorsed by the Globe nor do they reflect the Globe's views on any subject area.&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;A top official with the US Centers for Disease Control and Prevention suggested Friday that regulating and labeling marijuana products such as THC vape cartridges would help to protect consumers, though she stopped short of explicitly calling for a legalization policy that would allow federal agencies to follow through with those moves.&lt;/p&gt;
+&lt;p&gt;CDC Principal Deputy Director Anne Schuchat appeared on a C-SPAN program and took questions from callers for a segment focusing on the rise of vaping-related injuries. One caller expressed frustration that there are vaping products on the market that entirely lack labels.&lt;/p&gt;
+&lt;p&gt;“I do think that labeling and information can help people know what they're getting and then the systems that are there to enforce that the product is what it says it is can also help the consumer," Schuchat said in response to the caller, seemingly endorsing some kind of regulatory scheme for cannabis.&lt;/p&gt;
+&lt;p&gt;“As the [Food and Drug Administration] has taken on regulatory authority for tobacco and has now got plans around the e-cigarette regulatory authority, the ingredient information will need to be provided," she said. “The THC right now — pretty much the marijuana market, cannabis products — are at this point regulated at the state level, and many of those state regulations will talk about what needs to be done in terms of the testing and the quality control."&lt;/p&gt;
+&lt;p&gt;“But you're right that right now, the consumer just doesn't know what they're getting," she said. “With e-cigarettes, you don't really know what all the compounds are that are in there intentionally, and then of course people who are altering or adulterating these products, they're not labeling what they're adulterating them with."&lt;/p&gt;
+&lt;p&gt;“It's kind of the Wild West there, and I really feel that consumers need to be very cautious."&lt;/p&gt;
+&lt;p&gt;Schuchat said she recognizes that there are some who feel CDC's recommendation to avoid consumption of nicotine and THC-containing vaping products goes too far but stressed that she fears “you don't know what you're getting and that some people are dying from exposure to these products right now" and regulations can help to that end.&lt;/p&gt;
+&lt;p&gt;Earlier in the segment, Schuchat hinted at why she believes regulations, rather than allowing an illicit market to thrive, would be a more effective way to combat the outbreak of vaping incidents.&lt;/p&gt;
+&lt;p&gt;While most cases of vaping-related injuries appear to be linked to THC-containing pre-filled cartridges, she said, “many have gotten those cartridges from informal sources — off the street or from friends or family or online — but not from dispensaries or brick-and-mortar stores."&lt;/p&gt;
+&lt;p&gt;Schuchat made the same point during a congressional hearing last month, where she pushed back against a congressman's suggestion that the legal marijuana market was the source of the vaping issues.&lt;/p&gt;
+&lt;p&gt;“Let me clarify, for the lung injury outbreak, while the vast majority report using THC-containing pre-filled cartridges, they report getting them from informal sources or off the street, not necessarily from licensed dispensaries," she said at the time.&lt;/p&gt;
+&lt;p&gt;Like Schuchat, former FDA Commissioner Scott Gottlieb also floated regulations as a means to resolve the vaping incidents, stating last month that “the time has come that we need to grapple with this at a federal level."&lt;/p&gt;
+&lt;p&gt;
+Read this story on Marijuana Moment.
+&lt;/p&gt;&lt;p&gt;Credit: Marijuana Moment&lt;/p&gt;&lt;p&gt;Caption:&lt;/p&gt;&lt;p&gt;US Centers for Disease Control and Prevention Principal Deputy Director Anne Schuchat testifies during a hearing with the House Communications and Technology and House Commerce Subcommittees on Capitol Hill on Oct. 16.&lt;/p&gt;
+&lt;p&gt;Zach Gibson/Getty Images&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>Boston Globe (Online)</Title>
+         <MpubId>2040590</MpubId>
+         <SortTitle>Boston Globe (Online)</SortTitle>
+         <Qualifier>Boston</Qualifier>
+         <JournalCode>BGNL</JournalCode>
+         <SourceType>Newspapers</SourceType>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>Boston Globe Media Partners, LLC</PublisherName>
+            <PublisherAddress>
+               <Address1>One Exchange Place</Address1>
+               <City>BOSTON</City>
+               <Province>MA</Province>
+               <ZipCode>02109</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>269029</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>406624.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">Y</Flag>
+            <Flag Type="ALERTING_FLAG">Y</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>Boston Globe (Online)</Title>
+            <SortTitle>Boston Globe (Online)</SortTitle>
+            <Qualifier>Boston</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>269029</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>406624.00</CatalogNum>
+         </CurrentTitle>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>0</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Sep 8, 2015</AlphaStartDate>
+            <AlphaEndDate>Current</AlphaEndDate>
+            <NumericStartDate>20150908</NumericStartDate>
+            <NumericEndDate>99990101</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Nov 4, 2019</AlphaDate>
+         <StartDate>2019-11-04</StartDate>
+         <EndDate>2019-11-04</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>PQ_269029_Nov42019</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>

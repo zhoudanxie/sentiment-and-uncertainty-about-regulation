@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>282580770</GOID>
+   
+   <Obj>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="Publication">NEWSPAPER</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt>
+         <Title>PLAN FOR KANE, MCHENRY AIRPORT GETS NEW LIFE</Title>
+      </TitleAtt>
+      <SubTitleAtt>
+         <SubTitle>[FINAL EDITION, C]</SubTitle>
+      </SubTitleAtt>
+      <NumericDate>1988-12-04</NumericDate>
+      <StartDate>1988-12-04</StartDate>
+      <EndDate>1988-12-04</EndDate>
+      <AlphaDate>Dec 4, 1988</AlphaDate>
+      <PageCount>0</PageCount>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright Chicago Tribune Co. Dec 4, 1988</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <StartPage>1</StartPage>
+         <Pagination>1</Pagination>
+         <DocSection>CHICAGOLAND</DocSection>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID IDOrigin="PQ">
+            <DOCID>24610355</DOCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PCID>746949</PCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PMID>33774</PMID>
+         </ObjectID>
+         <ObjectID>
+            <ProvJournalCode>CTR9</ProvJournalCode>
+         </ObjectID>
+         <ObjectID IDOrigin="DTI">
+            <PublisherXID>TRIB963702</PublisherXID>
+         </ObjectID>
+      </ObjectIDs>
+      <Contributors>
+         <Contributor ContribOrder="1">
+            <Author>
+               <NormalizedDisplayForm>Young, David</NormalizedDisplayForm>
+               <FirstNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <FirstName>David</FirstName>
+               </FirstNameAtt>
+               <ContribPersonNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <ContribPersonName>David Young</ContribPersonName>
+               </ContribPersonNameAtt>
+               <LastNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <LastName>Young</LastName>
+               </LastNameAtt>
+               <OriginalFormAtt ContribOrigin="pqauth">
+                  <OriginalForm>David Young</OriginalForm>
+               </OriginalFormAtt>
+            </Author>
+         </Contributor>
+      </Contributors>
+      <Abstract>
+         <Short WordCount="155">
+            <AbsText HTMLContent="true">&lt;html&gt;
+            &lt;head&gt;
+              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;
+              &lt;title/&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;p&gt;
+Industries in the Elgin area must now keep their planes at Du Page Airport, almost 10 miles to the southeast, or 20 miles away at Aurora Municipal Airport. From Crystal Lake in McHenry County, the Du Page Airport is nearly 40 miles away.
+&lt;/p&gt;
+              &lt;p&gt;
+"Kane needs an airport at the northern end of the county, and we probably ought to combine (the project) with McHenry County," said Philip Elfstrom, an influential member of the Kane County Board and president of the county Forest Preserve Commission.
+&lt;/p&gt;
+              &lt;p&gt;
+Kane officials generally agree that any airport site should include possibly 2,000 acres-the bulk of it for a forest preserve or industrial park to buffer neighbors from the airport and prevent encroachment on approach zones by housing subdivisions. Almost everyone agrees that an airport large enough to serve the commercial airlines is out of the question. The largest planes able to use the proposed airport would be twin-engine corporate jets.
+&lt;/p&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;</AbsText>
+         </Short>
+      </Abstract>
+      <LegacyDataMapping>
+         <MappingVersion>$Header: $</MappingVersion>
+      </LegacyDataMapping>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="1026">&lt;html&gt;
+            &lt;head&gt;
+              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;
+              &lt;title/&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;p&gt;
+A long-dormant proposal to build a public airport for small planes in the far northwest suburbs is being revived in an effort to make the area more attractive to industry.
+&lt;/p&gt;
+              &lt;p&gt;
+McHenry and northern Kane Counties are in the midst of an explosion in both population and manufacturing industries.
+&lt;/p&gt;
+              &lt;p&gt;
+But officials are concerned that the lack of a suitable airport for corporate planes in the area will inhibit further industrial growth.
+&lt;/p&gt;
+              &lt;p&gt;
+The area has been without a suitable airport since Elgin Airport closed in 1983.
+&lt;/p&gt;
+              &lt;p&gt;
+Industries in the Elgin area must now keep their planes at Du Page Airport, almost 10 miles to the southeast, or 20 miles away at Aurora Municipal Airport. From Crystal Lake in McHenry County, the Du Page Airport is nearly 40 miles away.
+&lt;/p&gt;
+              &lt;p&gt;
+"Kane needs an airport at the northern end of the county, and we probably ought to combine (the project) with McHenry County," said Philip Elfstrom, an influential member of the Kane County Board and president of the county Forest Preserve Commission.
+&lt;/p&gt;
+              &lt;p&gt;
+"There isn't any doubt that the area is booming and could support a high-quality general aviation airport," said Edward Kelly, executive vice president of the 750-member Elgin Chamber of Commerce. "But with all the growth, if some move isn't made soon to buy the land, we'll have the same problem as other airports."
+&lt;/p&gt;
+              &lt;p&gt;
+Kane officials generally agree that any airport site should include possibly 2,000 acres-the bulk of it for a forest preserve or industrial park to buffer neighbors from the airport and prevent encroachment on approach zones by housing subdivisions. Almost everyone agrees that an airport large enough to serve the commercial airlines is out of the question. The largest planes able to use the proposed airport would be twin-engine corporate jets.
+&lt;/p&gt;
+              &lt;p&gt;
+But beyond a general agreement on those few principles, the situation gets complicated.
+&lt;/p&gt;
+              &lt;p&gt;
+Though studies over the last few years identified potential airport sites near Woodstock in central McHenry County and in the vicinity of Rutland Township in northwest Kane County, neither project got off the ground. The Rutland sites were along Ill. Hwy. 47 between U.S. Hwy. 20 and the Northwest Tollway.
+&lt;/p&gt;
+              &lt;p&gt;
+A public furor killed the proposal in environmentally conscious McHenry. In Kane, according to some officials there, the Northwest Kane Airport Authority has thus far effectively grounded any attempt to build any new airport.
+&lt;/p&gt;
+              &lt;p&gt;
+"The (authority) has anticipated from Day 1 that there will be a public airport in the general area, but not without local input," said Warren Strom, attorney for the authority.
+&lt;/p&gt;
+              &lt;p&gt;
+The authority was created in 1980 to include Plato, Hampshire, Rutland and Burlington Townships to prevent Elgin from building a municipal airport in that rural area. At the time, Elgin Airport, a private field, was scheduled to close, and the city was searching for a site for a municipal airport to replace it. "The district was formed to take control of the area," Strom added.
+&lt;/p&gt;
+              &lt;p&gt;
+Huntley, a small industrial town of about 5,000 residents in southern McHenry, has been dabbling with a Barrington developer over annexation and rezoning for an ambitious 2,400-acre development on the Kane County border that would include a 518-acre airfield. The proposal is for a site on the north side of the Northwest Tollway west of Ill. 47, where a giant amusement park was once proposed but never built.
+&lt;/p&gt;
+              &lt;p&gt;
+But government officials said they are dubious that Theodore Mizen, the developer who has an option on the land, has the financial backing for the project. It also would include a hotel and conference center, resort, golf course and office and industrial parks.
+&lt;/p&gt;
+              &lt;p&gt;
+Mizen said he has lined up investors and plans to start serious pre- annexation talks with Huntley next month.
+&lt;/p&gt;
+              &lt;p&gt;
+The problem is that Kane County has the political muscle to block construction of a private airport, which would need approval of federal and state aviation officials.
+&lt;/p&gt;
+              &lt;p&gt;
+"Our position is that we are not going to permit another private airport. It would have to be owned and operated by a public agency," said Phillip Bus, the director of Kane County's Development Department.
+&lt;/p&gt;
+              &lt;p&gt;
+Aviation officials said privately owned airports in the Chicago area since World War II have been increasingly vulnerable to skyrocketing land values that make them ripe for other types of development. Only public airports have been eligible for state and federal subsidies for improvements, another major factor that has caused dozens of private airports in the metropolitan area to close since 1946.
+&lt;/p&gt;
+              &lt;p&gt;
+As many as 10 airports in the six-county area are considered endangered because of population and economic pressures. Galt Airport, one of McHenry County's three fields available to the public, is on the endangered list.
+&lt;/p&gt;
+              &lt;p&gt;
+The proposed airport in north Kane would probably satisfy McHenry's needs, said Dean C. Cunat, an executive with TC Industries Inc. in Prairie Grove and a county board member who was the committee of one who oversaw McHenry's ill-fated search for an airport site three years ago. That search, conducted by a consultant hired by the county, was halted abruptly in 1985 when five potential sites along Ill. 47 between Huntley and Woodstock were announced and a public revolt resulted.
+&lt;/p&gt;
+              &lt;p&gt;
+Cunat said the search for an airport site began as a way to help spur economic development of McHenry after Elgin Airport closed, and the lack of available airstrips for corporate aircraft is still a problem. "Some industries in McHenry have expanded elsewhere because of the lack of available airports, and it's hard to know how many corporations have dropped McHenry from consideration as a site because their criteria requires a nearby airport," Cunat said.
+&lt;/p&gt;
+              &lt;p&gt;
+But McHenry County has no jurisdiction over the sites being proposed just over the county line, so officials familiar with the project say the only way the proposed airport is likely to become a reality is if Kane County government takes the initiative. That could require some changes in state law.
+&lt;/p&gt;
+              &lt;p&gt;
+Jerome Seyller, a Plato Center resident and member of the local airport authority that under existing state law has jurisdiction in the matter, said his agency has no intention of building an airport and the agency exists primarily to regulate attempts by anyone else to build one.
+&lt;/p&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>Chicago Tribune (pre-1997 Fulltext)</Title>
+         <MpubId>46853</MpubId>
+         <SortTitle>Chicago Tribune (pre-1997 Fulltext)</SortTitle>
+         <Qualifier>Chicago, Ill.</Qualifier>
+         <JournalCode>CTR9</JournalCode>
+         <SourceType>Newspapers</SourceType>
+         <StartDate>19630101</StartDate>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>Tribune Publishing Company, LLC</PublisherName>
+            <PublisherAddress>
+               <Address1>435 N. Michigan Ave.</Address1>
+               <Address2>-</Address2>
+               <City>Chicago</City>
+               <Province>IL</Province>
+               <ZipCode>60611</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+            <PublisherNote>Formerly Tribune Interactive, LLC</PublisherNote>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>33774</Name>
+            </Locator>
+            <Locator Type="ISSN">
+               <Name>10856706</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>60190.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">N</Flag>
+            <Flag Type="ALERTING_FLAG">N</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PEERREVIEWEDFLAG">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+            <Flag Type="UNIFIED_PUB_TITLE">Chicago Tribune</Flag>
+            <Flag Type="PUBLICATION_LOCATION">Illinois</Flag>
+            <Flag Type="NEWS_TYPE">Printed News</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>Chicago Tribune (pre-1997 Fulltext)</Title>
+            <SortTitle>Chicago Tribune (pre-1997 Fulltext)</SortTitle>
+            <Qualifier>Chicago, Ill.</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>33774</Name>
+               </Locator>
+               <Locator Type="ISSN">
+                  <Name>10856706</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>60190.00</CatalogNum>
+         </CurrentTitle>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>0</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Jan 1, 1985</AlphaStartDate>
+            <AlphaEndDate>Dec 3, 1996</AlphaEndDate>
+            <NumericStartDate>19850101</NumericStartDate>
+            <NumericEndDate>19961203</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Dec 4, 1988</AlphaDate>
+         <StartDate>1988-12-04</StartDate>
+         <EndDate>1988-12-04</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>746949</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>

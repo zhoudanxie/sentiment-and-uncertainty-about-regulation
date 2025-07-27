@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>410203947</GOID>
+   
+   <Obj>
+      <SourceRollupType>Newspapers</SourceRollupType>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="Publication">NEWSPAPER</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt>
+         <Title>SEC Rule Seen as a Threat To Power of Chief Executives</Title>
+      </TitleAtt>
+      <SubTitleAtt>
+         <SubTitle>[FINAL Edition]</SubTitle>
+      </SubTitleAtt>
+      <NumericDate>2006-09-10</NumericDate>
+      <StartDate>2006-09-10</StartDate>
+      <EndDate>2006-09-10</EndDate>
+      <AlphaDate>Sep 10, 2006</AlphaDate>
+      <PageCount>0</PageCount>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright The Washington Post Company Sep 10, 2006</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <StartPage>F.4</StartPage>
+         <Pagination>F.4</Pagination>
+         <DocSection>FINANCIAL</DocSection>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID IDOrigin="PQ">
+            <DOCID>1125079881</DOCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PCID>33409091</PCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PMID>7653</PMID>
+         </ObjectID>
+         <ObjectID>
+            <ProvJournalCode>TWP</ProvJournalCode>
+         </ObjectID>
+         <ObjectID IDOrigin="DTI">
+            <PublisherXID>WPXX200609100AA31ED4</PublisherXID>
+         </ObjectID>
+      </ObjectIDs>
+      <LexileScore>1470</LexileScore>
+      <DateLine>NEW YORK</DateLine>
+      <Contributors>
+         <Contributor ContribOrder="1">
+            <Author>
+               <NormalizedDisplayForm>Simon, Ellen</NormalizedDisplayForm>
+               <LastNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <LastName>Simon</LastName>
+               </LastNameAtt>
+               <FirstNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <FirstName>Ellen</FirstName>
+               </FirstNameAtt>
+               <OriginalFormAtt ContribOrigin="pqauth">
+                  <OriginalForm>Ellen Simon</OriginalForm>
+               </OriginalFormAtt>
+            </Author>
+         </Contributor>
+      </Contributors>
+      <Abstract>
+         <Short WordCount="158">
+            <AbsText HTMLContent="true">&lt;html&gt;            &lt;head&gt;              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;              &lt;title/&gt;            &lt;/head&gt;            &lt;body&gt;              &lt;p&gt;   The U.S. Court of Appeals for the D.C. Circuit ruled in 2005 that the SEC had violated the Administrative Procedure Act by not considering the cost of the independent chairman rule, and it sent it back to the SEC. The Chamber of Commerce challenged the rule again this year and the court ruled that the SEC had not given the public an opportunity to comment.&lt;/p&gt;              &lt;p&gt;   Now the SEC is taking comments on the proposal (www.sec.gov/ rules/proposed/s70304.shtml). The SEC is analyzing the comments and has no published schedule for reconsidering the proposed rule.&lt;/p&gt;              &lt;p&gt;   Alfred M. Rankin Jr., the lead independent director of Vanguard, disagrees. In comments to the SEC, he wrote: "The proposed regulatory mandate on the directors' choice of a chairman presumes that affiliated chairmen are necessarily affected by conflicts of interest that neither they nor a largely independent board can effectively manage. Yet the industry is replete with examples of well run funds with affiliated chairmen."&lt;/p&gt;            &lt;/body&gt;          &lt;/html&gt;</AbsText>
+         </Short>
+      </Abstract>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="940">&lt;html&gt;            &lt;head&gt;              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;              &lt;title/&gt;            &lt;/head&gt;            &lt;body&gt;              &lt;p&gt;   The two-year tussle over a regulation requiring that mutual fund chairmen be independent has pitted the Vanguard Group against John C. Bogle, its founder. It's thrown the former governor of Minnesota against the son of a Supreme Court justice.&lt;/p&gt;              &lt;p&gt;   On its face, the composition of the boards of mutual funds is at stake. But the hope in some quarters and the fear in others is that if the regulation is enacted, it will have implications for the governance of all public companies.&lt;/p&gt;              &lt;p&gt;   "Serious people believe that this is the beginning of separating the regular chief executive from the chairman," said C. Meyrick Payne, a senior partner at the consulting firm Management Practice Inc., which specializes in mutual fund governance.&lt;/p&gt;              &lt;p&gt;   Arne H. Carlson, former governor of Minnesota and now the independent chairman of RiverSource Funds, which were recently spun off from the American Express Co., agreed. "Part of this is a corporate CEO fear that their control will be placed in jeopardy."&lt;/p&gt;              &lt;p&gt;   The proposed rule by the Securities and Exchange Commission,  introduced in 2004, would require that 75 percent of mutual fund boards be independent and work under an independent chairman.&lt;/p&gt;              &lt;p&gt;   Those in favor of the rule say that more-independent boards will negotiate lower management fees.&lt;/p&gt;              &lt;p&gt;   "The data overwhelmingly show that the more that managers as a group take, the less the fund shareholders as a group make," Bogle said.&lt;/p&gt;              &lt;p&gt;   Those opposed say it would "create additional bureaucracy for fund advisers, thereby stifling the creation of new fund offerings for investors," as lawyer Samuel E. Whitley wrote in comments to the SEC. Others say there is no empirical evidence that the new rules would do any good.&lt;/p&gt;              &lt;p&gt;   The SEC approved the rule after a series of mutual fund scandals came to light in 2003. Many of the scandals involved special trading privileges for wealthy investors that cut the profits of every other investor. To date, the scandals have resulted in assessed fines and disgorgement of $3.4 billion from the companies.&lt;/p&gt;              &lt;p&gt;   The rule is "a centerpiece of our efforts" in regaining investors' trust in the fund industry, William H. Donaldson, who was SEC chairman, said in February 2004.&lt;/p&gt;              &lt;p&gt;   The rule was immediately opposed by the fund industry and such organizations as the American Enterprise Institute and the U.S. Chamber of Commerce, which challenged it in a federal lawsuit in 2004.&lt;/p&gt;              &lt;p&gt;   "The independent chair requirement will prevent independent directors of mutual funds from deciding for themselves whether an independent or management chair is best for the fund; will strip investors of the option they currently have to invest in a fund chaired by a management director if they so choose; and will force the vast majority of mutual funds to change their governance structure in a manner the record shows will adversely affect the funds, the investing public and the economy," says the lawsuit filed by the Chamber of Commerce. The lead lawyer on the suit was Eugene Scalia, a former Labor Department solicitor and son of Supreme Court Justice Antonin Scalia.&lt;/p&gt;              &lt;p&gt;   The U.S. Court of Appeals for the D.C. Circuit ruled in 2005 that the SEC had violated the Administrative Procedure Act by not considering the cost of the independent chairman rule, and it sent it back to the SEC. The Chamber of Commerce challenged the rule again this year and the court ruled that the SEC had not given the public an opportunity to comment.&lt;/p&gt;              &lt;p&gt;   Now the SEC is taking comments on the proposal (www.sec.gov/ rules/proposed/s70304.shtml). The SEC is analyzing the comments and has no published schedule for reconsidering the proposed rule.&lt;/p&gt;              &lt;p&gt;   The dispute is fierce.&lt;/p&gt;              &lt;p&gt;   Bogle, who has been a sharp critic of the industry he pioneered, is not only in favor of the rules, he also has said that he wants even stronger rules.&lt;/p&gt;              &lt;p&gt;   "Since an executive of an investment advisor who serves as a fund director has a profound and direct conflict of interest that cannot be simply disclosed away, I continue to believe that 100 percent of the board should be independent," he said in comments to the SEC.&lt;/p&gt;              &lt;p&gt;   He went on to paraphrase the Federalist papers: "If management company executives were angels, no governance would be necessary."&lt;/p&gt;              &lt;p&gt;   Alfred M. Rankin Jr., the lead independent director of Vanguard, disagrees. In comments to the SEC, he wrote: "The proposed regulatory mandate on the directors' choice of a chairman presumes that affiliated chairmen are necessarily affected by conflicts of interest that neither they nor a largely independent board can effectively manage. Yet the industry is replete with examples of well run funds with affiliated chairmen."&lt;/p&gt;              &lt;p&gt;   Another issue has been the cost of the regulations.&lt;/p&gt;              &lt;p&gt;   Small funds say the extra cost of independent directors and chairmen would have "a meaningful impact" on them and would stifle the creation of new small funds.&lt;/p&gt;              &lt;p&gt;   But Carlson maintains that the independent board at RiverSource has saved shareholders at least $5 million in fees and expenses.&lt;/p&gt;              &lt;p&gt;   "The fact is that mutual fund directors are inexpensive to begin with and the independent chairman is incredibly cheap," Payne said.&lt;/p&gt;              &lt;p&gt;   In comments to the SEC, Payne said the aggregate average compensation of an independent fund board is about $16 per $1 million of assets.&lt;/p&gt;              &lt;p&gt;   "There are about 400 mutual fund regulators at the SEC and other government institutions," he said. "These are supplemented by 2,680 fund directors to oversee the $9.5 trillion fund industry. Compare this taxpayer effectiveness measure with approximately 30,000 federal, state and local bank regulators."&lt;/p&gt;              &lt;p&gt; Credit: Associated Press&lt;/p&gt;            &lt;/body&gt;          &lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>The Washington Post</Title>
+         <MpubId>10327</MpubId>
+         <SortTitle>Washington Post The</SortTitle>
+         <Qualifier>Washington, D.C.</Qualifier>
+         <JournalCode>TWP</JournalCode>
+         <SourceType>Newspapers</SourceType>
+         <StartDate>19740101</StartDate>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>WP Company LLC d/b/a The Washington Post</PublisherName>
+            <PublisherAddress>
+               <Address1>1301 K Street, N.W.</Address1>
+               <City>Washington</City>
+               <Province>DC</Province>
+               <ZipCode>20071</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+            <URL>http://www.washingtonpost.com/</URL>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>7653</Name>
+            </Locator>
+            <Locator Type="ISSN">
+               <Name>01908286</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>60208.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">Y</Flag>
+            <Flag Type="ALERTING_FLAG">Y</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="LION_CONTENT_TYPE">Reviews</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+            <Flag Type="UNIFIED_PUB_TITLE">Washington Post</Flag>
+            <Flag Type="PUBLICATION_LOCATION">Washington, D.C.</Flag>
+            <Flag Type="NEWS_AUDIENCE">National</Flag>
+            <Flag Type="NEWS_TYPE">Printed News</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>The Washington Post</Title>
+            <SortTitle>Washington Post The</SortTitle>
+            <Qualifier>Washington, D.C.</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>7653</Name>
+               </Locator>
+               <Locator Type="ISSN">
+                  <Name>01908286</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>60208.00</CatalogNum>
+         </CurrentTitle>
+         <PubHistory>
+            <History>
+               <Title>The Washington Post</Title>
+               <Qualifier>Washington, D.C.</Qualifier>
+               <EndIssueDate>19540317</EndIssueDate>
+               <CatalogNum>60208.A0</CatalogNum>
+            </History>
+            <History>
+               <Title>The Washington Post, Times Herald</Title>
+               <Qualifier>Washington, D.C.</Qualifier>
+               <EndIssueDate>19731231</EndIssueDate>
+               <CatalogNum>60208.C0</CatalogNum>
+            </History>
+            <History>
+               <Title>The Washington Post and Times Herald</Title>
+               <Qualifier>Washington, D.C.</Qualifier>
+               <EndIssueDate>19590827</EndIssueDate>
+               <CatalogNum>60208.B0</CatalogNum>
+            </History>
+         </PubHistory>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>0</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Feb 01, 1988</AlphaStartDate>
+            <AlphaEndDate>Current</AlphaEndDate>
+            <StartVolume>111</StartVolume>
+            <StartIssue>58</StartIssue>
+            <NumericStartDate>19880201</NumericStartDate>
+            <NumericEndDate>99990101</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Sep 10, 2006</AlphaDate>
+         <StartDate>2006-09-10</StartDate>
+         <EndDate>2006-09-10</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>33409091</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>

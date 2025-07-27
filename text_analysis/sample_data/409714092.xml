@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>409714092</GOID>
+   
+   <Obj>
+      <SourceRollupType>Newspapers</SourceRollupType>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="Publication">NEWSPAPER</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt>
+         <Title>Understand Complaint Before Joining It</Title>
+      </TitleAtt>
+      <SubTitleAtt>
+         <SubTitle>[FINAL Edition]</SubTitle>
+      </SubTitleAtt>
+      <NumericDate>2004-11-20</NumericDate>
+      <StartDate>2004-11-20</StartDate>
+      <EndDate>2004-11-20</EndDate>
+      <AlphaDate>Nov 20, 2004</AlphaDate>
+      <PageCount>0</PageCount>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright The Washington Post Company Nov 20, 2004</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <StartPage>T.11</StartPage>
+         <Pagination>T11</Pagination>
+         <DocSection>FINANCIAL</DocSection>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID IDOrigin="PQ">
+            <DOCID>739288861</DOCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PCID>14133271</PCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PMID>7653</PMID>
+         </ObjectID>
+         <ObjectID>
+            <ProvJournalCode>TWP</ProvJournalCode>
+         </ObjectID>
+         <ObjectID IDOrigin="DTI">
+            <PublisherXID>WPXX20041120079EDDD0</PublisherXID>
+         </ObjectID>
+      </ObjectIDs>
+      <LexileScore>1430</LexileScore>
+      <Abstract>
+         <Short WordCount="79">
+            <AbsText HTMLContent="true">&lt;html&gt;            &lt;head&gt;              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;              &lt;title/&gt;            &lt;/head&gt;            &lt;body&gt;              &lt;p&gt;   Many D.C. properties are subject to the city's rent control law, which regulates how much rent landlords can charge and when they can raise rents. If you live in a rent-controlled building, landlords can raise the rent once every 180 days, or twice a year, but only if the Housing Regulation Administration grants the owners a rent- ceiling increase. To find out if you live in a building that's covered, call the Housing Regulation Administration at 202-442- 4600.&lt;/p&gt;            &lt;/body&gt;          &lt;/html&gt;</AbsText>
+         </Short>
+      </Abstract>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="558">&lt;html&gt;            &lt;head&gt;              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;              &lt;title/&gt;            &lt;/head&gt;            &lt;body&gt;              &lt;p&gt;   Edited questions from Apartment Life, Sara Gebhardt's online discussion about rental issues.&lt;/p&gt;              &lt;p&gt;   QWashington: The tenants' association in my building has filed some kind of class action complaint with the city against the management of our building for rent increases and other changes it does not like. Some of these people have lived in their apartments for decades and got notices of big increases. The management also did a huge renovation of the lobby and things and the association heads and longtime residents are moaning that they were not involved in the process. They are giving slips to everyone in the building asking whether we want to be a part of the complaint, which they would not let us read or see before it was filed. I have no idea what to do and am nervous that getting involved would just mark our apartment for more increases. What do you think?&lt;/p&gt;              &lt;p&gt;   AGenerally, if you agree with the complaint the association is making, it will not hurt you to become a part of it. You should, however, insist that you understand the complaint the association is filing.&lt;/p&gt;              &lt;p&gt;   Many D.C. properties are subject to the city's rent control law, which regulates how much rent landlords can charge and when they can raise rents. If you live in a rent-controlled building, landlords can raise the rent once every 180 days, or twice a year, but only if the Housing Regulation Administration grants the owners a rent- ceiling increase. To find out if you live in a building that's covered, call the Housing Regulation Administration at 202-442- 4600.&lt;/p&gt;              &lt;p&gt;   In the District, because of rent-control laws, tenants often do have a say to some extent about changes made to their buildings. Building owners can petition to increase the rent based on capital improvement needs, etc.&lt;/p&gt;              &lt;p&gt;   Washington: I live in an apartment building managed by a company that owns several other apartment buildings in Washington. Do companies such as this one ever let tenants end their leases early without penalty if they move to another company-owned property?&lt;/p&gt;              &lt;p&gt;   There is at least one big company in the D.C. area that allows tenants to move from building to building without the problems of lease-breaking. You should ask your landlord about the company rules. If this property management company does not have that rule, propose it.&lt;/p&gt;              &lt;p&gt;   Ashburn: You have mentioned negotiating rent increases with landlords in advance. In a few months my lease will expire, and I really want to stay where I am -- I like the apartment and the area. I fear, though, that the rent increase may be higher than I can handle. Do you have any tips for negotiating with the rental office?&lt;/p&gt;              &lt;p&gt;   If you have extra savings, you can offer to pay a few months in advance. A reader told me that she recently successfully used the pay-extra-up-front technique to negotiate her regular rent payments. Be honest with your landlord about what you want, because you really have nothing to lose if you think you won't be able to handle the rent increase you anticipate.&lt;/p&gt;              &lt;p&gt;   Sara Gebhardt's Apartment Life column appears biweekly in this section, and her Web chat appears monthly on www.washingtonpost.com. The next chat is scheduled for 2 p.m. Dec. 9.&lt;/p&gt;            &lt;/body&gt;          &lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>The Washington Post</Title>
+         <MpubId>10327</MpubId>
+         <SortTitle>Washington Post The</SortTitle>
+         <Qualifier>Washington, D.C.</Qualifier>
+         <JournalCode>TWP</JournalCode>
+         <SourceType>Newspapers</SourceType>
+         <StartDate>19740101</StartDate>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>WP Company LLC d/b/a The Washington Post</PublisherName>
+            <PublisherAddress>
+               <Address1>1301 K Street, N.W.</Address1>
+               <City>Washington</City>
+               <Province>DC</Province>
+               <ZipCode>20071</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+            <URL>http://www.washingtonpost.com/</URL>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>7653</Name>
+            </Locator>
+            <Locator Type="ISSN">
+               <Name>01908286</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>60208.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">Y</Flag>
+            <Flag Type="ALERTING_FLAG">Y</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="LION_CONTENT_TYPE">Reviews</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+            <Flag Type="UNIFIED_PUB_TITLE">Washington Post</Flag>
+            <Flag Type="PUBLICATION_LOCATION">Washington, D.C.</Flag>
+            <Flag Type="NEWS_AUDIENCE">National</Flag>
+            <Flag Type="NEWS_TYPE">Printed News</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>The Washington Post</Title>
+            <SortTitle>Washington Post The</SortTitle>
+            <Qualifier>Washington, D.C.</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>7653</Name>
+               </Locator>
+               <Locator Type="ISSN">
+                  <Name>01908286</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>60208.00</CatalogNum>
+         </CurrentTitle>
+         <PubHistory>
+            <History>
+               <Title>The Washington Post</Title>
+               <Qualifier>Washington, D.C.</Qualifier>
+               <EndIssueDate>19540317</EndIssueDate>
+               <CatalogNum>60208.A0</CatalogNum>
+            </History>
+            <History>
+               <Title>The Washington Post, Times Herald</Title>
+               <Qualifier>Washington, D.C.</Qualifier>
+               <EndIssueDate>19731231</EndIssueDate>
+               <CatalogNum>60208.C0</CatalogNum>
+            </History>
+            <History>
+               <Title>The Washington Post and Times Herald</Title>
+               <Qualifier>Washington, D.C.</Qualifier>
+               <EndIssueDate>19590827</EndIssueDate>
+               <CatalogNum>60208.B0</CatalogNum>
+            </History>
+         </PubHistory>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>0</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Feb 01, 1988</AlphaStartDate>
+            <AlphaEndDate>Current</AlphaEndDate>
+            <StartVolume>111</StartVolume>
+            <StartIssue>58</StartIssue>
+            <NumericStartDate>19880201</NumericStartDate>
+            <NumericEndDate>99990101</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Nov 20, 2004</AlphaDate>
+         <StartDate>2004-11-20</StartDate>
+         <EndDate>2004-11-20</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>14133271</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>

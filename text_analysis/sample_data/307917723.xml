@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>307917723</GOID>
+   
+   <Obj>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="Publisher">NEWS</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt>
+         <Title>Storm Dampens Candidates Dinnerel 756</Title>
+      </TitleAtt>
+      <SubTitleAtt>
+         <SubTitle>[FINAL Edition]</SubTitle>
+      </SubTitleAtt>
+      <NumericDate>1996-01-08</NumericDate>
+      <StartDate>1996-01-08</StartDate>
+      <EndDate>1996-01-08</EndDate>
+      <AlphaDate>Jan 8, 1996</AlphaDate>
+      <PageCount>0</PageCount>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright The Washington Post Company Jan 8, 1996</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <StartPage>A.04</StartPage>
+         <Pagination>A.04</Pagination>
+         <DocSection>A SECTION</DocSection>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID IDOrigin="PQ">
+            <DOCID>21808051</DOCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PCID>719787</PCID>
+         </ObjectID>
+         <ObjectID IDOrigin="PQ">
+            <PMID>33801</PMID>
+         </ObjectID>
+         <ObjectID>
+            <ProvJournalCode>TWP9</ProvJournalCode>
+         </ObjectID>
+         <ObjectID IDOrigin="DTI">
+            <PublisherXID>WP990064</PublisherXID>
+         </ObjectID>
+      </ObjectIDs>
+      <DateLine>MANCHESTER, N.H., Jan. 7</DateLine>
+      <Contributors>
+         <Contributor ContribOrder="1">
+            <Author>
+               <NormalizedDisplayForm>Balz, Dan</NormalizedDisplayForm>
+               <FirstNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <FirstName>Dan</FirstName>
+               </FirstNameAtt>
+               <ContribPersonNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <ContribPersonName>Dan Balz</ContribPersonName>
+               </ContribPersonNameAtt>
+               <LastNameAtt ContribOrigin="AuthorNormalization" IsNormalized="true">
+                  <LastName>Balz</LastName>
+               </LastNameAtt>
+               <OriginalFormAtt ContribOrigin="pqauth">
+                  <OriginalForm>Dan Balz</OriginalForm>
+               </OriginalFormAtt>
+            </Author>
+         </Contributor>
+      </Contributors>
+      <Terms>
+         <CompanyTerm PndxHeader="true" TermSource="EXT">
+            <CompanyNameAtt>
+               <CompanyName>Republican Party</CompanyName>
+            </CompanyNameAtt>
+         </CompanyTerm>
+         <Term PndxHeader="true" TermSource="EXT">
+            <Personal>Lamar Alexander</Personal>
+         </Term>
+         <Term PndxHeader="true" TermSource="EXT">
+            <Personal>Patrick J. Buchanan</Personal>
+         </Term>
+      </Terms>
+      <Abstract>
+         <Short WordCount="137">
+            <AbsText HTMLContent="true">&lt;html&gt;
+            &lt;head&gt;
+              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;
+              &lt;title/&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;p&gt;
+New Hampshire Republicans hoped to kick off Campaign '96 here tonight with a big fund-raising dinner featuring all their presidential candidates, but the blizzard that pummeled Washington ruined the party.
+&lt;/p&gt;
+              &lt;p&gt;
+The storm prevented Senate Majority Leader Robert J. Dole (Kan.), Sen. Phil Gramm (Tex.) and publisher Malcolm S. "Steve" Forbes Jr. from traveling to New Hampshire, and even those candidates who made it had trouble exciting the GOP activists who had paid $150 apiece to attend. That was a sharp contrast to the dinner held almost a year ago, when the Republicans sensed unlimited possibilities in the 1996 campaign.
+&lt;/p&gt;
+              &lt;p&gt;
+[Lamar] Alexander continued his effort to portray Dole as a likely loser in a general election contest with President [Bill] Clinton and warned Republicans they risked losing control of Congress by nominating a Washington insider for president.
+&lt;/p&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;</AbsText>
+         </Short>
+      </Abstract>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="781">&lt;html&gt;
+            &lt;head&gt;
+              &lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/&gt;
+              &lt;title/&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;p&gt;
+@DINK:NAT+
+&lt;/p&gt;
+              &lt;p&gt;
+New Hampshire Republicans hoped to kick off Campaign '96 here tonight with a big fund-raising dinner featuring all their presidential candidates, but the blizzard that pummeled Washington ruined the party.
+&lt;/p&gt;
+              &lt;p&gt;
+The storm prevented Senate Majority Leader Robert J. Dole (Kan.), Sen. Phil Gramm (Tex.) and publisher Malcolm S. "Steve" Forbes Jr. from traveling to New Hampshire, and even those candidates who made it had trouble exciting the GOP activists who had paid $150 apiece to attend. That was a sharp contrast to the dinner held almost a year ago, when the Republicans sensed unlimited possibilities in the 1996 campaign.
+&lt;/p&gt;
+              &lt;p&gt;
+With their principal rivals temporarily grounded, candidates Lamar Alexander and Patrick J. Buchanan used afternoon appearances and the dinner to attack those who couldn't get here to defend themselves.
+&lt;/p&gt;
+              &lt;p&gt;
+Alexander continued his effort to portray Dole as a likely loser in a general election contest with President Clinton and warned Republicans they risked losing control of Congress by nominating a Washington insider for president.
+&lt;/p&gt;
+              &lt;p&gt;
+Buchanan, in an afternoon news conference, said Dole had served his party admirably over the years, but was a man of the past, not the future. "This is the Don Shula of the Republican Party," Buchanan said, referring to the longtime Miami Dolphins coach who announced his retirement last week.
+&lt;/p&gt;
+              &lt;p&gt;
+But when Dole got his chance to address the dinner by telephone tonight, it didn't take him long to mention a new CNN/USA Today poll showing him narrowly ahead of Clinton, after having trailed the president in polls the past several months. And he said he relished a debate with the president over competing philosophies of government.
+&lt;/p&gt;
+              &lt;p&gt;
+Arguing that Clinton was standing in the way of balancing the budget, reforming welfare and reducing government regulations, Dole said in a voice that was barely audible because of the sound system, "We will fight to the end for fundamental conservative change and we will take our case to the American people in 1996."
+&lt;/p&gt;
+              &lt;p&gt;
+But Dole wasn't the only person who found himself under attack. Buchanan mocked Gramm, saying the Texan is almost as willing to cut deals and compromise party principles as Dole, and he criticized Forbes's flat-tax idea, calling it a "pie-in-the-sky" proposal that would leave the government deeper in debt.
+&lt;/p&gt;
+              &lt;p&gt;
+Forbes defended his plan on NBC's "Meet the Press," arguing that it would help to bring about economic growth and more revenue for the government. But he conceded that one part of it might have to be changed to counter criticism that it would exempt wealthy Americans from paying taxes on unearned income while taxing the wages of middle-income people.
+&lt;/p&gt;
+              &lt;p&gt;
+Dole's absence along the campaign trail seems only to have frustrated the four men chasing him the hardest, and their attacks on the Senate majority leader have increased with the turn of the new year.
+&lt;/p&gt;
+              &lt;p&gt;
+"Some of us are stuck in Washington and some of us are not, and that's basically what I came to talk to you about tonight," Alexander told the audience, launching into his criticism that the party will lose the election if it nominates a sitting senator.
+&lt;/p&gt;
+              &lt;p&gt;
+"The question is can he beat Bill Clinton with his Washington insider message," Alexander said. "If Bob Dole is our nominee and our message is Washington, we're going to lose."
+&lt;/p&gt;
+              &lt;p&gt;
+Buchanan, who unveiled a new television ad comparing his leadership style to former Republican presidents Richard M. Nixon and Ronald Reagan, saved his harshest words for Gramm, whom he accused of being willing to compromise on the tax cut included in the Republican budget proposal.
+&lt;/p&gt;
+              &lt;p&gt;
+Gramm has denied that, and when he spoke by phone tonight called on Republicans not to lose their nerve in budget talks with Clinton.
+&lt;/p&gt;
+              &lt;p&gt;
+Forbes also spoke by telephone, but none of the candidates did much to ignite an audience that is just six weeks away from the nation's first primary. Sen. Richard G. Lugar (Ind.), talk show host Alan L. Keyes and businessman Maurice "Morry" Taylor also spoke in person tonight. Lugar urged Republicans to take action to end the wage stagnation in the country.
+&lt;/p&gt;
+              &lt;p&gt;
+Forbes, whose multimillion-dollar television ad blitz has vaulted him into second place in some states, has found his flat tax under fire from his rivals. On NBC he defended elimination of the mortgage interest and the charitable contribution deductions, but he said that to diminish criticism that the plan unfairly benefits wealthy Americans, he would consider changing one aspect of it.
+&lt;/p&gt;
+              &lt;p&gt;
+Forbes also defended himself against criticism that some of his ads attacking Dole are both negative and distorted.
+&lt;/p&gt;
+              &lt;div&gt;
+&lt;object class="mstar_text_entity"&gt;
+&lt;param name="pq_source" value="csx"/&gt;
+&lt;param name="pq_etype" value="41"/&gt;
+&lt;param name="mstar_entity_inline" value="N"/&gt;
+&lt;param name="mstar_entity_type" value="Illustration"/&gt;
+&lt;div class="Illustration_content"&gt;
+&lt;p&gt;
+PHOTO,,Ap CAPTION: Patrick J. Buchanan introduces his new ad campaign, which stresses ties to former presidents Nixon and Reagan. ec
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/object&gt;
+&lt;/div&gt;
+              &lt;p&gt;
+Credit: Washington Post Staff Writer
+&lt;/p&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>The Washington Post (pre-1997 Fulltext)</Title>
+         <MpubId>47014</MpubId>
+         <SortTitle>Washington Post (pre-1997 Fulltext) The</SortTitle>
+         <Qualifier>Washington, D.C.</Qualifier>
+         <JournalCode>TWP9</JournalCode>
+         <SourceType>Newspapers</SourceType>
+         <StartDate>19740101</StartDate>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>WP Company LLC d/b/a The Washington Post</PublisherName>
+            <PublisherAddress>
+               <Address1>1301 K Street, N.W.</Address1>
+               <City>Washington</City>
+               <Province>DC</Province>
+               <ZipCode>20071</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+            <URL>http://www.washingtonpost.com/</URL>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>33801</Name>
+            </Locator>
+            <Locator Type="ISSN">
+               <Name>01908286</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>60208.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">Y</Flag>
+            <Flag Type="ALERTING_FLAG">N</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+            <Flag Type="UNIFIED_PUB_TITLE">Washington Post</Flag>
+            <Flag Type="PUBLICATION_LOCATION">Washington, D.C.</Flag>
+            <Flag Type="NEWS_AUDIENCE">National</Flag>
+            <Flag Type="NEWS_TYPE">Printed News</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>The Washington Post (pre-1997 Fulltext)</Title>
+            <SortTitle>Washington Post (pre-1997 Fulltext) The</SortTitle>
+            <Qualifier>Washington, D.C.</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>33801</Name>
+               </Locator>
+               <Locator Type="ISSN">
+                  <Name>01908286</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>60208.00</CatalogNum>
+         </CurrentTitle>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>0</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Jan 1, 1987</AlphaStartDate>
+            <AlphaEndDate>Dec 3, 1996</AlphaEndDate>
+            <NumericStartDate>19870101</NumericStartDate>
+            <NumericEndDate>19961203</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Jan 8, 1996</AlphaDate>
+         <StartDate>1996-01-08</StartDate>
+         <EndDate>1996-01-08</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>719787</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>

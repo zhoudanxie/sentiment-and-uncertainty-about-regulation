@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>2227608617</GOID>
+   
+   <Obj>
+      <SourceRollupType>Web Resources</SourceRollupType>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="ECMS">News</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt HTMLContent="true">
+         <Title>Group of Scientists Drafts Rules on Ethics for Stem Cell Research</Title>
+      </TitleAtt>
+      <NumericDate>2005-04-27</NumericDate>
+      <StartDate>2005-04-27</StartDate>
+      <EndDate>2005-04-27</EndDate>
+      <AlphaDate>Apr 27, 2005</AlphaDate>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright 2019 The New York Times Company</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <DocSection>us</DocSection>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID>
+            <PMID>259128</PMID>
+         </ObjectID>
+         <ObjectID>
+            <PCID>PQ_259128_Apr272005______</PCID>
+         </ObjectID>
+         <ObjectID>
+            <MSTARLegacyID>NYTNYTN200504272005042700000856304</MSTARLegacyID>
+         </ObjectID>
+      </ObjectIDs>
+      <Terms>
+         <CompanyTerm TermSource="AutoCatNstein">
+            <CompanyNameAtt TermVocab="CORP">
+               <CompanyName>Stanford University</CompanyName>
+            </CompanyNameAtt>
+            <CompanyNAICAtt>
+               <CompanyNAIC>611310</CompanyNAIC>
+            </CompanyNAICAtt>
+         </CompanyTerm>
+         <CompanyTerm TermSource="Editorial">
+            <CompanyNameAtt TermVocab="CORP">
+               <CompanyName>Congress-US</CompanyName>
+            </CompanyNameAtt>
+            <CompanyNAICAtt>
+               <CompanyNAIC>921120</CompanyNAIC>
+            </CompanyNAICAtt>
+         </CompanyTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Embryos</GenSubjValue>
+            <GenSubjCategory>PSYCHOLOGY</GenSubjCategory>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Committees</GenSubjValue>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Ethics</GenSubjValue>
+            <GenSubjCategory>PSYCHOLOGY</GenSubjCategory>
+         </GenSubjTerm>
+         <GenSubjTerm TermSource="AutoCatNstein" TermVocab="PQSUBJ">
+            <GenSubjValue>Stem cells</GenSubjValue>
+         </GenSubjTerm>
+         <Term TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>Baltimore Maryland</Geographic>
+         </Term>
+         <Term SubTermType="Country" TermSource="AutoCatNstein" TermVocab="GEOG">
+            <Geographic>California</Geographic>
+         </Term>
+         <Term TermSource="AutoCatNstein" TermVocab="PERS">
+            <Personal>Bush, George W</Personal>
+         </Term>
+         <Term SubTermType="Country" TermSource="DBLookup" TermVocab="GEOG">
+            <Geographic>United States--US</Geographic>
+         </Term>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>United States</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>CONGRESS</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>National Academy of Sciences</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Bush, George W</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Stem Cells</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Fetal Tissue</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Finances</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Ethics</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Science and Technology</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Medicine and Health</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Research</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Budgets and Budgeting</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Regulation and Deregulation of Industry</TitleKeyword>
+         </FlexTerm>
+      </Terms>
+      <Abstract>
+         <Medium Provider="EXT" WordCount="133">
+            <Language IsPrimary="true">
+               <ISO>
+                  <ISOCode>ENG</ISOCode>
+                  <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+               </ISO>
+            </Language>
+            <Language>
+               <RawLang>English</RawLang>
+            </Language>
+            <AbsText HTMLContent="true">&lt;html&gt;&lt;head&gt;&lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd" /&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;National Academy of Sciences, citing lack of leadership by federal government, proposes ethical guidelines for research with human embryonic stem cells; scientists have high hopes that research with these all-purpose cells, which develop into all various tissues of human body, will lead to treatments for wide variety of diseases by enabling them to grow new organs to replace damaged ones; academy, self-elected group of scientists that advises government, recommends setting up system of local and national committees for reviewing stem cell research; because of religious objections, Congress has long restricted federal financing of such research; Pres Bush has allowed it to proceed, but only with designated cells; as result, government has not played its usual role of promoting novel research and devising regulations accepted by all players; stem cell oversight discussed; drawing (M)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</AbsText>
+         </Medium>
+      </Abstract>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="1642">&lt;html&gt;&lt;head&gt;&lt;meta name='ValidationSchema' content='http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd'/&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;em class="bold"&gt;Correction Appended&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Citing a lack of leadership by the federal government, the National Academy of Sciences proposed ethical guidelines yesterday for research with human embryonic stem cells.&lt;/p&gt;
+&lt;p&gt;Scientists have high hopes that research with those all-purpose cells, which develop into all the various tissues of the adult body, will lead to treatments for a wide variety of diseases by enabling them to grow new organs to replace damaged ones.&lt;/p&gt;
+&lt;p&gt;But because of religious objections -- human embryos shortly after fertilization are destroyed to derive the cells -- Congress has long restricted federal financing of such research; President Bush has allowed it to proceed, but only with designated cells. As a result, the government has not played its usual role of promoting novel research and devising regulations accepted by all players.&lt;/p&gt;
+&lt;p&gt;The academy, a self-elected group of scientists that advises the government, recommends setting up a system of local and national committees for reviewing stem cell research. It also tackles a new set of ethical problems raised by creating organisms composed of cells from two different species, and in this case animals that include human cells.&lt;/p&gt;
+&lt;p&gt;The academy hopes its proposals, which are nonbinding, will be accepted in the private and public sectors, particularly in states like California that are creating ambitious stem cell programs. Its report is also likely to influence the debate in Congress, where some lawmakers wish to allow new human stem cell lines to be derived and other lawmakers are seeking tighter restrictions.&lt;/p&gt;
+&lt;p&gt;Heightened and universal oversight "is essential to assure the public that such research is being conducted in an ethical manner," the academy's report says. The guidelines were drawn up by a committee led by Dr. Richard O. Hynes of the Massachusetts Institute of Technology and Dr. Jonathan D. Moreno of the University of Virginia.&lt;/p&gt;
+&lt;p&gt;The report paves the way for research involving animals called chimeras that have been seeded with human cells. The purpose of such experiments is not to create some nightmarish menagerie of half-human animals, but to test first in animals the human organs that could be grown from embryonic stem cells.&lt;/p&gt;
+&lt;p&gt;Foreseeing that such research will be required for tests of effectiveness and safety, the academy says most chimeras should be permitted. But it places certain types of experiments out of bounds, at least for now. These involve inserting human embryonic stem cells into an early human embryo, a technically promising method of genetic engineering, or into apes and monkeys.&lt;/p&gt;
+&lt;p&gt;The academy's guidelines would impose limits on three kinds of experiment that involve incorporating human embryonic stem cells into animals. Undesired consequences could follow if human cells were to become incorporated into the sex cells or the brains of animals. In the first case, there is a remote possibility that an animal with eggs made of human cells could mate with an animal bearing human sperm. To avoid human conception in such circumstances, the academy says chimeric animals should not be allowed to mate.&lt;/p&gt;
+&lt;p&gt;A second possible hazard is that the human embryonic stem cells might generate all or most of an animal's brain, leading to the possibility of a human mind imprisoned in an animal's body. Though neuroscientists consider this unlikely, it cannot be ruled out, particularly with animals closely related to people, like monkeys and apes. The academy advises that human embryonic stem cells not be injected into the embryos of nonhuman primates for the time being.&lt;/p&gt;
+&lt;p&gt;Third, like many previous committees, the academy says human embryos should not be grown in culture for more than 14 days, the time when the first hints of a nervous system appear.&lt;/p&gt;
+&lt;p&gt;The academy advises that all institutions conducting human embryonic stem cell research set up local committees, including scientific experts and members of the public, to review all experiments. And it says a national committee should be formed to update regulations and relax the constraints if warranted by new evidence.&lt;/p&gt;
+&lt;p&gt;The academy also says that donors, including women who donate unfertilized eggs, should not be paid.&lt;/p&gt;
+&lt;p&gt;The academy's guidelines could be widely followed if adopted by leading institutions, funding agencies and journals. Scientists at Rockefeller University, the Burnham Institute in California and Stanford University said the academy's rules were similar to their in-house versions and could probably be adopted with ease.&lt;/p&gt;
+&lt;p&gt;"It relieves a lot of pressure on the scientist in the absence of any advice or policy," said Dr. Ali H. Brivanlou, a researcher at Rockefeller who has been waiting for guidance about an experiment with human embryonic stem cells.&lt;/p&gt;
+&lt;p&gt;The system of scientific self-regulation proposed by the academy is modeled after the approach to recombinant DNA research, a technique for transferring genes between organisms that seemed at first to hold possible hazards. In that case, scientists themselves first drew attention to the hazards, and in 1975, they held a conference that recommended oversight. Their recommendation was then put into practice by the National Institutes of Health, the principal federal supporter of biomedical research, and the N.I.H.'s guidelines were voluntarily followed by the private sector as well.&lt;/p&gt;
+&lt;p&gt;The agency has been prevented from playing a similar role with human embryonic stem cells because of the Bush policy and the Congressional ban. Many scientists regret the forced absence of the health institutes' leadership.&lt;/p&gt;
+&lt;p&gt;"This shows how far this country has gone toward being controlled by religious precepts rather than scientific opportunity," said Dr. David Baltimore, president of the California Institute of Technology and an architect of the decisions about recombinant DNA.&lt;/p&gt;
+&lt;p&gt;It "is a terrible omen for our being able to maintain our position as the country that leads in biomedical technology," Dr. Baltimore said.&lt;/p&gt;
+&lt;p&gt;Dr. Harold Varmus, president of the Memorial Sloan-Kettering Cancer Center and a former director of the health institutes, said the academy's proposed rules "offer what the government cannot: reasonable guidelines for the several kinds of research being conducted with various sources of non-federal funds." Dr. Varmus said he thought that nearly all researchers would sign on to the new rules.&lt;/p&gt;
+&lt;p&gt;Michael Werner, chief of policy for the Biotechnology Industry Organization, said biotech companies were likely to adopt the academy's guidelines, at least in principle.&lt;/p&gt;
+&lt;p&gt;"What I hope the administration would see," Mr. Werner said, "is that leading scientists in our country believe very much that this is an area of research that needs to go forward quickly and aggressively but with proper oversight."&lt;/p&gt;
+&lt;p&gt;Dr. Leon R. Kass, chairman of the President's Council on Bioethics, declined through a spokeswoman to comment on the academy's guidelines. Dr. Richard Doerflinger, deputy director for pro-life activities at the U.S. Conference of Catholic Bishops, said that the guidelines were drafted by scientists who favored "creating embryos just to destroy them," and that the Roman Catholic Church had not changed its opposition to stem cell research.&lt;/p&gt;
+&lt;p&gt;"But it would be harder to sustain that policy for the U.S. government if it had been shown that embryonic stem cells were the only way to cure certain disease," Dr. Doerflinger said, noting that that burden "has not been met at present."&lt;/p&gt;
+&lt;p&gt;The academy's advice is more permissive than previous recommendations in some respects, more stringent in others. President Clinton in 1994 shot down a panel's suggestion that human embryos should be created, from chosen donors, for research purposes -- a ban that would still apply to federal researchers if they were allowed to derive new cell lines. The academy committee, however, says such embryos should be generated, subject to review.&lt;/p&gt;
+&lt;p&gt;But it seems to be the first panel to say human embryonic stem cells should not be inserted into early human embryos, also known as blastocysts. This might in principle be a technically efficient way of correcting genetic defects. But neither the scientific nor the ethical groundwork has been laid for such a development, Dr. Hynes said, so the committee has decided to prohibit it for the time being.&lt;/p&gt;
+&lt;p&gt;The new guidelines are expected to clarify doubts held by many researchers who have held off experiments that ventured into controversial territory. Dr. Irving Weissman of Stanford University has long planned to insert human neural stem cells into the brain of a mouse embryo whose own neural stem cells are dysfunctional. Even though neural stem cells are adult in form and belong to different category than embryonic stem cells, he asked Stanford to convene a group to advise him on the ethics of the experiment.&lt;/p&gt;
+&lt;p&gt;The committee chairman, Dr. Hank Greely, said they advised Dr. Weissman to go ahead with the first part of the experiment and to see whether the architecture of the mouse's brain was mouse-like or human-like; if the latter, the panel would discuss whether to proceed.&lt;/p&gt;
+&lt;p&gt;Dr. Weissman has not started the experiment because of difficulty breeding the required kind of mouse, Dr. Greely said.&lt;/p&gt;
+&lt;p&gt;In the Senate, Arlen Specter, Republican of Pennsylvania, and Orrin G. Hatch, Republican of Utah, are proposing to expand the president's policy by allowing research on leftover embryos.&lt;/p&gt;
+&lt;p&gt;At a press conference last week, Senator Specter, who is undergoing chemotherapy treatment for Hodgkin's disease, made reference to his "new hairdo" as he argued for more studies. "It is just, in my opinion, scandalous, scandalous that we do not use all of the resources available to us to fight these maladies," Mr. Specter said.&lt;/p&gt;
+&lt;p&gt;President Bush has given no indication that he will sign legislation changing his 2001 executive order. And opponents of the research say they will aggressively fight any attempt to change Mr. Bush's policy.&lt;/p&gt;
+&lt;p&gt;Correction: May 5, 2005, Thursday A front-page article on Friday about new ethical guidelines for research with human embryonic stem cells gave an incorrect title for Richard Doerflinger, deputy director for pro-life activities at the United States Conference of Catholic Bishops, who said the guidelines were drafted by scientists who favored "creating embryos just to destroy them." He is not a doctor.&lt;/p&gt;
+&lt;p class="additionalinfo"&gt;&lt;em class="i"&gt;Sheryl Gay Stolberg contributed reporting from Washington for this article.
+&lt;/em&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>New York Times (Online)</Title>
+         <MpubId>2037333</MpubId>
+         <SortTitle>New York Times (Online)</SortTitle>
+         <Qualifier>New York</Qualifier>
+         <JournalCode>NYTN</JournalCode>
+         <SourceType>Blogs, Podcasts, &amp; Websites</SourceType>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>New York Times Company</PublisherName>
+            <PublisherAddress>
+               <Address1>620 8th Ave</Address1>
+               <City>NEW YORK</City>
+               <Province>NY</Province>
+               <ZipCode>10018</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>259128</Name>
+            </Locator>
+            <Locator Type="ELECISSN">
+               <Name>15538095</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>406635.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">Y</Flag>
+            <Flag Type="ALERTING_FLAG">Y</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+            <Flag Type="UNIFIED_PUB_TITLE">The New York Times</Flag>
+            <Flag Type="PUBLICATION_LOCATION">New York</Flag>
+            <Flag Type="NEWS_AUDIENCE">National</Flag>
+            <Flag Type="NEWS_TYPE">Online News</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>New York Times (Online)</Title>
+            <SortTitle>New York Times (Online)</SortTitle>
+            <Qualifier>New York</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>259128</Name>
+               </Locator>
+               <Locator Type="ELECISSN">
+                  <Name>15538095</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>406635.00</CatalogNum>
+         </CurrentTitle>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>0</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Jan 1, 1996</AlphaStartDate>
+            <AlphaEndDate>Current</AlphaEndDate>
+            <NumericStartDate>19960101</NumericStartDate>
+            <NumericEndDate>99990101</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Apr 27, 2005</AlphaDate>
+         <StartDate>2005-04-27</StartDate>
+         <EndDate>2005-04-27</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>PQ_259128_Apr272005______</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>

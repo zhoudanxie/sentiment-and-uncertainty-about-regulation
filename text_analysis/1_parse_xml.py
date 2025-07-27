@@ -8,46 +8,32 @@ import time
 import datetime
 import gc
 
-# %%
-# Multiprocessing Module
-import multiprocessing as mp
-from multiprocessing import Pool
-
-# %%
 import spacy
 nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
 # %%
-# Check core count
-mp.cpu_count()
+# Optional: Multiprocessing Module
+# import multiprocessing as mp
+# from multiprocessing import Pool
+#
+# # Check core count
+# print(mp.cpu_count())
+
+# %%
+# Set directory
+directory="text_analysis"
 
 # %% [markdown]
 # ## 1. Parse XML
 
 # %%
 # Import updated data
-filePath='/home/ec2-user/SageMaker/data/RegNews-Jan1985Dec2021/'
+filePath=f'{directory}/sample_data/'
 files=[]
 for file in os.listdir(filePath):
-    files.append(file)
+    if file.endswith(".xml"):
+        files.append(file)
 print(len(files))
-#print(files[0:5])
-
-for file in files:
-    if file.endswith('.xml'):
-        pass
-    else:
-        print(file)
-
-# %%
-# Clean archived datasets to free up some storage
-# filePath_old='/home/ec2-user/SageMaker/data/corpus/'
-# files=[]
-# for file in os.listdir(filePath_old):
-#     files.append(file)
-print(len(files))
-# for f in os.listdir(filePath_old):
-#     os.remove(os.path.join(filePath_old, f))
 
 # %%
 # Function to print one XML example
@@ -56,8 +42,7 @@ def print_xml(file):
     xml = etree.tostring(tree, encoding="unicode", pretty_print=True)
     print(xml)
 
-# %%
-print_xml(filePath+files[100])
+# print_xml(filePath+files[0])
 
 # %%
 # Function to remove html tags from a string
@@ -82,7 +67,12 @@ def import_xml(filename):
     
     try:
         for child in root.findall('Obj'):
-            lang=child.find('Language').find('RawLang').text
+            if child.find('Language').find('RawLang') != None:
+                lang = child.find('Language').find('RawLang').text
+            elif child.find('Language').find('ISO').find('ISOExpansion')!=None:
+                lang = child.find('Language').find('ISO').find('ISOExpansion').text
+            else:
+                lang=''
         if lang=='English':
             for child in root.findall('Obj'):
                 type=child.find('ObjectTypes').find('mstar').text
@@ -107,7 +97,7 @@ def import_xml(filename):
                 pubtitle=child.find('PubFrosting').find('Title').text
                 sourcetype=child.find('PubFrosting').find('SourceType').text
 
-            return ID,title,type,startdate,enddate,text,wordcount,pubtitle,sourcetype
+            return (ID,title,type,startdate,enddate,text,wordcount,pubtitle,sourcetype)
         
         else:
             print(filename, ": non-English article")
@@ -117,18 +107,29 @@ def import_xml(filename):
         print('Could not parse:',filename)
 
 # %%
-# Define a thread Pool to process multiple XML files simultaneously
-# Default set to 3, but may change number of processes depending on instance
-p = Pool(processes=8)
+# Optional: use multiprocessing to parse all XMLs
+# # Define a thread Pool to process multiple XML files simultaneously
+# # Default set to 3, but may change number of processes depending on instance
+# p = Pool(processes=8)
+#
+# # Apply function with Pool to corpus, may limit number of articles by using split
+# start_time = time.time()
+#
+# not_parsed=[]
+# processed_lists=p.map(import_xml, files)
+#
+# print("--- %s seconds ---" % (time.time() - start_time))
 
-# %%
-# Apply function with Pool to corpus, may limit number of articles by using split
-start_time = time.time()
-
+#%%
+# Parse all XMLs
+processed_lists=[]
 not_parsed=[]
-processed_lists=p.map(import_xml, files)
+for file in files:
+    processed_lists.append(import_xml(file))
 
-print("--- %s seconds ---" % (time.time() - start_time))
+if len(not_parsed)>0:
+    print('Failed to parse XMLs:', len(not_parsed))
+    print(not_parsed)
 
 # %%
 # Transform processed data into a dataframe
@@ -137,22 +138,11 @@ df = pd.DataFrame(processed_lists, columns=['ID','Title','Type','StartDate','End
 print(df.info())
 
 # %%
-print(df.head())
-
-# %%
-if len(not_parsed)>0:
-    print(len(not_parsed))
-    print(not_parsed)
-
-# %%
-df.to_pickle('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/parsed_xml.pkl')
+# Save parsed XMLs
+df.to_pickle(f'{directory}/parsed_xml.pkl')
 
 # %% [markdown]
 # ## 2. Clean Data
-
-# %%
-df=pd.read_pickle('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/parsed_xml.pkl')
-print(df.info())
 
 # %%
 # Check article type
@@ -162,7 +152,7 @@ print(df['Type'].value_counts())
 # %%
 # Include only Type==News
 df=df[df['Type']=='News'].sort_values(['PubTitle','StartDate']).reset_index(drop=True)
-print(df.info())
+# print(df.info())
 
 # %%
 # Convert dates
@@ -215,14 +205,14 @@ df=df.sort_values(['Newspaper','StartDate','Title']).reset_index(drop=True)
 # Article count by pub title
 for title in df.sort_values('PubTitle')['PubTitle'].unique():
     print(title,min(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
-         max(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
+         max(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),':',
          len(df[df['PubTitle']==title]))
 
 # %%
 # Article count by newspaper
 for title in df.sort_values('Newspaper')['Newspaper'].unique():
     print(title,min(df[df['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),
-         max(df[df['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),
+         max(df[df['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),':',
          len(df[df['Newspaper']==title]))
 
 # %% [markdown]
@@ -251,22 +241,24 @@ text_list=df['Text'].tolist()
 print(len(text_list), len(id_list))
 
 # %%
-# Examples
-print(my_preprocessor(text_list[0]))
-
-# %%
 # Define a function to preprocess text by list index
 def preprocess_text(i):
     id=id_list[i]
     text_out=my_preprocessor(text_list[i])
-    return id,text_out
+    return (id,text_out)
+
+#%%
+# Preprocess all texts
+text_lemmatized=[]
+for i in range(len(id_list)):
+    text_lemmatized.append(preprocess_text(i))
 
 # %%
-# Use multipleprocessing to preprocess all text
-start_time = time.time()
-with Pool(8) as p:
-    text_lemmatized=p.map(preprocess_text, list(range(len(id_list))))
-print("--- %s seconds ---" % (time.time() - start_time))
+# Optional: Use multipleprocessing to preprocess all texts
+# start_time = time.time()
+# with Pool(8) as p:
+#     text_lemmatized=p.map(preprocess_text, list(range(len(id_list))))
+# print("--- %s seconds ---" % (time.time() - start_time))
 
 # %%
 # Transform processed data into a dataframe
@@ -276,7 +268,6 @@ print(df_lemmatized.info())
 # %%
 # Merge
 df=df.merge(df_lemmatized, on='ID', how='left')
-print(df.info())
 
 # %%
 # Check duplicates
@@ -297,28 +288,25 @@ print("Number of unavailable articles:",df_nodup[df_nodup['TextLemmatized']==""]
 # Remove dataframes to release memory
 del df
 del df_lemmatized
-
-# %%
 gc.collect()
 
 # %%
 # Check start and end dates for each newspaper
 for title in df_nodup.sort_values('Newspaper')['Newspaper'].unique():
     print(title,min(df_nodup[df_nodup['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),
-         max(df_nodup[df_nodup['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),
+         max(df_nodup[df_nodup['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),':',
          len(df_nodup[df_nodup['Newspaper']==title]))
 
 # %%
 # Check start and end dates for each pub title
 for title in df_nodup.sort_values('PubTitle')['PubTitle'].unique():
     print(title,min(df_nodup[df_nodup['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
-         max(df_nodup[df_nodup['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
+         max(df_nodup[df_nodup['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),':',
          len(df_nodup[df_nodup['PubTitle']==title]))
 
 # %%
-df_nodup.to_pickle('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/parsed_xml_clean.pkl')
-
-# %%
+# Save cleaned data
+df_nodup.to_pickle(f'{directory}/parsed_xml_clean.pkl')
 
 
 

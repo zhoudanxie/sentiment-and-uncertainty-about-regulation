@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><RECORD>
+   <GOID>2237286071</GOID>
+   
+   <Obj>
+      <SourceRollupType>Web Resources</SourceRollupType>
+      <ObjectTypes>
+         <other ObjectTypeOrigin="EXT">News</other>
+         <mstar>News</mstar>
+      </ObjectTypes>
+      <ObjectRollupType>Articles - All Types</ObjectRollupType>
+      <TitleAtt HTMLContent="true">
+         <Title>Cruise Safety</Title>
+      </TitleAtt>
+      <NumericDate>1997-03-02</NumericDate>
+      <StartDate>1997-03-02</StartDate>
+      <EndDate>1997-03-02</EndDate>
+      <AlphaDate>Mar 2, 1997</AlphaDate>
+      <Language>
+         <RawLang>English</RawLang>
+      </Language>
+      <Language IsPrimary="true">
+         <ISO>
+            <ISOCode>ENG</ISOCode>
+            <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+         </ISO>
+      </Language>
+      <Copyright>
+         <CopyrightData>Copyright 2019 The New York Times Company</CopyrightData>
+      </Copyright>
+      <PrintLocation>
+         <DocSection>travel</DocSection>
+      </PrintLocation>
+      <ObjectIDs>
+         <ObjectID>
+            <PMID>259128</PMID>
+         </ObjectID>
+         <ObjectID>
+            <PCID>PQ_259128_Mar21997______</PCID>
+         </ObjectID>
+         <ObjectID>
+            <MSTARLegacyID>NYTNYTN199703021997030200000836087</MSTARLegacyID>
+         </ObjectID>
+      </ObjectIDs>
+      <Terms>
+         <CompanyTerm TermSource="AutoCatNstein">
+            <CompanyNameAtt TermVocab="CORP">
+               <CompanyName>Carnival Corp</CompanyName>
+            </CompanyNameAtt>
+            <CompanyNAICAtt>
+               <CompanyNAIC>483112</CompanyNAIC>
+            </CompanyNAICAtt>
+         </CompanyTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Carnival Cruise Lines</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>COAST GUARD</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Dunbar, George</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Accidents and Safety</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Ships and Shipping</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>LIFEBOATS AND LIFERAFTS</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Travel and Vacations</TitleKeyword>
+         </FlexTerm>
+         <FlexTerm TermSource="EXT">
+            <TitleKeyword>Cruises</TitleKeyword>
+         </FlexTerm>
+      </Terms>
+      <Abstract>
+         <Medium Provider="EXT" WordCount="48">
+            <Language>
+               <RawLang>English</RawLang>
+            </Language>
+            <Language IsPrimary="true">
+               <ISO>
+                  <ISOCode>ENG</ISOCode>
+                  <ISOExpansion ISOCode="ENG">English</ISOExpansion>
+               </ISO>
+            </Language>
+            <AbsText HTMLContent="true">&lt;html&gt;&lt;head&gt;&lt;meta name="ValidationSchema" content="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd" /&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;George Dunbar letter says Feb 2 description and sketch of giant new cruise liner Carnival Destiny does not indicate number of lifeboats; Carnival Cruise Lines reponds that vessel's lifeboats have capacity of 5,590, 125 percent of allowed number of people on board, as required by Coast Guard (S)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</AbsText>
+         </Medium>
+      </Abstract>
+   </Obj>
+   <TextInfo>
+      <Text HTMLContent="true" WordCount="209">&lt;html&gt;&lt;head&gt;&lt;meta name='ValidationSchema' content='http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd'/&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;To the Editor: ''Not Just Cruise Ships Anymore'' (Feb. 2), about new and larger ships, was certainly interesting, especially the description and sketch of the $400 million Carnival Destiny. I studied the item carefully to discover the number and capacity of lifeboats, but to no avail. With all the recent interest in the fate of the Titanic and her passengers, this information would have been of great interest.&lt;/p&gt;
+&lt;p&gt;Since this new ship will have a passenger and crew capacity of over 4,400, it is to be hoped that the owners have made sure that there is enough lifeboat capacity to take care of everyone aboard. The absence of this information was particularly noticeable. Will you alleviate our fears by publishing the appropriate information?&lt;/p&gt;
+&lt;p&gt;GEORGE DUNBAR&lt;/p&gt;
+&lt;p&gt;Scarborough, Ontario&lt;/p&gt;
+&lt;p&gt;Carnival Cruise Lines responds: The Destiny carries 24 lifeboats with a total capacity of 3,420 people, plus 64 life rafts with a total capacity of 2,170 people, for a total capacity of 5,590. As required by Coast Guard regulations, this represents 125 percent of allowed number of people aboard: 3,400 passengers, plus 1,070 crew members, fewer than Carnival originally planned. (The size of the crew listed in the illustration, 1,086, was reduced after the list of statistics about the vessel was issued.)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</Text>
+   </TextInfo>
+   <DFS>
+      <PubFrosting>
+         <Title>New York Times (Online)</Title>
+         <MpubId>2037333</MpubId>
+         <SortTitle>New York Times (Online)</SortTitle>
+         <Qualifier>New York</Qualifier>
+         <JournalCode>NYTN</JournalCode>
+         <SourceType>Blogs, Podcasts, &amp; Websites</SourceType>
+         <EndDate>99991231</EndDate>
+         <publisher>
+            <PublisherName>New York Times Company</PublisherName>
+            <PublisherAddress>
+               <Address1>620 8th Ave</Address1>
+               <City>NEW YORK</City>
+               <Province>NY</Province>
+               <ZipCode>10018</ZipCode>
+               <Country>United States</Country>
+            </PublisherAddress>
+         </publisher>
+         <Locators>
+            <Locator Type="PQPMID">
+               <Name>259128</Name>
+            </Locator>
+            <Locator Type="ELECISSN">
+               <Name>15538095</Name>
+            </Locator>
+         </Locators>
+         <CatalogNum>406635.00</CatalogNum>
+         <Languages>
+            <Language>eng</Language>
+         </Languages>
+         <Flags>
+            <Flag Type="BLOCK_BY_PUB">N</Flag>
+            <Flag Type="ARTICLE_TRANSLATION">Y</Flag>
+            <Flag Type="ALERTING_FLAG">Y</Flag>
+            <Flag Type="DOC_USAGE_ROYALTIES">N</Flag>
+            <Flag Type="UNSTRUCTURED_DATA">N</Flag>
+            <Flag Type="PRIMARY_SOURCE_FLAG">N</Flag>
+            <Flag Type="OPEN_LAYER_RIGHTS">OL_IN_NONE</Flag>
+            <Flag Type="OL_CRAWL_BLOCKED">Y</Flag>
+            <Flag Type="EXCLUDE_FROM_TDM">N</Flag>
+            <Flag Type="EXCLUDE_FROM_GOOGLE_SCHOLAR">N</Flag>
+            <Flag Type="INCLUDE_IN_PAC">N</Flag>
+            <Flag Type="UNIFIED_PUB_TITLE">The New York Times</Flag>
+            <Flag Type="PUBLICATION_LOCATION">New York</Flag>
+            <Flag Type="NEWS_AUDIENCE">National</Flag>
+            <Flag Type="NEWS_TYPE">Online News</Flag>
+         </Flags>
+         <Subjects>
+            <Subject>General Interest Periodicals--United States</Subject>
+         </Subjects>
+         <CurrentTitle>
+            <Title>New York Times (Online)</Title>
+            <SortTitle>New York Times (Online)</SortTitle>
+            <Qualifier>New York</Qualifier>
+            <EndIssueDate>99991231</EndIssueDate>
+            <Locators>
+               <Locator Type="PQPMID">
+                  <Name>259128</Name>
+               </Locator>
+               <Locator Type="ELECISSN">
+                  <Name>15538095</Name>
+               </Locator>
+            </Locators>
+            <CatalogNum>406635.00</CatalogNum>
+         </CurrentTitle>
+         
+         <CoverImageType>None</CoverImageType>
+         <BrowseType>IssueDateBrowse</BrowseType>
+         <EmbargoDays>0</EmbargoDays>
+         <HasGaps>0</HasGaps>
+         <CoverageRange>
+            <AlphaStartDate>Jan 1, 1996</AlphaStartDate>
+            <AlphaEndDate>Current</AlphaEndDate>
+            <NumericStartDate>19960101</NumericStartDate>
+            <NumericEndDate>99990101</NumericEndDate>
+         </CoverageRange>
+         <PubFrequencies/>
+         <ContentModel>CM_DEFAULT</ContentModel>
+      </PubFrosting>
+      <GroupFrosting>
+         <AlphaDate>Mar 2, 1997</AlphaDate>
+         <StartDate>1997-03-02</StartDate>
+         <EndDate>1997-03-02</EndDate>
+         <Locators>
+            <Locator Type="PQPCID">
+               <Name>PQ_259128_Mar21997______</Name>
+            </Locator>
+         </Locators>
+      </GroupFrosting>
+      
+   </DFS>
+   
+</RECORD>
