@@ -1,7 +1,7 @@
 # %%
 import pandas as pd
 import re
-from nltk.corpus import stopwords
+# from nltk.corpus import stopwords
 import pickle
 import numpy as np
 from string import punctuation

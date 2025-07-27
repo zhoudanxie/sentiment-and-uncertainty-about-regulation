@@ -10,9 +10,9 @@ import numpy as np
 import random
 
 # %%
-import nltk
-nltk.data.path
-from nltk.tokenize import sent_tokenize, word_tokenize
+# import nltk
+# nltk.data.path
+# from nltk.tokenize import sent_tokenize, word_tokenize
 
 # %%
 import spacy
