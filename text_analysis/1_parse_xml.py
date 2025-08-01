@@ -1,6 +1,5 @@
 # %%
 import xml.etree.cElementTree as et
-from lxml import etree
 import pandas as pd
 import os
 import re
@@ -21,7 +20,8 @@ nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
 # %%
 # Set directory
-directory="text_analysis"
+directory=os.path.dirname(os.path.realpath(__file__))
+# directory="text_analysis"
 
 # %% [markdown]
 # ## 1. Parse XML
@@ -33,16 +33,7 @@ files=[]
 for file in os.listdir(filePath):
     if file.endswith(".xml"):
         files.append(file)
-print(len(files))
-
-# %%
-# Function to print one XML example
-def print_xml(file):
-    tree = etree.parse(file)
-    xml = etree.tostring(tree, encoding="unicode", pretty_print=True)
-    print(xml)
-
-# print_xml(filePath+files[0])
+print('Total number of files in the sample data:', len(files))
 
 # %%
 # Function to remove html tags from a string
@@ -135,24 +126,18 @@ if len(not_parsed)>0:
 # Transform processed data into a dataframe
 df = pd.DataFrame(processed_lists, columns=['ID','Title','Type','StartDate','EndDate','Text',
             'TextWordCount','PubTitle', 'SourceType'])
-print(df.info())
-
-# %%
-# Save parsed XMLs
-df.to_pickle(f'{directory}/parsed_xml.pkl')
 
 # %% [markdown]
 # ## 2. Clean Data
 
 # %%
 # Check article type
-print(df['SourceType'].value_counts())
-print(df['Type'].value_counts())
+# print(df['SourceType'].value_counts())
+# print(df['Type'].value_counts())
 
 # %%
 # Include only Type==News
 df=df[df['Type']=='News'].sort_values(['PubTitle','StartDate']).reset_index(drop=True)
-# print(df.info())
 
 # %%
 # Convert dates
@@ -162,9 +147,9 @@ df['Month']=df['StartDate'].astype('datetime64[ns]').dt.month
 
 # %%
 # Check start and end dates for each pub title
-for title in df.sort_values('PubTitle')['PubTitle'].unique():
-    print(title,min(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
-         max(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date))
+# for title in df.sort_values('PubTitle')['PubTitle'].unique():
+#     print(title,min(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
+#          max(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date))
 
 # %%
 # Clean duplicated news articles due to overlapped databases (referring to ProQuest publication coverage)
@@ -180,7 +165,6 @@ df=df[~(((df['PubTitle']=='The Washington Post') & (df['StartDate']<datetime.dat
 df=df[~(((df['PubTitle']=='USA TODAY') & (df['StartDate']<datetime.datetime(1997,2,17)))
                   | ((df['PubTitle']=='USA Today (Online)') & (df['StartDate']<datetime.datetime(2012,12,5))))]
 df=df[~((df['PubTitle']=='Wall Street Journal (Online)') & (df['StartDate']<datetime.datetime(2010,1,8)))]
-print(df.info())
 
 # %%
 # Consolidate newspaper names
@@ -203,25 +187,25 @@ df=df.sort_values(['Newspaper','StartDate','Title']).reset_index(drop=True)
 
 # %%
 # Article count by pub title
-for title in df.sort_values('PubTitle')['PubTitle'].unique():
-    print(title,min(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
-         max(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),':',
-         len(df[df['PubTitle']==title]))
+# for title in df.sort_values('PubTitle')['PubTitle'].unique():
+#     print(title,min(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
+#          max(df[df['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),':',
+#          len(df[df['PubTitle']==title]))
 
 # %%
 # Article count by newspaper
-for title in df.sort_values('Newspaper')['Newspaper'].unique():
-    print(title,min(df[df['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),
-         max(df[df['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),':',
-         len(df[df['Newspaper']==title]))
+# for title in df.sort_values('Newspaper')['Newspaper'].unique():
+#     print(title,min(df[df['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),
+#          max(df[df['Newspaper']==title].sort_values('StartDate')['StartDate'].dt.date),':',
+#          len(df[df['Newspaper']==title]))
 
 # %% [markdown]
 # ## 3. Identify and Remove Duplicated Articles
 
 # %%
 # Full text for certain articles is not available due to copyright restrictions
-print("Number of empty full texts:",df[df['Text']==""]['ID'].nunique())
-print(df[df['Text']==""]['Newspaper'].value_counts())
+# print("Number of empty full texts:",df[df['Text']==""]['ID'].nunique())
+# print(df[df['Text']==""]['Newspaper'].value_counts())
 # # Examples
 # print(df[df['Text']==""]['ID'][-10:])
 # print(df[df['Text']==""]['Title'][-10:])
@@ -238,7 +222,7 @@ def my_preprocessor(text):
 # Convert ID and text to list
 id_list=df['ID'].tolist()
 text_list=df['Text'].tolist()
-print(len(text_list), len(id_list))
+# print(len(text_list), len(id_list))
 
 # %%
 # Define a function to preprocess text by list index
@@ -263,7 +247,7 @@ for i in range(len(id_list)):
 # %%
 # Transform processed data into a dataframe
 df_lemmatized = pd.DataFrame(text_lemmatized, columns=['ID','TextLemmatized'])
-print(df_lemmatized.info())
+# print(df_lemmatized.info())
 
 # %%
 # Merge
@@ -271,18 +255,18 @@ df=df.merge(df_lemmatized, on='ID', how='left')
 
 # %%
 # Check duplicates
-df['GroupNo']=df.groupby('TextLemmatized').cumcount()+1
-print("Number of duplicated articles:",df[df['GroupNo']>1]['ID'].nunique())
+# df['GroupNo']=df.groupby('TextLemmatized').cumcount()+1
+# print("Number of duplicated articles:",df[df['GroupNo']>1]['ID'].nunique())
 
 # %%
 # Keep the earliest article if duplicated
 df_nodup=df.groupby('TextLemmatized').nth(0).reset_index()
-print(df_nodup.info())
+# print(df_nodup.info())
 
 # %%
-df_nodup['GroupNo']=df_nodup.groupby('TextLemmatized').cumcount()+1
-print("Number of duplicated articles:", df_nodup[df_nodup['GroupNo']>1]['ID'].nunique())
-print("Number of unavailable articles:",df_nodup[df_nodup['TextLemmatized']==""]['ID'].nunique())
+# df_nodup['GroupNo']=df_nodup.groupby('TextLemmatized').cumcount()+1
+# print("Number of duplicated articles:", df_nodup[df_nodup['GroupNo']>1]['ID'].nunique())
+# print("Number of unavailable articles:",df_nodup[df_nodup['TextLemmatized']==""]['ID'].nunique())
 
 # %%
 # Remove dataframes to release memory
@@ -299,14 +283,14 @@ for title in df_nodup.sort_values('Newspaper')['Newspaper'].unique():
 
 # %%
 # Check start and end dates for each pub title
-for title in df_nodup.sort_values('PubTitle')['PubTitle'].unique():
-    print(title,min(df_nodup[df_nodup['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
-         max(df_nodup[df_nodup['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),':',
-         len(df_nodup[df_nodup['PubTitle']==title]))
+# for title in df_nodup.sort_values('PubTitle')['PubTitle'].unique():
+#     print(title,min(df_nodup[df_nodup['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),
+#          max(df_nodup[df_nodup['PubTitle']==title].sort_values('StartDate')['StartDate'].dt.date),':',
+#          len(df_nodup[df_nodup['PubTitle']==title]))
 
 # %%
 # Save cleaned data
-df_nodup.to_pickle(f'{directory}/parsed_xml_clean.pkl')
+df_nodup.to_pickle(f'{directory}/sample_data/parsed_xml.pkl')
 
 
 
