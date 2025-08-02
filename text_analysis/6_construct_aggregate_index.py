@@ -3,25 +3,20 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as sm
 import datetime
+import os
 
 # %%
-# Updated sentiment score data
-df_new=pd.read_pickle('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/RegRelevant_ArticleSentimentWordsScores.pkl')
-print(df_new.info())
-
-print("Updated Start Dates:")
-print(df_new.sort_values('StartDate')[['StartDate']])
+# Set directory
+# directory=os.path.dirname(os.path.realpath(__file__))
+directory="text_analysis"
 
 # %%
-# # Append previous and updated data
-# df=df_old.append(df_new).drop_duplicates('ID').sort_values(['StartDate','Newspaper'])
-# print(df.info())
-# print(df[['StartDate']])
+# Sentiment score data
+df_all=pd.read_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
 
 # %%
-# Reg relevant articles
-df=df_new[df_new['RegRelevance']==1].sort_values(['StartDate','PubTitle'])
-print(df.info())
+# Refine to reg relevant articles
+df=df_all[df_all['RegRelevance']==1].sort_values(['StartDate','PubTitle'])
 
 # %%
 # Change variable types
@@ -29,7 +24,6 @@ df['StartDate']=df['StartDate'].astype('datetime64[ns]')
 df['Year']=df['StartDate'].dt.year
 df['Month']=df['StartDate'].dt.month
 df['Newspaper']=df['Newspaper'].astype('category')
-print(df.info())
 
 # %%
 # Check on publications considered

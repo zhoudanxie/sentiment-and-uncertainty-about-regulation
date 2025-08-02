@@ -406,7 +406,7 @@ df['LSDnegWords']=LSDnegativeWords
 
 # %%
 # Use filtered noun chunk matches to define reg relevance
-df.loc[df['NounChunkMatchFiltered']!=0,'RegRelevance']=1
+df.loc[df['NounChunkMatchFiltered']>0,'RegRelevance']=1
 
 # %%
 # Calculate sentiment scores
