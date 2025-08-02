@@ -1,26 +1,21 @@
 # %%
 import pandas as pd
+import os
 import re
-# from nltk.corpus import stopwords
 import pickle
 import numpy as np
-from string import punctuation
-import time
 
-# %%
 import spacy
 nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
 # %%
-# Import expanded reg sentences
-df_regSentsExpand=pd.read_pickle('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/RegSentsExpand_NounChunks.pkl')
-print(df_regSentsExpand.info())
+# Set directory
+directory=os.path.dirname(os.path.realpath(__file__))
+# directory="text_analysis"
 
 # %%
-# # Refine to reg relevant articles
-# df=df_regSentsExpand[df_regSentsExpand['NounChunkMatchFiltered']>0].reset_index(drop=True)
-df=df_regSentsExpand.reset_index(drop=True)
-print(df.info())
+# Import regulatory sections
+df=pd.read_pickle(f'{directory}/sample_data/reg_sections.pkl')
 
 # %%
 # Negation words
@@ -59,14 +54,12 @@ def lemmatizer(text):
 
 # %%
 # LM dictionary
-LMlist=pd.read_csv('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Aug2020/Sentiment Analysis/LoughranMcDonald_SentimentList.csv')
-print(LMlist.info())
+LMlist=pd.read_csv(f'{directory}/supplementary_data/LoughranMcDonald_SentimentList.csv')
 
 # %%
 # LM uncertainty dictionary
 LMuncertain=LMlist[LMlist['Uncertainty'].notnull()]['Uncertainty'].tolist()
 uncertaindict={'Uncertainty': [w.lower() for w in LMuncertain]}
-#print(uncertaindict, len(LMuncertain))
 
 # %%
 # Lemmatize LM uncertainty dictionary
@@ -75,10 +68,6 @@ for w in uncertaindict['Uncertainty']:
     v=''.join(lemmatizer(w))
     uncertainset.add(v)
 uncertainlist_lemmatized=list(uncertainset)
-print(len(uncertainlist_lemmatized))
-
-# %%
-print(uncertainlist_lemmatized[0:20])
 
 # %%
 # Function to count uncertainty terms
@@ -103,25 +92,16 @@ def uncertainty_count(keywords_list, article):
 # Run LM uncertainty through all expanded reg sentences
 UncertaintyCount=[]
 UncertaintyWords=[]
-for text in df['RegSentsExpand']:
+for text in df['RegSection']:
     results=uncertainty_count(uncertainlist_lemmatized, text)
     UncertaintyCount.append(results[0])
     UncertaintyWords.append(results[1])
-print(len(UncertaintyCount))
 
-# %%
 df['UncertaintyCount']=UncertaintyCount
 df['UncertaintyWords']=UncertaintyWords
-print(df.info())
 
 # %%
-print(df[df['UncertaintyCount']!=0]['ID'].nunique())
-
-# %%
-print(df[['ID','UncertaintyCount','UncertaintyWords']].head(10))
-
-# %%
-df[['ID','UncertaintyCount','UncertaintyWords']].to_csv('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/LMuncertainty.csv',index=False)
+print('Number of articles with uncertainty words:',df[df['UncertaintyCount']!=0]['ID'].nunique())
 
 # %% [markdown]
 # ## 4.2. LM sentiment
@@ -213,8 +193,6 @@ def sentiment_count(dict, article):
 # LM sentiment dictionary
 LMposWords=LMlist[LMlist['Positive'].notnull()]['Positive'].tolist()
 LMnegWords=LMlist[LMlist['Negative'].notnull()]['Negative'].tolist()
-print(len(LMnegWords),len(LMposWords))
-print(LMnegWords[0:20],LMposWords[0:20])
 
 # %%
 # Lemmatize LM sentiment dictionary
@@ -222,19 +200,13 @@ LMnegset=set()
 for w in LMnegWords:
     v=''.join(lemmatizer(w.lower()))
     LMnegset.add(v)
-print(len(LMnegset))
 
 LMposset=set()
 for w in LMposWords:
     v=''.join(lemmatizer(w.lower()))
     LMposset.add(v)
-print(len(LMposset))
 
 LMdict={'Negative': list(LMnegset), 'Positive': list(LMposset)}
-
-# %%
-print(LMdict['Positive'][0:20])
-print(LMdict['Negative'][0:20])
 
 # %%
 # Run LM sentiment through all expanded reg sentences
@@ -242,41 +214,31 @@ LMpositiveCount=[]
 LMnegativeCount=[]
 LMpositiveWords=[]
 LMnegativeWords=[]
-for text in df['RegSentsExpand']:
+for text in df['RegSection']:
     results=sentiment_count(LMdict, text)
     LMpositiveCount.append(results[1])
     LMnegativeCount.append(results[2])
     LMpositiveWords.append(results[3])
     LMnegativeWords.append(results[4])
 
-# %%
 df['LMposCount']=LMpositiveCount
 df['LMnegCount']=LMnegativeCount
 df['LMposWords']=LMpositiveWords
 df['LMnegWords']=LMnegativeWords
-
-# %%
-df[['ID','LMposCount','LMnegCount','LMposWords','LMnegWords']].to_csv('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/LMsentiments.csv',index=False)
 
 # %% [markdown]
 # ## 4.3. GI sentiment
 
 # %%
 # Harvard GI sentiment dictionary
-with open("/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Aug2020/Sentiment Analysis/GIposWords.txt", "rb") as fp:   # Unpickling
+with open(f"{directory}/supplementary_data/GIposWords.txt", "rb") as fp:   # Unpickling
     GIposWords = pickle.load(fp)
-with open("/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Aug2020/Sentiment Analysis/GInegWords.txt", "rb") as fp:   # Unpickling
+with open(f"{directory}/supplementary_data/GInegWords.txt", "rb") as fp:   # Unpickling
     GInegWords = pickle.load(fp)
 
 # %%
-print(len(GIposWords),GIposWords[0:20])
-print(len(GInegWords),GInegWords[0:20])
-
-# %%
 # Non-lemmetized version of GI dictionary
-GIdict2={'Negative': [w.lower() for w in GInegWords], 'Positive': [w.lower() for w in GIposWords]}
-print('Positive:',GIdict2['Positive'][0:20])
-print('Negative:',GIdict2['Negative'][0:20])
+GIdict={'Negative': [w.lower() for w in GInegWords], 'Positive': [w.lower() for w in GIposWords]}
 
 # %%
 # Run GI sentiment through all expanded reg sentences using non-lemmatized GI dictionary (performs better than lemmatized GI)
@@ -285,31 +247,26 @@ GIpositiveCount=[]
 GInegativeCount=[]
 GIpositiveWords=[]
 GInegativeWords=[]
-for text in df['RegSentsExpand']:
-    results=sentiment_count(GIdict2, text)
+for text in df['RegSection']:
+    results=sentiment_count(GIdict, text)
     totalWordCount.append(results[0])
     GIpositiveCount.append(results[1])
     GInegativeCount.append(results[2])
     GIpositiveWords.append(results[3])
     GInegativeWords.append(results[4])
 
-# %%
 df['TotalWordCount']=totalWordCount
 df['GIposCount']=GIpositiveCount
 df['GInegCount']=GInegativeCount
 df['GIposWords']=GIpositiveWords
 df['GInegWords']=GInegativeWords
 
-# %%
-df[['ID','TotalWordCount','GIposCount','GInegCount','GIposWords','GInegWords']].to_csv('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/GIsentiments.csv',index=False)
-
 # %% [markdown]
 # ## 4.4. LSD sentiment
 
 # %%
 # Lexicoder Sentiment Dictionary (LSD)
-LSDlist=pd.read_csv('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Aug2020/Sentiment Analysis/LSDsentimentWords_wStar.csv')
-print(LSDlist.info())
+LSDlist=pd.read_csv(f'{directory}/supplementary_data/LSDsentimentWords_wStar.csv')
 
 # %%
 LSDneg=LSDlist[LSDlist['LSDnegative'].notnull()]['LSDnegative'].tolist()
@@ -326,7 +283,6 @@ for m in LSDdict['Positive']:
         pos_star.append(m)
     else:
         pos_nostar.append(m)
-print(len(pos_star), len(pos_nostar))
 
 neg_star=[]
 neg_nostar=[]
@@ -336,7 +292,6 @@ for m in LSDdict['Negative']:
         neg_star.append(m)
     else:
         neg_nostar.append(m)
-print(len(neg_star), len(neg_nostar))
 
 # %%
 # Compile re patterns for terms with & without stars
@@ -432,49 +387,37 @@ def LSDsentiment_count(dict, article):
 
 # %%
 # Run LSD sentiment through all expanded reg sentences
-start_time = time.time()
-
 LSDpositiveCount=[]
 LSDnegativeCount=[]
 LSDpositiveWords=[]
 LSDnegativeWords=[]
-failed=[]
-for i in range(0, len(df['RegSentsExpand'])):
-    try:
-        results=LSDsentiment_count(LSDdict, df['RegSentsExpand'][i])
-    except:
-        results=[None, None, None, None, None]
-        failed.append(i)        
-        
+
+for text in df['RegSection']:
+    results=LSDsentiment_count(LSDdict, text)
     LSDpositiveCount.append(results[1])
     LSDnegativeCount.append(results[2])
     LSDpositiveWords.append(results[3])
     LSDnegativeWords.append(results[4])
-print(len(failed))
 
-print("--- %s seconds ---" % (time.time() - start_time))
-
-# %%
-print(len(failed))
-print(len(LSDpositiveWords))
-
-# %%
 df['LSDposCount']=LSDpositiveCount
 df['LSDnegCount']=LSDnegativeCount
 df['LSDposWords']=LSDpositiveWords
 df['LSDnegWords']=LSDnegativeWords
 
 # %%
-print(df.head())
+# Use filtered noun chunk matches to define reg relevance
+df.loc[df['NounChunkMatchFiltered']!=0,'RegRelevance']=1
 
 # %%
-for i in range(0,10):
-    print(df['RegSentsExpand'][i],df['LSDposWords'][i],df['LSDnegWords'][i])
+# Calculate sentiment scores
+df['UncertaintyScore']=df['UncertaintyCount']/df['TotalWordCount']*100
+for dic in ['GI','LSD','LM']:
+    df[dic+'score']=(df[dic+'posCount']-df[dic+'negCount'])/df['TotalWordCount']*100
 
 # %%
-df[['ID','LSDposCount','LSDnegCount','LSDposWords','LSDnegWords']].to_csv('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/LSDsentiments.csv',index=False)
+# Export data
+df.to_pickle(f'{directory}/sample_data/sentiment_scores.pkl')
 
-# %%
 
 
 

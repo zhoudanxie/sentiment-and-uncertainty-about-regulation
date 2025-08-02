@@ -1,13 +1,10 @@
 # %%
 import pandas as pd
 import os
-import datetime
-import pickle
 import re
 import time
 from collections import Counter
 import numpy as np
-import random
 
 import spacy
 nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
@@ -77,7 +74,7 @@ df_regSentsExpand['NounChunkMatchFiltered']=nounchunk_match
 df_regSentsExpand['NounChunkMatchWordsFiltered']=nounchunk_match_words
 
 # %%
-print('# of reg relevant artciles:',df_regSentsExpand[df_regSentsExpand['NounChunkMatchFiltered']>0]['ID'].nunique())
+print('# of reg relevant articles:',df_regSentsExpand[df_regSentsExpand['NounChunkMatchFiltered']>0]['ID'].nunique())
 
 # %%
 df_regSentsExpand.to_pickle(f'{directory}/sample_data/reg_sections.pkl')
