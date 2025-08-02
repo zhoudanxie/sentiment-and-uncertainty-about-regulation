@@ -71,7 +71,7 @@ print('# of articles with no "*regulat*" in full text:',df[df['RegSectionLength'
 df=df.sort_values(['Newspaper','StartDate','Title']).reset_index(drop=True)
 
 # Export data
-df.drop(['TextLemmatized','Text'],axis=1).to_pickle(f'{directory}/sample_data/RegSections.pkl')
+df.drop(['TextLemmatized','Text'],axis=1).to_pickle(f'{directory}/sample_data/reg_sections.pkl')
 
 
 
