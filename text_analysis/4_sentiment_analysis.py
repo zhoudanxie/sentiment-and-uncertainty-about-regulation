@@ -416,7 +416,7 @@ for dic in ['GI','LSD','LM']:
 
 # %%
 # Export data
-df.to_pickle(f'{directory}/sample_data/sentiment_scores.pkl')
+df.to_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
 
 
 

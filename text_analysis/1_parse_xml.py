@@ -290,7 +290,7 @@ for title in df_nodup.sort_values('Newspaper')['Newspaper'].unique():
 
 # %%
 # Save cleaned data
-df_nodup.to_pickle(f'{directory}/sample_data/parsed_xml.pkl')
+df_nodup.to_pickle(f'{directory}/sample_data/sample_output/parsed_xml.pkl')
 
 
 

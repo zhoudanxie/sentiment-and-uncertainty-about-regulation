@@ -92,7 +92,7 @@ df_monthly=df_reg.groupby(['Newspaper','Year','Month'])['ID'].count().reset_inde
 df_monthly=df_monthly.sort_values(['Newspaper','Year','Month']).reset_index(drop=True)
 
 # %%
-df_monthly.to_csv(f'{directory}/sample_data/RegRelevant_MonthlyArticleCount.csv',index=False)
+df_monthly.to_csv(f'{directory}/sample_data/sample_output/RegRelevant_MonthlyArticleCount.csv',index=False)
 
 # %% [markdown]
 # ## 3.3 Noun Chunk Occurences acorss Regulation-related Articles
@@ -115,4 +115,4 @@ df_MatchWords=df_MatchWords.sort_values('Occurences',ascending=False).reset_inde
 
 # %%
 # Export noun chunk occurences
-df_MatchWords.to_csv(f'{directory}/sample_data/RegSections_FilteredNounChunkOccurences.csv',index=False)
+df_MatchWords.to_csv(f'{directory}/sample_data/sample_output/RegSections_FilteredNounChunkOccurrences.csv',index=False)
