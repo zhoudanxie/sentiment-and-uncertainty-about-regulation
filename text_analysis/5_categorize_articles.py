@@ -1,21 +1,16 @@
 # %%
 import pandas as pd
 import os
-import datetime
 import pickle
 import re
-import time
 from collections import Counter
 import numpy as np
 from ast import literal_eval
 
-import spacy
-nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
-
 # %%
 # Set directory
-# directory=os.path.dirname(os.path.realpath(__file__))
-directory="text_analysis"
+directory=os.path.dirname(os.path.realpath(__file__))
+# directory="text_analysis"
 
 # %% [markdown]
 # ## 1. Import Regulatory Sections and Noun Chunks with Areas
