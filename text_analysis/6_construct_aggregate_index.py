@@ -11,12 +11,14 @@ import os
 directory="text_analysis"
 
 # %%
+# Import data
 # Sentiment score data
-df_all=pd.read_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
+# df_all=pd.read_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
 
-# %%
 # Refine to reg relevant articles
-df=df_all[df_all['RegRelevance']==1].sort_values(['StartDate','PubTitle'])
+# df=df_all[df_all['RegRelevance']==1].sort_values(['StartDate','PubTitle'])
+
+df=pd.read_csv('data/sentiment_scores.csv')
 
 # %%
 # Change variable types
@@ -26,37 +28,25 @@ df['Month']=df['StartDate'].dt.month
 df['Newspaper']=df['Newspaper'].astype('category')
 
 # %%
-# Check on publications considered
-print(df['PubTitle'].value_counts())
-
-# %%
 # Specify index start date and end date
 start_date=datetime.datetime(1985,1,1)
 end_date=datetime.datetime(2021,12,31)
 end_month=end_date.strftime('%b%Y')
 
 df=df[(df['StartDate']>=start_date) & (df['StartDate']<=end_date)].sort_values('StartDate').reset_index(drop=True)
-print(df[['StartDate','Year','Month']])
+
+
 
 # %%
 # Create a DF with all unique years and months
 df_ym=df[['Year','Month']].drop_duplicates().reset_index(drop=True).reset_index()
 df_ym['YM']=df_ym['index']+1
 df_ym=df_ym.drop('index',axis=1)
-print(df_ym)
 
-# %%
 df=df.merge(df_ym[['Year','Month','YM']],on=['Year','Month'],how='left').sort_values(['Year','Month']).reset_index(drop=True)
-print(df.info())
 
 # %%
-print(df[['ID','UncertaintyScore','GIscore','LMscore','LSDscore']].head())
-
-# %%
-print(df['Newspaper'].value_counts())
-
-# %%
-# Revised function to estimate index (suppressing constant)
+# Define a function to estimate index (suppressing constant)
 def estimate_index(var_name):
     FE_OLS=sm.ols(formula=var_name + ' ~ 0+C(YM)+C(Newspaper)',
         data=df).fit()
@@ -110,7 +100,6 @@ print(sentimentIndex.tail())
 # Export
 sentimentIndex.to_csv('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/RegRelevant_MonthlySentimentIndex_'+str(end_month)+'.csv',index=False)
 
-# %%
 
 
 
