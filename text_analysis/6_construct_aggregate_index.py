@@ -7,18 +7,13 @@ import os
 
 # %%
 # Set directory
-# directory=os.path.dirname(os.path.realpath(__file__))
-directory="text_analysis"
+directory=os.path.dirname(os.path.realpath(__file__))
+# directory="text_analysis"
 
 # %%
 # Import data
 # Sentiment score data
-# df_all=pd.read_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
-
-# Refine to reg relevant articles
-# df=df_all[df_all['RegRelevance']==1].sort_values(['StartDate','PubTitle'])
-
-df=pd.read_csv('data/sentiment_scores.csv')
+df=pd.read_csv(f'{directory}/../data/sentiment_scores.csv')
 
 # %%
 # Change variable types
@@ -31,11 +26,8 @@ df['Newspaper']=df['Newspaper'].astype('category')
 # Specify index start date and end date
 start_date=datetime.datetime(1985,1,1)
 end_date=datetime.datetime(2021,12,31)
-end_month=end_date.strftime('%b%Y')
 
 df=df[(df['StartDate']>=start_date) & (df['StartDate']<=end_date)].sort_values('StartDate').reset_index(drop=True)
-
-
 
 # %%
 # Create a DF with all unique years and months
@@ -50,7 +42,7 @@ df=df.merge(df_ym[['Year','Month','YM']],on=['Year','Month'],how='left').sort_va
 def estimate_index(var_name):
     FE_OLS=sm.ols(formula=var_name + ' ~ 0+C(YM)+C(Newspaper)',
         data=df).fit()
-    print(FE_OLS.summary())
+    # print(FE_OLS.summary())
 
     FE_estimates=pd.DataFrame()
     FE_estimates[var_name+'Index']=FE_OLS.params[0:max(df_ym['YM'])]
@@ -63,42 +55,31 @@ def estimate_index(var_name):
 # Uncertainty index
 UncertaintyIndex=estimate_index('UncertaintyScore')
 
-# %%
 # LM index
 LMindex=estimate_index('LMscore')
 
-# %%
 # GI index
 GIindex=estimate_index('GIscore')
 
-# %%
 # LSD index
 LSDindex=estimate_index('LSDscore')
 
 # %%
 # Merge indexes
-sentimentIndex=df_ym.merge(UncertaintyIndex,on='YM',how='outer').\
-        merge(LMindex,on='YM',how='outer').\
-        merge(GIindex,on='YM',how='outer').\
-        merge(LSDindex,on='YM',how='outer').\
+sentimentIndex=df_ym.\
+        merge(UncertaintyIndex.drop('FE',axis=1),on='YM',how='outer').\
+        merge(LMindex.drop('FE',axis=1),on='YM',how='outer').\
+        merge(GIindex.drop('FE',axis=1),on='YM',how='outer').\
+        merge(LSDindex.drop('FE',axis=1),on='YM',how='outer').\
         sort_values(['Year','Month'])
-print(sentimentIndex.info())
 
-# %%
-sentimentIndex=sentimentIndex.drop(['FE_x','FE_y'],axis=1).\
+sentimentIndex=sentimentIndex.\
         rename(columns={'UncertaintyScoreIndex':'UncertaintyIndex','LMscoreIndex':'LMindex',
                         'GIscoreIndex':'GIindex','LSDscoreIndex':'LSDindex'})
 
 # %%
-print(sentimentIndex.head())
-
-# %%
-print(sentimentIndex.info())
-print(sentimentIndex.tail())
-
-# %%
 # Export
-sentimentIndex.to_csv('/home/ec2-user/SageMaker/New Uncertainty/Jan1985-Dec2021/RegRelevant_MonthlySentimentIndex_'+str(end_month)+'.csv',index=False)
+sentimentIndex.to_csv(f'{directory}/../data/aggregate_sentiment_indexes.csv',index=False)
 
 
 
