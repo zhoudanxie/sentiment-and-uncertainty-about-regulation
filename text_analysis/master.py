@@ -11,3 +11,5 @@ scripts = ["1_parse_xml.py",
 for s in scripts:
     print(f"Running {s} ...")
     subprocess.run([sys.executable, s], check=True)  # check=True raises error if script fails
+    
+print('End of execution!')
