@@ -89,7 +89,7 @@ for i in range(1,area_range):
 
 # %%
 # Save data
-df_regSentsExpandRelevant.to_pickle(f'{directory}/sentiment_scores.pkl')
+df_regSentsExpandRelevant.to_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
 
 # %% [markdown]
 # ## 4. Monthly article counts by area
@@ -125,7 +125,7 @@ monthlyAreaCount.to_csv(f'{directory}/sample_data/sample_output/RegArea_MonthlyA
 # %% [markdown]
 # ## 5. Filtered Noun Chunk Occurences by Area
 # Filtered noun chunk occurences across regulation-related articles
-df_nounchunk_occurrences=pd.read_csv(f'{directory}/sample_data/sample_output/RegSections_FilteredNounChunkOccurences.csv')
+df_nounchunk_occurrences=pd.read_csv(f'{directory}/sample_data/sample_output/RegSections_FilteredNounChunkOccurrences.csv')
 
 # %%
 # Filtered noun chunks across regulation-related articles by area

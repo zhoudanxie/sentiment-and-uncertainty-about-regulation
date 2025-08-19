@@ -6,6 +6,7 @@ import re
 import time
 import datetime
 import gc
+import shutil
 
 import spacy
 nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
@@ -290,7 +291,16 @@ for title in df_nodup.sort_values('Newspaper')['Newspaper'].unique():
 
 # %%
 # Save cleaned data
-df_nodup.to_pickle(f'{directory}/sample_data/sample_output/parsed_xml.pkl')
+output_folder=f'{directory}/sample_data/sample_output'
+# If folder exists, delete it
+if os.path.exists(output_folder):
+    shutil.rmtree(output_folder)
+
+# Create output folder
+os.makedirs(output_folder)
+
+# Export output
+df_nodup.to_pickle(f'{output_folder}/parsed_xml.pkl')
 
 
 

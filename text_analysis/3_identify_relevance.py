@@ -34,7 +34,7 @@ print('Number of regulatory noun chunks:', len(nounchunks),nounchunks[0:20])
 
 # %%
 # Import expanded reg sentences
-df_regSentsExpand=pd.read_pickle(f'{directory}/sample_data/reg_sections.pkl')
+df_regSentsExpand=pd.read_pickle(f'{directory}/sample_data/sample_output/reg_sections.pkl')
 # print(df_regSentsExpand.info())
 
 # %%
@@ -77,7 +77,7 @@ df_regSentsExpand['NounChunkMatchWordsFiltered']=nounchunk_match_words
 print('# of reg relevant articles:',df_regSentsExpand[df_regSentsExpand['NounChunkMatchFiltered']>0]['ID'].nunique())
 
 # %%
-df_regSentsExpand.to_pickle(f'{directory}/sample_data/reg_sections.pkl')
+df_regSentsExpand.to_pickle(f'{directory}/sample_data/sample_output/reg_sections.pkl')
 
 # %% [markdown]
 # ## 3.2 Get monthly relevant article counts

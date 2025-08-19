@@ -15,7 +15,7 @@ directory=os.path.dirname(os.path.realpath(__file__))
 
 # %%
 # Import regulatory sections
-df=pd.read_pickle(f'{directory}/sample_data/reg_sections.pkl')
+df=pd.read_pickle(f'{directory}/sample_data/sample_output/reg_sections.pkl')
 
 # %%
 # Negation words

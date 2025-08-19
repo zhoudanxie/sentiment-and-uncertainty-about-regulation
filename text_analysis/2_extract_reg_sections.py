@@ -13,7 +13,7 @@ directory=os.path.dirname(os.path.realpath(__file__))
 # directory="text_analysis"
 
 # %%
-df=pd.read_pickle(f'{directory}/sample_data/parsed_xml.pkl')
+df=pd.read_pickle(f'{directory}/sample_data/sample_output/parsed_xml.pkl')
 
 # %%
 # Function to remove multiple spaces
