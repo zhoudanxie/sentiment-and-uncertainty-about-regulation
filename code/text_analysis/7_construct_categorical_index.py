@@ -13,7 +13,7 @@ directory=os.path.dirname(os.path.realpath(__file__))
 
 # %% [markdown]
 # ## 1. Import article sentiment scores
-df=pd.read_csv(f'{directory}/../../data/sentiment_scores.csv')
+df=pd.read_csv(f'{directory}/../../data/processed_data/sentiment_scores.csv')
 
 # %%
 # Reformat data
@@ -87,5 +87,5 @@ for dict in ['GI','LM','LSD']:
 
 # %%
 # Export
-CategoricalIndex.to_csv(f'{directory}/../../data/categorical_sentiment_indexes.csv',index=False)
+CategoricalIndex.to_csv(f'{directory}/../../data/processed_data/categorical_sentiment_indexes.csv',index=False)
 print('Categorical sentiment indexes saved in the /data folder.')

@@ -13,7 +13,7 @@ directory=os.path.dirname(os.path.realpath(__file__))
 # %%
 # Import data
 # Sentiment score data
-df=pd.read_csv(f'{directory}/../../data/sentiment_scores.csv')
+df=pd.read_csv(f'{directory}/../../data/processed_data/sentiment_scores.csv')
 
 # %%
 # Change variable types
@@ -79,7 +79,7 @@ sentimentIndex=sentimentIndex.\
 
 # %%
 # Export
-sentimentIndex.to_csv(f'{directory}/../../data/aggregate_sentiment_indexes.csv',index=False)
+sentimentIndex.to_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes.csv',index=False)
 print('Aggregate sentiment indexes saved in the /data folder.')
 
 

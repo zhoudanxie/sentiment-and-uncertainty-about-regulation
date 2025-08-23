@@ -1,5 +1,11 @@
-# Sample data output
+# Ignore processed data and output
 code/text_analysis/sample_data/sample_output/
+data/processed_data/*
+
+# Keep tracking certain data files
+!data/processed_data/sentiment_scores.csv
+!data/processed_data/aggregate_sentiment_indexes.csv
+!data/processed_data/categorical_sentiment_indexes.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
