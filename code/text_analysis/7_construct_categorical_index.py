@@ -87,5 +87,6 @@ for dict in ['GI','LM','LSD']:
 
 # %%
 # Export
-CategoricalIndex.to_csv(f'{directory}/../../data/processed_data/categorical_sentiment_indexes.csv',index=False)
-print('Categorical sentiment indexes saved in the /data folder.')
+output_folder='data/processed_data'
+CategoricalIndex.to_csv(f'{directory}/../../{output_folder}/categorical_sentiment_indexes.csv',index=False)
+print(f'Categorical sentiment indexes saved in the {output_folder} folder.')

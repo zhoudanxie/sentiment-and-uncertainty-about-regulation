@@ -79,8 +79,9 @@ sentimentIndex=sentimentIndex.\
 
 # %%
 # Export
-sentimentIndex.to_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes.csv',index=False)
-print('Aggregate sentiment indexes saved in the /data folder.')
+output_folder='data/processed_data'
+sentimentIndex.to_csv(f'{directory}/../../{output_folder}/aggregate_sentiment_indexes.csv',index=False)
+print(f'Aggregate sentiment indexes saved in the {output_folder} folder.')
 
 
 
