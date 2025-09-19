@@ -2,10 +2,11 @@
 code/text_analysis/sample_data/sample_output/
 data/processed_data/*
 
-# Keep tracking certain data files
+# Keep tracking certain data files in ignored folders
 !data/processed_data/sentiment_scores.csv
 !data/processed_data/aggregate_sentiment_indexes.csv
 !data/processed_data/categorical_sentiment_indexes.csv
+!data/processed_data/total_article_counts_by_newspaper.xlsx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
