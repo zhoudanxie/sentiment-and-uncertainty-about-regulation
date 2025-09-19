@@ -9,7 +9,6 @@ import os
 # %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
-# directory="code/econometric_analysis"
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% S&P 500
@@ -159,21 +158,21 @@ newssent_monthly=newssent_monthly.rename(columns={'News Sentiment':'newssent'})
 newssent_monthly.to_stata(f'{directory}/../../data/processed_data/newssent.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
-#%% Regulatory indexes
-# regrelevance=pd.read_csv('Data/Aggregate Indexes/RegRelevanceIndex.csv')
-# print(regrelevance.info())
-#
-# regrelevance[['year','month']]=regrelevance['year-month'].str.split('-',expand=True)
-# regrelevance['year']=regrelevance['year'].astype('int64')
-# regrelevance['month']=regrelevance['month'].astype('int64')
-# regrelevance=regrelevance.rename(columns={'Reg Relevance': 'RegRelevance'})
-# regrelevance=regrelevance[['year','month','RegRelevance']]
+#%% Aggregate regulatory indexes
+# News attention index
+regrelevance=pd.read_csv(f'{directory}/../../data/processed_data/news_attention_index.csv')
 
+regrelevance[['year','month']]=regrelevance['year-month'].str.split('-',expand=True)
+regrelevance['year']=regrelevance['year'].astype('int64')
+regrelevance['month']=regrelevance['month'].astype('int64')
+regrelevance=regrelevance[['year','month','RegRelevance']].copy()
+
+# Sentiment indexes
 regindex=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes.csv')
 regindex=regindex.rename(columns={'Year':'year','Month':'month'})
 
-# regindex=regrelevance.merge(sentiments,on=['year','month'],how='outer').reset_index(drop=True)
-# print(regindex.info())
+# Merge
+regindex=regrelevance.merge(regindex,on=['year','month'],how='outer').reset_index(drop=True)
 
 # Quarter
 regindex.loc[regindex['month']<=3, 'quarter']=1
@@ -181,6 +180,7 @@ regindex.loc[(regindex['month']>=4) & (regindex['month']<=6), 'quarter']=2
 regindex.loc[(regindex['month']>=7) & (regindex['month']<=9), 'quarter']=3
 regindex.loc[(regindex['month']>=10) & (regindex['month']<=12), 'quarter']=4
 
+# Export
 regindex.to_stata(f'{directory}/../../data/processed_data/regindex.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -201,5 +201,3 @@ regindex_area.loc[(regindex_area['month']>=7) & (regindex_area['month']<=9), 'qu
 regindex_area.loc[(regindex_area['month']>=10) & (regindex_area['month']<=12), 'quarter']=4
 
 regindex_area.to_stata(f'{directory}/../../data/processed_data/regindex_area.dta',write_index=False)
-
-
