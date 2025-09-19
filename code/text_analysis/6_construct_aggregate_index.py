@@ -136,6 +136,6 @@ df_index['RegRelevance']=calulate_index('RegRelevantCount','Count')
 #%%
 # Export index
 df_index.drop('Z',axis=1).to_csv(f'{directory}/../../{output_folder}/news_attention_index.csv',index=False)
-print(f'The index of news attention to regulation is saved in the {output_folder} folder.')
+print(f'Index of news attention to regulation is saved in the {output_folder} folder.')
 
 
