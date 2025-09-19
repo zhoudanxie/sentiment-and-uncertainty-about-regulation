@@ -10,7 +10,6 @@ from spacy.lang.en import English
 # %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
-# directory="text_analysis"
 
 # %%
 df=pd.read_pickle(f'{directory}/sample_data/sample_output/parsed_xml.pkl')

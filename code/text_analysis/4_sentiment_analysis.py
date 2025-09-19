@@ -11,7 +11,6 @@ nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 # %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
-# directory="text_analysis"
 
 # %%
 # Import regulatory sections

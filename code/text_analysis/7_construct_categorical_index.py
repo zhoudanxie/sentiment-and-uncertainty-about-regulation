@@ -7,9 +7,8 @@ import os
 import ast
 
 # %%
-# Set directory
+# Set director
 directory=os.path.dirname(os.path.realpath(__file__))
-# directory="text_analysis"
 
 # %% [markdown]
 # ## 1. Import article sentiment scores
@@ -89,4 +88,4 @@ for dict in ['GI','LM','LSD']:
 # Export
 output_folder='data/processed_data'
 CategoricalIndex.to_csv(f'{directory}/../../{output_folder}/categorical_sentiment_indexes.csv',index=False)
-print(f'Categorical sentiment indexes saved in the {output_folder} folder.')
+print(f'Categorical sentiment indexes are saved in the {output_folder} folder.')

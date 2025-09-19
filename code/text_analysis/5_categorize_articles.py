@@ -10,7 +10,6 @@ from ast import literal_eval
 # %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
-# directory="text_analysis"
 
 # %% [markdown]
 # ## 1. Import Regulatory Sections and Noun Chunks with Areas

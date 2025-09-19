@@ -12,7 +12,6 @@ nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 # %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
-# directory="text_analysis"
 
 # %% [markdown]
 # ## 3.1 Match regulatory noun chunks
@@ -80,22 +79,11 @@ print('# of reg relevant articles:',df_regSentsExpand[df_regSentsExpand['NounChu
 df_regSentsExpand.to_pickle(f'{directory}/sample_data/sample_output/reg_sections.pkl')
 
 # %% [markdown]
-# ## 3.2 Get monthly relevant article counts
+# ## 3.2 Noun Chunk Occurences acorss Regulation-related Articles
 
 # %%
 # Reg relevant articles
 df_reg=df_regSentsExpand[df_regSentsExpand['NounChunkMatchFiltered']>0].reset_index(drop=True)
-
-# %%
-# Get monthly count
-df_monthly=df_reg.groupby(['Newspaper','Year','Month'])['ID'].count().reset_index(name="RegRelevantCount")
-df_monthly=df_monthly.sort_values(['Newspaper','Year','Month']).reset_index(drop=True)
-
-# %%
-df_monthly.to_csv(f'{directory}/sample_data/sample_output/RegRelevant_MonthlyArticleCount.csv',index=False)
-
-# %% [markdown]
-# ## 3.3 Noun Chunk Occurences acorss Regulation-related Articles
 
 # %%
 # Append all filtered noun chunks
