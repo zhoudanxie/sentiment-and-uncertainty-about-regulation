@@ -77,8 +77,8 @@ sentimentIndex=df_ym.\
         sort_values(['Year','Month'])
 
 sentimentIndex=sentimentIndex.\
-        rename(columns={'UncertaintyScoreIndex':'UncertaintyIndex','LMscoreIndex':'LMindex',
-                        'GIscoreIndex':'GIindex','LSDscoreIndex':'LSDindex'})
+        rename(columns={'UncertaintyScoreIndex':'UncertaintyIndex','LMscoreIndex':'LMIndex',
+                        'GIscoreIndex':'GIIndex','LSDscoreIndex':'LSDIndex'})
 
 # %%
 # Export indexes
