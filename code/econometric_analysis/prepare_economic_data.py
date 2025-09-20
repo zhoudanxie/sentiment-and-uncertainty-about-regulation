@@ -5,6 +5,7 @@ import numpy as np
 import re
 import pickle
 import os
+from sklearn.decomposition import PCA
 
 # %%
 # Set directory
@@ -179,6 +180,21 @@ regindex.loc[regindex['month']<=3, 'quarter']=1
 regindex.loc[(regindex['month']>=4) & (regindex['month']<=6), 'quarter']=2
 regindex.loc[(regindex['month']>=7) & (regindex['month']<=9), 'quarter']=3
 regindex.loc[(regindex['month']>=10) & (regindex['month']<=12), 'quarter']=4
+
+# Standardize indexes
+for dict in ['Uncertainty','GI','LM','LSD']:
+    regindex[dict+'Index_standardized']=(regindex[dict+'Index']-np.mean(regindex[dict+'Index']))/np.std(regindex[dict+'Index'])
+
+# PCA of standardized monthly sentiment indexes
+features = ['GIIndex_standardized', 'LMIndex_standardized', 'LSDIndex_standardized']
+x = regindex.loc[:, features].values
+pca = PCA(n_components=2)
+principalComponents = pca.fit_transform(x)
+# print("Variance explained by PC1 and PC2:", pca.explained_variance_ratio_)
+# print("PC1 feature weights [GI, LM, LSD]:", pca.components_[0])
+
+principalDf = pd.DataFrame(data = principalComponents, columns = ['SentimentPC1_standardized', 'SentimentPC2_standardized'])
+regindex = pd.concat([regindex, principalDf], axis = 1)
 
 # Export
 regindex.to_stata(f'{directory}/../../data/processed_data/regindex.dta',write_index=False)
