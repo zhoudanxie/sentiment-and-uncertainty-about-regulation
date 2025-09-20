@@ -2,9 +2,6 @@ clear
 graph drop _all
 cap drop all
 
-*Set path
-cd ../..
-
 *Basic data set-up
 use data/processed_data/regindex,clear
 
@@ -43,9 +40,10 @@ ren fedfundsrate ffr
 
 ren RegRelevance rri
 ren UncertaintyIndex rpu
-ren GIindex gi
-ren LSDindex lsd
-ren LMindex lm
+ren GIIndex gi
+ren LSDIndex lsd
+ren LMIndex lm
+ren SentimentPC1_standardized pc
 sum rpu lm gi lsd
 
 ***Specify index of interest
@@ -88,7 +86,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp , vce(robust)
+	 qui reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp , vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -115,7 +113,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
+	 qui reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
