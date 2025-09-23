@@ -4,6 +4,7 @@ import pandas as pd
 import statsmodels.formula.api as sm
 import datetime
 import os
+from sklearn.decomposition import PCA
 
 # %%
 # Set directory
@@ -79,6 +80,21 @@ sentimentIndex=df_ym.\
 sentimentIndex=sentimentIndex.\
         rename(columns={'UncertaintyScoreIndex':'UncertaintyIndex','LMscoreIndex':'LMIndex',
                         'GIscoreIndex':'GIIndex','LSDscoreIndex':'LSDIndex'})
+
+#%% Standardize indexes
+for dict in ['Uncertainty','GI','LM','LSD']:
+    sentimentIndex[dict+'Index_standardized']=(sentimentIndex[dict+'Index']-np.mean(sentimentIndex[dict+'Index']))/np.std(sentimentIndex[dict+'Index'])
+
+# PCA of standardized monthly sentiment indexes
+features = ['GIIndex_standardized', 'LMIndex_standardized', 'LSDIndex_standardized']
+x = sentimentIndex.loc[:, features].values
+pca = PCA(n_components=2)
+principalComponents = pca.fit_transform(x)
+# print("Variance explained by PC1 and PC2:", pca.explained_variance_ratio_)
+# print("PC1 feature weights [GI, LM, LSD]:", pca.components_[0])
+
+principalDf = pd.DataFrame(data = principalComponents, columns = ['SentimentPC1_standardized', 'SentimentPC2_standardized'])
+sentimentIndex = pd.concat([sentimentIndex, principalDf], axis = 1)
 
 # %%
 # Export indexes
