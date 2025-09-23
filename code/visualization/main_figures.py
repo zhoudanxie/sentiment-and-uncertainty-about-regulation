@@ -29,11 +29,7 @@ rcParams['font.family'] = "Times New Roman"
 from wordcloud import WordCloud
 from PIL import Image
 
-from sklearn.decomposition import PCA
 import scipy.stats
-
-import spacy
-nlp = spacy.load("en_core_web_sm")
 
 #%%
 # Common variables
@@ -56,13 +52,25 @@ dict_area={'1': 'consumer safety and health',
     '13': 'housing, urban development, and social security',
     '14': 'international relations'}
 
+# %%
+# Set directory
+# directory=os.path.dirname(os.path.realpath(__file__))
+directory='code/visualization/'
+
+# # Create an output directory if it does not exist
+output_folder=f'{directory}/../../figures'
+os.makedirs(output_folder, exist_ok=True)
+
 #-----------------------------------------------------------------------------------------------------------------------
 #%%------------------------------------------------News Attention to Regulation-------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
-# Figure 1: Monthly Index of News Attention to Regulation
-index['date']=index['year-month'].astype('datetime64[ns]').dt.date
-x=index['date']
-y=index['Reg Relevance']
+# Import data
+df_att=pd.read_csv(f'{directory}../../data/processed_data/news_attention_index.csv')
+
+#%% Figure 1: Monthly Index of News Attention to Regulation
+df_att['date']=df_att['year-month'].astype('datetime64[ns]').dt.date
+x=df_att['date']
+y=df_att['RegRelevance']
 
 fig, ax = plt.subplots(1, figsize=(15,10))
 ax.plot(x,y,color=colors[0])
@@ -108,8 +116,8 @@ ax.xaxis.set_major_formatter(years_fmt)
 ax.xaxis.set_minor_locator(months)
 
 # round to nearest years.
-datemin = np.datetime64(index['date'].iloc[0], 'Y')
-datemax = np.datetime64(index['date'].iloc[-1], 'Y') + np.timedelta64(1, 'Y')
+datemin = np.datetime64(x.iloc[0], 'Y')
+datemax = np.datetime64(x.iloc[-1], 'Y') + np.timedelta64(1, 'Y')
 ax.set_xlim(datemin, datemax)
 
 # format the coords message box
@@ -134,83 +142,32 @@ ax.spines['top'].set_visible(False)
 ax.spines['left'].set_color('#d3d3d3')
 ax.spines['bottom'].set_color('#d3d3d3')
 
-plt.savefig('Figures/Manuscript Figures - June 2025/Figure1.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/Figure1.jpg', bbox_inches='tight')
 plt.close()
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%----------------------------Aggregate Regulatory Sentiment and Uncertainty Indexes-----------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
-# Sentiment indexes
-monthlyIndex=pd.read_csv('Data/Aggregate Indexes/RegRelevant_MonthlySentimentIndex_Dec2021.csv')
-print(monthlyIndex.info())
+# Import indexes
+monthlyIndex=pd.read_csv(f'{directory}../../data/processed_data/aggregate_sentiment_indexes.csv')
 
 monthlyIndex['Year-Month']=monthlyIndex['Year'].map(str)+'-'+monthlyIndex['Month'].map(str)
 monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
 
 #%% Correlations between sentiment indexes
-print('LM & GI:',scipy.stats.pearsonr(monthlyIndex['LMindex'], monthlyIndex['GIindex']))
-print('LM & LSD:',scipy.stats.pearsonr(monthlyIndex['LMindex'], monthlyIndex['LSDindex']))
-print('LSD & GI',scipy.stats.pearsonr(monthlyIndex['LSDindex'], monthlyIndex['GIindex']))
+print('LM & GI:',scipy.stats.pearsonr(monthlyIndex['LMIndex'], monthlyIndex['GIIndex']))
+print('LM & LSD:',scipy.stats.pearsonr(monthlyIndex['LMIndex'], monthlyIndex['LSDIndex']))
+print('LSD & GI',scipy.stats.pearsonr(monthlyIndex['LSDIndex'], monthlyIndex['GIIndex']))
 
-print('LMstandardized & GIstandardized:',scipy.stats.pearsonr(monthlyIndex['LMindex_standardized'], monthlyIndex['GIindex_standardized']))
-print('LMstandardized & LSDstandardized:',scipy.stats.pearsonr(monthlyIndex['LMindex_standardized'], monthlyIndex['LSDindex_standardized']))
-print('LSDstandardized & GIstandardized',scipy.stats.pearsonr(monthlyIndex['LSDindex_standardized'], monthlyIndex['GIindex_standardized']))
-
-#%% Appendix F: Stationarity Tests for the Regulatory Sentiment and Uncertainty Indexes
-# Augmented Dickey-Fuller test (H0: non-stationary)
-from arch.unitroot import ADF
-def adf_test(var):
-    x=monthlyIndex[var]
-    adf = ADF(x,trend="ct")
-    print('Results of Augmented Dickey-Fuller Test for '+var)
-    print("Test statistic:",'{0:0.6f}'.format(adf.stat))
-    print('p-value:','{0:0.6f}'.format(adf.pvalue))
-    print('Lags:',adf.lags)
-    #print(adf.summary())
-
-adf_test('UncertaintyIndex')
-adf_test('LMindex')
-adf_test('GIindex')
-adf_test('LSDindex')
-adf_test('SentimentPC1_standardized')
-
-# Phillips-Perron test (H0: non-stationary)
-from arch.unitroot import PhillipsPerron
-def pp_test(var):
-    x=monthlyIndex[var]
-    pp = PhillipsPerron(x,trend="ct")
-    print('Results of Phillips-Perron Test for '+var)
-    print("Test statistic:",'{0:0.6f}'.format(pp.stat))
-    print('p-value:','{0:0.6f}'.format(pp.pvalue))
-    print('Lags:',pp.lags)
-
-pp_test('UncertaintyIndex')
-pp_test('LMindex')
-pp_test('GIindex')
-pp_test('LSDindex')
-pp_test('SentimentPC1_standardized')
-
-# KPSS test (H0: stationary)
-from arch.unitroot import KPSS
-def kpss_test(var):
-    x=monthlyIndex[var]
-    kpss = KPSS(x,trend="ct")
-    print('Results of KPSS Test for '+var)
-    print("Test statistic:",'{0:0.6f}'.format(kpss.stat))
-    print('p-value:','{0:0.6f}'.format(kpss.pvalue))
-    print('Lags:',kpss.lags)
-
-kpss_test('UncertaintyIndex')
-kpss_test('LMindex')
-kpss_test('GIindex')
-kpss_test('LSDindex')
-kpss_test('SentimentPC1_standardized')
+print('LMstandardized & GIstandardized:',scipy.stats.pearsonr(monthlyIndex['LMIndex_standardized'], monthlyIndex['GIIndex_standardized']))
+print('LMstandardized & LSDstandardized:',scipy.stats.pearsonr(monthlyIndex['LMIndex_standardized'], monthlyIndex['LSDIndex_standardized']))
+print('LSDstandardized & GIstandardized',scipy.stats.pearsonr(monthlyIndex['LSDIndex_standardized'], monthlyIndex['GIIndex_standardized']))
 
 #%% Figure 2: Monthly Index of Regulatory Sentiment
 x=monthlyIndex['date']
-y1=monthlyIndex['GIindex_standardized']
-y2=monthlyIndex['LSDindex_standardized']
-y3=monthlyIndex['LMindex_standardized']
+y1=monthlyIndex['GIIndex_standardized']
+y2=monthlyIndex['LSDIndex_standardized']
+y3=monthlyIndex['LMIndex_standardized']
 y4=monthlyIndex['SentimentPC1_standardized']
 
 fig, ax = plt.subplots(1, figsize=(16,10))
@@ -298,7 +255,7 @@ ax.spines['bottom'].set_color('#d3d3d3')
 fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.02), ncol=4, fontsize=14)
 fig.subplots_adjust(bottom=0.15)
 
-plt.savefig('Figures/Manuscript Figures - June 2025/Figure2.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/Figure2.jpg', bbox_inches='tight')
 plt.close()
 
 #%% Figure 3: Monthly Index of Regulatory Uncertainty
@@ -368,8 +325,17 @@ ax.spines['right'].set_visible(False)
 ax.spines['left'].set_color('#d3d3d3')
 ax.spines['bottom'].set_color('#d3d3d3')
 
-plt.savefig('Figures/Manuscript Figures - June 2025/Figure3.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/Figure3.jpg', bbox_inches='tight')
 plt.close()
+
+#-----------------------------------------------------------------------------------------------------------------------
+#%%----------------------------Categorical Regulatory Sentiment and Uncertainty Indexes---------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
+# Import categorical indexes
+sentiment_area=pd.read_csv(f'{directory}../../data/processed_data/categorical_sentiment_indexes.csv')
+
+sentiment_area['Year-Month']=sentiment_area['Year'].map(str)+'-'+sentiment_area['Month'].map(str)
+sentiment_area['date']=sentiment_area['Year-Month'].astype('datetime64[ns]').dt.date
 
 #%% Figure 5: Plot finance and banking regulation with rolling means
 def plot_ax(x, y1,y2):
@@ -418,7 +384,7 @@ def plot_ax(x, y1,y2):
     ax.spines['bottom'].set_color('#d3d3d3')
 
 # Specify area
-vars=['LM_'+area+str(7),'Uncertainty_'+area+str(7)]
+vars=['LM_DominantDistinctArea'+str(7),'Uncertainty_DominantDistinctArea'+str(7)]
 ylabels=['Regulatory Sentiment Index','Regulatory Uncertainty Index']
 
 # Calculate rolling means (12 months)
@@ -545,23 +511,22 @@ fig.text(0.5, 0.9, '(a) Regulatory Sentiment around Finance and Banking Regulati
 fig.text(0.5, 0.46, '(b) Regulatory Uncertainty around Finance and Banking Regulation', ha='center', fontsize=20,fontweight='bold')
 plt.subplots_adjust(hspace=0.3)
 
-plt.savefig('Figures/Manuscript Figures - June 2025/Figure5.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/Figure5.jpg', bbox_inches='tight')
 plt.close()
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%--------------------------Impulse Responses to Aggregate Shocks (Local Projections)----------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
-lm_lgdp=pd.read_stata('Analysis/Local Projections/output/lm_lgdp.dta')
-lm_lemp=pd.read_stata('Analysis/Local Projections/output/lm_lemp.dta')
-gi_lgdp=pd.read_stata('Analysis/Local Projections/output/gi_lgdp.dta')
-gi_lemp=pd.read_stata('Analysis/Local Projections/output/gi_lemp.dta')
-lsd_lgdp=pd.read_stata('Analysis/Local Projections/output/lsd_lgdp.dta')
-lsd_lemp=pd.read_stata('Analysis/Local Projections/output/lsd_lemp.dta')
-pc_lgdp=pd.read_stata('Analysis/Local Projections/output/pc_lgdp.dta')
-pc_lemp=pd.read_stata('Analysis/Local Projections/output/pc_lemp.dta')
-
-rpu_lgdp=pd.read_stata('Analysis/Local Projections/output/rpu_lgdp.dta')
-rpu_lemp=pd.read_stata('Analysis/Local Projections/output/rpu_lemp.dta')
+lm_lgdp=pd.read_stata(f'{directory}/../../output/lm_lgdp.dta')
+lm_lemp=pd.read_stata(f'{directory}/../../output/lm_lemp.dta')
+gi_lgdp=pd.read_stata(f'{directory}/../../output/gi_lgdp.dta')
+gi_lemp=pd.read_stata(f'{directory}/../../output/gi_lemp.dta')
+lsd_lgdp=pd.read_stata(f'{directory}/../../output/lsd_lgdp.dta')
+lsd_lemp=pd.read_stata(f'{directory}/../../output/lsd_lemp.dta')
+pc_lgdp=pd.read_stata(f'{directory}/../../output/pc_lgdp.dta')
+pc_lemp=pd.read_stata(f'{directory}/../../output/pc_lemp.dta')
+rpu_lgdp=pd.read_stata(f'{directory}/../../output/rpu_lgdp.dta')
+rpu_lemp=pd.read_stata(f'{directory}/../../output/rpu_lemp.dta')
 
 # Define a function for subplots
 def ax_plot(y1, y2, y3, y4, y5, ymin=-1, ymax=0.4):
@@ -640,7 +605,7 @@ fig.text(0.5, 0.93, '(a) Impulse Responses to a Regulatory Sentiment Shock', ha=
 fig.text(0.5, 0.47, '(b) Impulse Responses to a Regulatory Uncertainty Shock', ha='center', fontsize=24,fontweight='bold')
 plt.subplots_adjust(hspace=0.5)
 
-plt.savefig('Figures/Manuscript Figures - June 2025/Figure4.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/Figure4.jpg', bbox_inches='tight')
 plt.close()
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -788,5 +753,5 @@ fig.text(0.5, 0.49, '(c) Output Responses to a Regulatory Uncertainty Shock', ha
 fig.text(0.5, 0.28, '(d) Employment Responses to a Regulatory Uncertainty Shock', ha='center', fontsize=38,fontweight='bold')
 plt.subplots_adjust(hspace=0.5)
 
-plt.savefig('Figures/Manuscript Figures - June 2025/Figure6.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/Figure6.jpg', bbox_inches='tight')
 plt.close()
