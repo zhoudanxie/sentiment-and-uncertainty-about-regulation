@@ -2,6 +2,7 @@
 code/text_analysis/sample_data/sample_output/
 data/processed_data/*
 output/
+figures/
 
 # Keep tracking certain data files in ignored folders
 !data/processed_data/sentiment_scores.csv
