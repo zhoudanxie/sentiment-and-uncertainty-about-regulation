@@ -201,3 +201,7 @@ regindex_area.loc[(regindex_area['month']>=7) & (regindex_area['month']<=9), 'qu
 regindex_area.loc[(regindex_area['month']>=10) & (regindex_area['month']<=12), 'quarter']=4
 
 regindex_area.to_stata(f'{directory}/../../data/processed_data/regindex_area.dta',write_index=False)
+
+#%% Create an output folder for saving econometric results
+output_folder=f'{directory}/../../output'
+os.makedirs(output_folder, exist_ok=True)
