@@ -6,28 +6,16 @@ import os
 import re
 import numpy as np
 from datetime import datetime
-import json
-from ast import literal_eval
 
 # Plotting Packages
-# import matplotlib
-# matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.cbook as cbook
 from matplotlib.ticker import FuncFormatter
 import matplotlib.ticker as ticker
 
-import numpy as np
-from mpl_toolkits.axes_grid1.inset_locator import inset_axes
-from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
-from mpl_toolkits.axes_grid1.inset_locator import mark_inset
-
 from matplotlib import rcParams
 rcParams['font.family'] = "Times New Roman"
-
-from wordcloud import WordCloud
-from PIL import Image
 
 import scipy.stats
 
@@ -54,8 +42,7 @@ dict_area={'1': 'consumer safety and health',
 
 # %%
 # Set directory
-# directory=os.path.dirname(os.path.realpath(__file__))
-directory='code/visualization/'
+directory=os.path.dirname(os.path.realpath(__file__))
 
 # # Create an output directory if it does not exist
 output_folder=f'{directory}/../../figures'
@@ -65,7 +52,7 @@ os.makedirs(output_folder, exist_ok=True)
 #%%------------------------------------------------News Attention to Regulation-------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 # Import data
-df_att=pd.read_csv(f'{directory}../../data/processed_data/news_attention_index.csv')
+df_att=pd.read_csv(f'{directory}/../../data/processed_data/news_attention_index.csv')
 
 #%% Figure 1: Monthly Index of News Attention to Regulation
 df_att['date']=df_att['year-month'].astype('datetime64[ns]').dt.date
@@ -149,7 +136,7 @@ plt.close()
 #%%----------------------------Aggregate Regulatory Sentiment and Uncertainty Indexes-----------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 # Import indexes
-monthlyIndex=pd.read_csv(f'{directory}../../data/processed_data/aggregate_sentiment_indexes.csv')
+monthlyIndex=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes.csv')
 
 monthlyIndex['Year-Month']=monthlyIndex['Year'].map(str)+'-'+monthlyIndex['Month'].map(str)
 monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
@@ -332,7 +319,7 @@ plt.close()
 #%%----------------------------Categorical Regulatory Sentiment and Uncertainty Indexes---------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 # Import categorical indexes
-sentiment_area=pd.read_csv(f'{directory}../../data/processed_data/categorical_sentiment_indexes.csv')
+sentiment_area=pd.read_csv(f'{directory}/../../data/processed_data/categorical_sentiment_indexes.csv')
 
 sentiment_area['Year-Month']=sentiment_area['Year'].map(str)+'-'+sentiment_area['Month'].map(str)
 sentiment_area['date']=sentiment_area['Year-Month'].astype('datetime64[ns]').dt.date
@@ -341,12 +328,6 @@ sentiment_area['date']=sentiment_area['Year-Month'].astype('datetime64[ns]').dt.
 def plot_ax(x, y1,y2):
     ax.plot(x, y1, color=colors[0])
     ax.plot(x,y2,color=colors[7],linestyle='dashed',linewidth=2)
-
-    # # NBER recessions
-    # ax.axvspan(datetime(1990, 8, 1), datetime(1991, 3, 1), alpha=0.2, color=colors[7])
-    # ax.axvspan(datetime(2001, 4, 1), datetime(2001, 11, 1), alpha=0.2, color=colors[7])
-    # ax.axvspan(datetime(2008, 1, 1), datetime(2009, 6, 1), alpha=0.2, color=colors[7])
-    # ax.axvspan(datetime(2020, 3, 1), datetime(2020, 4, 1), alpha=0.2, color=colors[7])
 
     # format the ticks
     years = mdates.YearLocator(2)  # every year
@@ -362,19 +343,9 @@ def plot_ax(x, y1,y2):
     datemax = np.datetime64(x.iloc[-1], 'Y') + np.timedelta64(1, 'Y')
     ax.set_xlim(datemin, datemax)
 
-    # # format the coords message box
-    # ax.format_ydata = lambda x: '$%1.2f' % x
-
-    # rotates and right aligns the x labels, and moves the bottom of the
-    # axes up to make room for them
-    # fig.autofmt_xdate()
-
     # Set tick and label format
     ax.tick_params(axis='both', which='major', labelsize=14, color='#d3d3d3')
     ax.tick_params(axis='both', which='minor', color='#d3d3d3')
-    # ax.set_ylabel(ylabel, fontsize=16)
-    # ax.set_yticks(np.arange(round(min(y), 1) - 0.2, round(max(y), 1) + 0.2, 0.2))
-    # ax.set_ylim(bottom=round(min(y), 1))
     ax.grid(color='#d3d3d3', which='major', axis='y')
 
     # Borders
@@ -615,11 +586,6 @@ areas=pd.DataFrame()
 areas['area_id']=list(dict_area.keys())
 areas['area_title']=list(dict_area.values())
 
-# Determine which human checking approach to use
-robust='TotalOccurrence'
-# Determine area classification name
-area='DominantDistinctArea'
-
 # Set number of steps for IRF
 steps=12
 vars=['lgdp','lemp']
@@ -630,12 +596,12 @@ titles=['Industrial Production', 'Employment']
 irf_lm_area=pd.DataFrame()
 irf_lm_area['step']=range(0,steps+1)
 for i in range(1, area_range):
-    new=pd.read_stata('Analysis/Local Projections/output/lm_dda'+str(i)+'_lgdp_'+robust.lower()+'.dta')
+    new=pd.read_stata(f'{directory}/../../output/lm_dda'+str(i)+'_lgdp.dta')
     new=new.rename(columns={'Years':'step','b':'lgdp_'+str(i),'u90':'llgdp90_'+str(i),'d90':'hlgdp90_'+str(i),
                             'u95':'llgdp95_'+str(i),'d95':'hlgdp95_'+str(i)})
     irf_lm_area=irf_lm_area.merge(new,on='step',how='outer')
 
-    new=pd.read_stata('Analysis/Local Projections/output/lm_dda'+str(i)+'_lemp_'+robust.lower()+'.dta')
+    new=pd.read_stata(f'{directory}/../../output/lm_dda'+str(i)+'_lemp.dta')
     new=new.rename(columns={'Years':'step','b':'lemp_'+str(i),'u90':'llemp90_'+str(i),'d90':'hlemp90_'+str(i),
                             'u95':'llemp95_'+str(i),'d95':'hlemp95_'+str(i)})
     irf_lm_area=irf_lm_area.merge(new,on='step',how='outer')
@@ -644,12 +610,12 @@ for i in range(1, area_range):
 irf_rpu_area=pd.DataFrame()
 irf_rpu_area['step']=range(0,steps+1)
 for i in range(1, area_range):
-    new=pd.read_stata('Analysis/Local Projections/output/rpu_dda'+str(i)+'_lgdp_'+robust.lower()+'.dta')
+    new=pd.read_stata(f'{directory}/../../output/rpu_dda'+str(i)+'_lgdp.dta')
     new=new.rename(columns={'Years':'step','b':'lgdp_'+str(i),'u90':'llgdp90_'+str(i),'d90':'hlgdp90_'+str(i),
                             'u95':'llgdp95_'+str(i),'d95':'hlgdp95_'+str(i)})
     irf_rpu_area=irf_rpu_area.merge(new,on='step',how='outer')
 
-    new=pd.read_stata('Analysis/Local Projections/output/rpu_dda'+str(i)+'_lemp_'+robust.lower()+'.dta')
+    new=pd.read_stata(f'{directory}/../../output/rpu_dda'+str(i)+'_lemp.dta')
     new=new.rename(columns={'Years':'step','b':'lemp_'+str(i),'u90':'llemp90_'+str(i),'d90':'hlemp90_'+str(i),
                             'u95':'llemp95_'+str(i),'d95':'hlemp95_'+str(i)})
     irf_rpu_area=irf_rpu_area.merge(new,on='step',how='outer')
@@ -743,9 +709,6 @@ for i, ax in enumerate(axes[3].flatten()):
         # axis labels
         ax.set_ylabel(ylabels[0], fontsize=24)
 
-# fig.delaxes(axes[3,1])
-# fig.delaxes(axes[3,2])
-# fig.delaxes(axes[1,2])
 fig.text(0.5, 0.08, 'Months', ha='center', fontsize=24)
 fig.text(0.5, 0.91, '(a) Output Responses to a Regulatory Sentiment Shock', ha='center', fontsize=38,fontweight='bold')
 fig.text(0.5, 0.7, '(b) Employment Responses to a Regulatory Sentiment Shock', ha='center', fontsize=38,fontweight='bold')
@@ -755,3 +718,5 @@ plt.subplots_adjust(hspace=0.5)
 
 plt.savefig(f'{output_folder}/Figure6.jpg', bbox_inches='tight')
 plt.close()
+
+print(f"All main figures are saved in the {output_folder} folder.")
