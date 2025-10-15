@@ -5,6 +5,7 @@ import statsmodels.formula.api as sm
 import datetime
 import os
 from sklearn.decomposition import PCA
+import scipy.stats
 
 # %%
 # Set directory
@@ -95,6 +96,18 @@ principalComponents = pca.fit_transform(x)
 
 principalDf = pd.DataFrame(data = principalComponents, columns = ['SentimentPC1_standardized', 'SentimentPC2_standardized'])
 sentimentIndex = pd.concat([sentimentIndex, principalDf], axis = 1)
+
+#%% Correlations between sentiment indexes
+print('LM & GI:',scipy.stats.pearsonr(sentimentIndex['LMIndex'], sentimentIndex['GIIndex']))
+print('LM & LSD:',scipy.stats.pearsonr(sentimentIndex['LMIndex'], sentimentIndex['LSDIndex']))
+print('LSD & GI',scipy.stats.pearsonr(sentimentIndex['LSDIndex'], sentimentIndex['GIIndex']))
+
+print('LMstandardized & GIstandardized:',
+      scipy.stats.pearsonr(sentimentIndex['LMIndex_standardized'], sentimentIndex['GIIndex_standardized']))
+print('LMstandardized & LSDstandardized:',
+      scipy.stats.pearsonr(sentimentIndex['LMIndex_standardized'], sentimentIndex['LSDIndex_standardized']))
+print('LSDstandardized & GIstandardized',
+      scipy.stats.pearsonr(sentimentIndex['LSDIndex_standardized'], sentimentIndex['GIIndex_standardized']))
 
 # %%
 # Export indexes
