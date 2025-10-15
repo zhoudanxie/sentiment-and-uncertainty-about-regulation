@@ -10,8 +10,8 @@ import json
 from ast import literal_eval
 
 # Plotting Packages
-# import matplotlib
-# matplotlib.use('TkAgg')
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.cbook as cbook
@@ -25,6 +25,12 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 
 from matplotlib import rcParams
 rcParams['font.family'] = "Times New Roman"
+
+from arch.unitroot import ADF
+from arch.unitroot import PhillipsPerron
+from arch.unitroot import KPSS
+
+from statsmodels.tsa.stattools import grangercausalitytests
 
 #%%
 from wordcloud import WordCloud
@@ -57,45 +63,27 @@ dict_area={'1': 'consumer safety and health',
     '13': 'housing, urban development, and social security',
     '14': 'international relations'}
 
+# %%
+# Set directory
+# directory=os.path.dirname(os.path.realpath(__file__))
+directory='code/visualization'
+
+# # Create an output directory if it does not exist
+output_folder=f'{directory}/../../figures/appendix_figures'
+os.makedirs(output_folder, exist_ok=True)
+
 #-----------------------------------------------------------------------------------------------------------------------
 #%%----------------------------Aggregate Regulatory Sentiment and Uncertainty Indexes-----------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 # Sentiment indexes
-monthlyIndex=pd.read_csv('Data/Aggregate Indexes/RegRelevant_MonthlySentimentIndex_Dec2021.csv')
+monthlyIndex=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes.csv')
 print(monthlyIndex.info())
 
 monthlyIndex['Year-Month']=monthlyIndex['Year'].map(str)+'-'+monthlyIndex['Month'].map(str)
 monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
 
-for dict in ['GI','LM','LSD']:
-    monthlyIndex[dict+'index_standardized']=(monthlyIndex[dict+'index']-np.mean(monthlyIndex[dict+'index']))/np.std(monthlyIndex[dict+'index'])
-monthlyIndex['UncertaintyIndex_standardized']=(monthlyIndex['UncertaintyIndex']-np.mean(monthlyIndex['UncertaintyIndex']))/np.std(monthlyIndex['UncertaintyIndex'])
-
-#%% PCA of standardized monthly sentiment indexes
-features = ['GIindex_standardized', 'LMindex_standardized', 'LSDindex_standardized']
-x = monthlyIndex.loc[:, features].values
-pca = PCA(n_components=2)
-principalComponents = pca.fit_transform(x)
-print("Variance explained by PC1 and PC2:", pca.explained_variance_ratio_)
-print("PC1 feature weights [GI, LM, LSD]:", pca.components_[0])
-
-principalDf = pd.DataFrame(data = principalComponents, columns = ['SentimentPC1_standardized', 'SentimentPC2_standardized'])
-monthlyIndex = pd.concat([monthlyIndex, principalDf], axis = 1)
-
-# monthlyIndex.to_csv('Data/Aggregate Indexes/RegRelevant_MonthlySentimentIndexStandardized.csv',index=False)
-
-#%% Correlations between sentiment indexes
-print('LM & GI:',scipy.stats.pearsonr(monthlyIndex['LMindex'], monthlyIndex['GIindex']))
-print('LM & LSD:',scipy.stats.pearsonr(monthlyIndex['LMindex'], monthlyIndex['LSDindex']))
-print('LSD & GI',scipy.stats.pearsonr(monthlyIndex['LSDindex'], monthlyIndex['GIindex']))
-
-print('LMstandardized & GIstandardized:',scipy.stats.pearsonr(monthlyIndex['LMindex_standardized'], monthlyIndex['GIindex_standardized']))
-print('LMstandardized & LSDstandardized:',scipy.stats.pearsonr(monthlyIndex['LMindex_standardized'], monthlyIndex['LSDindex_standardized']))
-print('LSDstandardized & GIstandardized',scipy.stats.pearsonr(monthlyIndex['LSDindex_standardized'], monthlyIndex['GIindex_standardized']))
-
 #%% Appendix F: Stationarity Tests for the Regulatory Sentiment and Uncertainty Indexes
 # Augmented Dickey-Fuller test (H0: non-stationary)
-from arch.unitroot import ADF
 def adf_test(var):
     x=monthlyIndex[var]
     adf = ADF(x,trend="ct")
@@ -105,14 +93,7 @@ def adf_test(var):
     print('Lags:',adf.lags)
     #print(adf.summary())
 
-adf_test('UncertaintyIndex')
-adf_test('LMindex')
-adf_test('GIindex')
-adf_test('LSDindex')
-adf_test('SentimentPC1_standardized')
-
 # Phillips-Perron test (H0: non-stationary)
-from arch.unitroot import PhillipsPerron
 def pp_test(var):
     x=monthlyIndex[var]
     pp = PhillipsPerron(x,trend="ct")
@@ -121,14 +102,7 @@ def pp_test(var):
     print('p-value:','{0:0.6f}'.format(pp.pvalue))
     print('Lags:',pp.lags)
 
-pp_test('UncertaintyIndex')
-pp_test('LMindex')
-pp_test('GIindex')
-pp_test('LSDindex')
-pp_test('SentimentPC1_standardized')
-
 # KPSS test (H0: stationary)
-from arch.unitroot import KPSS
 def kpss_test(var):
     x=monthlyIndex[var]
     kpss = KPSS(x,trend="ct")
@@ -137,11 +111,343 @@ def kpss_test(var):
     print('p-value:','{0:0.6f}'.format(kpss.pvalue))
     print('Lags:',kpss.lags)
 
-kpss_test('UncertaintyIndex')
-kpss_test('LMindex')
-kpss_test('GIindex')
-kpss_test('LSDindex')
-kpss_test('SentimentPC1_standardized')
+# Tests for all indexes
+for var in ['UncertaintyIndex','LMIndex','GIIndex','LSDIndex','SentimentPC1_standardized']:
+    adf_test(var)
+    pp_test(var)
+    kpss_test(var)
+
+#-----------------------------------------------------------------------------------------------------------------------
+#%%-----------------------------------Compare Regulatory Indexes with Other Indexes-------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------
+# Economic sentiment (Shapiro et al.)
+newssent=pd.read_excel(f'{directory}/../../data/raw_data/Shapiro_news_sentiment_data.xlsx', sheet_name='Data')
+print(newssent.info())
+
+newssent['Year']=newssent['date'].dt.year
+newssent['Month']=newssent['date'].dt.month
+newssent_monthly=newssent[['Year','Month','News Sentiment']].groupby(['Year','Month']).agg('mean').reset_index()
+
+monthlyIndex=monthlyIndex.merge(newssent_monthly,on=['Year','Month'],how='left')
+
+# Original BBD EPU
+BBD_EPU=pd.read_excel(f'{directory}/../../data/raw_data/EPU_BBD.xlsx')
+print(BBD_EPU.info())
+BBD_EPU=BBD_EPU[BBD_EPU['News_Based_Policy_Uncert_Index'].notnull()]
+
+BBD_EPU['Year']=BBD_EPU['Year'].astype(int)
+BBD_EPU['Month']=BBD_EPU['Month'].astype(int)
+monthlyIndex=monthlyIndex.merge(BBD_EPU,on=['Year','Month'],how='left')
+
+# Original BBD REPU
+BBD_REPU=pd.read_excel(f'{directory}/../../data/raw_data/Categorical_EPU_Data_BBD.xlsx')
+print(BBD_REPU.info())
+BBD_REPU=BBD_REPU[BBD_REPU['8. Regulation'].notnull()]
+BBD_REPU['Year']=BBD_REPU['Date'].astype('datetime64[ns]').dt.year
+BBD_REPU['Month']=BBD_REPU['Date'].astype('datetime64[ns]').dt.month
+monthlyIndex=monthlyIndex.merge(BBD_REPU[['Year','Month','8. Regulation']],on=['Year','Month'],how='left')
+
+# Standardize to mean=0 and variance=1
+def standardize(data_series):
+    standardized_data=(data_series-np.mean(data_series))/np.std(data_series)
+    return standardized_data
+
+monthlyIndex['EconomicSentiment_standardized']=standardize(monthlyIndex['News Sentiment'])
+monthlyIndex['BBD_EPU_standardized']=standardize(monthlyIndex['News_Based_Policy_Uncert_Index'])
+monthlyIndex['BBD_REPU_standardized']=standardize(monthlyIndex['8. Regulation'])
+
+print(monthlyIndex.info())
+
+#%% Appendix E1: Compare Regulatory Sentiment Index and Economic Sentiment Index
+x=monthlyIndex['date']
+y1=monthlyIndex['LMIndex_standardized']
+y2=monthlyIndex['EconomicSentiment_standardized']
+
+# Correlation
+print('Correlation between Regulatory Sentiment Index and Economic Sentiment Index:',
+      scipy.stats.pearsonr(y1,y2))
+
+fig, ax = plt.subplots(1, figsize=(16,10))
+ax.plot(x,y1,color=colors[0],linewidth=1.5,label='Regulatory Sentiment Index')
+ax.plot(x,y2,color=colors[1],linewidth=1.5,label='Economic Sentiment Index of Shapiro et al. (2020)')
+
+# events
+ax.axvspan(datetime(1991,1,1),datetime(1991,2,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(1991,1,1), -3.3, 'Gulf\nWar I', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(1993,9,1),datetime(1993,10,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(1993,9,1), 3.6, 'Clinton\nHealth Care Plan', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2001,9,1),datetime(2001,10,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2001,9,1), -2.2, '9/11', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2003,3,1),datetime(2003,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2003,3,1), -2.8, 'Gulf\nWar II', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2006,11,1),datetime(2006,12,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2006,11,1), 2.5, 'Bush\nMidterm Election', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2008,9,1),datetime(2008,10,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2008,9,1), -3, 'Lehman\nBrothers', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,3,1),datetime(2010,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,3,1), 2, 'Obamacare', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,4,1),datetime(2010,5,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,4,1), 2.5, 'Deepwater Horizon\nOil Spill', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,7,1),datetime(2010,8,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,7,1), 3.5, 'Dodd-Frank', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2011,8,1),datetime(2011,9,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2011,8,1), -3.3, 'Debt\nCeiling\nDispute', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2012,7,1),datetime(2012,8,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2012,7,1), -4, 'Libor\nScandal', fontsize=13, color=colors[4],horizontalalignment='left')
+
+ax.axvspan(datetime(2016,11,1),datetime(2017,3,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2016,11,1),3.8, '2016 Presidential\nElection', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2020,3,1),datetime(2020,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2020,1,1), -4.4, 'Coronavirus\nOutbreak', fontsize=13, color=colors[4],horizontalalignment='center')
+
+# format the ticks
+years = mdates.YearLocator(2)   # every year
+months = mdates.MonthLocator()  # every month
+years_fmt = mdates.DateFormatter('%Y-%m')
+
+ax.xaxis.set_major_locator(years)
+ax.xaxis.set_major_formatter(years_fmt)
+ax.xaxis.set_minor_locator(months)
+
+# round to nearest years.
+datemin = np.datetime64(x.iloc[0], 'Y')
+datemax = np.datetime64(x.iloc[-1], 'Y') + np.timedelta64(1, 'Y')
+ax.set_xlim(datemin, datemax)
+
+# format the coords message box
+ax.format_xdata = mdates.DateFormatter('%Y-%m-%d')
+ax.format_ydata = lambda x: '$%1.2f' % x
+fig.autofmt_xdate()
+
+# Set tick and label format
+ax.tick_params(axis='both',which='major',labelsize=14,color='#d3d3d3')
+ax.tick_params(axis='both',which='minor',color='#d3d3d3')
+ax.set_ylabel('Standardized Index',fontsize=16)
+ax.set_yticks(np.arange(-6,7,2))
+ax.grid(color='#d3d3d3', which='major', axis='y')
+
+# Borders
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+ax.spines['left'].set_color('#d3d3d3')
+ax.spines['bottom'].set_color('#d3d3d3')
+
+# Legend
+fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.02), ncol=4, fontsize=14)
+fig.subplots_adjust(bottom=0.15)
+
+plt.savefig(f'{output_folder}/AppendixE1.jpg', bbox_inches='tight')
+plt.close()
+
+#%% Appendix E2: Compare Regulatory Uncertainty Index and Economic Policy Uncertainty Index
+x=monthlyIndex['date']
+y1=monthlyIndex['UncertaintyIndex_standardized']
+y4=monthlyIndex['BBD_EPU_standardized']
+
+# Correlation
+print('Correlation between Regulatory Uncertainty Index and Economic Policy Uncertainty Index:',
+      scipy.stats.pearsonr(y1,y4))
+
+fig, ax = plt.subplots(1, figsize=(16,10))
+ax.plot(x,y1,color=colors[0],label='Regulatory Uncertainty Index')
+ax.plot(x,y4,color=colors[1],label='Economic Policy Uncertainty Index of Baker et al. (2016)')
+
+# events
+ax.axvspan(datetime(1987,10,1),datetime(1987,11,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(1987,10,1), 2.2, 'Black\nMonday', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(1991,1,1),datetime(1991,2,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(1991,1,1), 2, 'Gulf\nWar I', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(1994,5,1),datetime(1994,6,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(1994,5,1), 2, 'GAO Proposal\nfor Derivative\nRegulations', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2001,9,1),datetime(2001,10,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2001,9,1), 3, '9/11', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2003,3,1),datetime(2003,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2003,3,1), 2.2, 'Gulf\nWar II', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2008,9,1),datetime(2008,10,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2008,9,1), 3, 'Lehman\nBrothers', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,3,1),datetime(2010,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,3,1), 4.2, 'Obamacare', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,4,1),datetime(2010,5,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,4,1), 4.5, 'Deepwater Horizon\nOil Spill', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,7,1),datetime(2010,8,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,7,1), 5.2, 'Dodd-Frank', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2011,8,1),datetime(2011,9,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2011,8,1), 3.1, 'Debt\nCeiling\nDispute', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2016,11,1),datetime(2017,3,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2016,11,1),3.8, '2016 Presidential\nElection', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2020,3,1),datetime(2020,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2020,1,1), 7, 'Coronavirus\nOutbreak', fontsize=13, color=colors[4],horizontalalignment='center')
+
+# format the ticks
+years = mdates.YearLocator(2)   # every year
+months = mdates.MonthLocator()  # every month
+years_fmt = mdates.DateFormatter('%Y-%m')
+
+ax.xaxis.set_major_locator(years)
+ax.xaxis.set_major_formatter(years_fmt)
+ax.xaxis.set_minor_locator(months)
+
+# round to nearest years.
+datemin = np.datetime64(monthlyIndex['date'].iloc[0], 'Y')
+datemax = np.datetime64(monthlyIndex['date'].iloc[-1], 'Y') + np.timedelta64(1, 'Y')
+ax.set_xlim(datemin, datemax)
+
+# format the coords message box
+ax.format_xdata = mdates.DateFormatter('%Y-%m')
+ax.format_ydata = lambda x: '$%1.2f' % x
+fig.autofmt_xdate()
+
+# Set tick and label format
+ax.tick_params(axis='both',which='major',labelsize=14,color='#d3d3d3')
+ax.tick_params(axis='both',which='minor',color='#d3d3d3')
+ax.set_ylabel('Standardized Index',fontsize=16)
+ax.set_yticks(np.arange(-4,9,2))
+ax.set_ylim(bottom=-4)
+ax.grid(color='#d3d3d3', which='major', axis='y')
+
+fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.02), ncol=2, fontsize=14)
+fig.subplots_adjust(bottom=0.15)
+
+# Borders
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_color('#d3d3d3')
+ax.spines['bottom'].set_color('#d3d3d3')
+
+plt.savefig(f'{output_folder}/AppendixE2.jpg', bbox_inches='tight')
+plt.close()
+
+#%% Appendix E3: Compare Regulatory Uncertainty Index and Regulatory EPU Index
+x=monthlyIndex['date']
+y1=monthlyIndex['UncertaintyIndex_standardized']
+y3=monthlyIndex['BBD_REPU_standardized']
+
+# Correlation
+print('Correlation between Regulatory Uncertainty Index and Regulatory EPU Index:',
+      scipy.stats.pearsonr(y1,y3))
+
+fig, ax = plt.subplots(1, figsize=(16,10))
+ax.plot(x,y1,color=colors[0],label='Regulatory Uncertainty Index')
+ax.plot(x,y3,color=colors[1],label='Regulatory EPU Index of Baker et al. (2016)')
+
+# events
+ax.axvspan(datetime(1987,10,1),datetime(1987,11,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(1987,10,1), 2.2, 'Black\nMonday', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(1991,1,1),datetime(1991,2,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(1991,1,1), 4.5, 'Gulf\nWar I', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(1994,5,1),datetime(1994,6,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(1994,2,1), 2, 'GAO Proposal\nfor Derivative\nRegulations', fontsize=13, color=colors[4],horizontalalignment='left')
+
+ax.axvspan(datetime(2001,9,1),datetime(2001,10,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2001,9,1), 2, '9/11', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2003,3,1),datetime(2003,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2003,3,1), 1.5, 'Gulf\nWar II', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2008,9,1),datetime(2008,10,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2008,9,1), 4.2, 'Lehman\nBrothers', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,3,1),datetime(2010,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,3,1), 5.2, 'Obamacare', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,4,1),datetime(2010,5,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,4,1), 5.6, 'Deepwater Horizon\nOil Spill', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2010,7,1),datetime(2010,8,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2010,7,1), 6.5, 'Dodd-Frank', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2011,8,1),datetime(2011,9,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2011,9,1), 3.5, 'Debt\nCeiling\nDispute', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2016,11,1),datetime(2017,3,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2016,11,1),3.6, '2016 Presidential\nElection', fontsize=13, color=colors[4],horizontalalignment='center')
+
+ax.axvspan(datetime(2020,3,1),datetime(2020,4,1),alpha=0.5, color='#d3d3d3')
+ax.text(datetime(2020,1,1), 4.7, 'Coronavirus\nOutbreak', fontsize=13, color=colors[4],horizontalalignment='center')
+
+# format the ticks
+years = mdates.YearLocator(2)   # every year
+months = mdates.MonthLocator()  # every month
+years_fmt = mdates.DateFormatter('%Y-%m')
+
+ax.xaxis.set_major_locator(years)
+ax.xaxis.set_major_formatter(years_fmt)
+ax.xaxis.set_minor_locator(months)
+
+# round to nearest years.
+datemin = np.datetime64(monthlyIndex['date'].iloc[0], 'Y')
+datemax = np.datetime64(monthlyIndex['date'].iloc[-1], 'Y') + np.timedelta64(1, 'Y')
+ax.set_xlim(datemin, datemax)
+
+# format the coords message box
+ax.format_xdata = mdates.DateFormatter('%Y-%m')
+ax.format_ydata = lambda x: '$%1.2f' % x
+fig.autofmt_xdate()
+
+# Set tick and label format
+ax.tick_params(axis='both',which='major',labelsize=14,color='#d3d3d3')
+ax.tick_params(axis='both',which='minor',color='#d3d3d3')
+ax.set_ylabel('Standardized Index',fontsize=16)
+ax.set_yticks(np.arange(-4,9,2))
+ax.set_ylim(bottom=-4)
+ax.grid(color='#d3d3d3', which='major', axis='y')
+
+fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.02), ncol=2, fontsize=14)
+fig.subplots_adjust(bottom=0.15)
+
+# Borders
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_color('#d3d3d3')
+ax.spines['bottom'].set_color('#d3d3d3')
+
+plt.savefig(f'{output_folder}/AppendixE3.jpg', bbox_inches='tight')
+plt.close()
+
+#%% Appendix E4: Granger causality
+# H0: the time series in the second column, x2, does NOT Granger cause the time series in the first column, x1.
+
+print('Does regulatory sentiment Granger causes economic sentiment?')
+gc_res = grangercausalitytests(monthlyIndex[['EconomicSentiment_standardized','LMIndex_standardized']], 4)
+
+print('Does economic sentiment Granger causes regulatory sentiment?')
+gc_res = grangercausalitytests(monthlyIndex[['LMIndex_standardized','EconomicSentiment_standardized']], 4)
+
+print('Does regulatory uncertainty Granger causes economic policy uncertainty?')
+gc_res = grangercausalitytests(monthlyIndex[['BBD_EPU_standardized','UncertaintyIndex_standardized']], 4)
+
+print('Does economic policy uncertainty Granger causes regulatory uncertainty?')
+gc_res = grangercausalitytests(monthlyIndex[['UncertaintyIndex_standardized','BBD_EPU_standardized']], 4)
+
+print('Does regulatory uncertainty Granger causes regulatory EPU?')
+gc_res = grangercausalitytests(monthlyIndex[['BBD_REPU_standardized','UncertaintyIndex_standardized']], 4)
+
+print('Does regulatory EPU Granger causes regulatory uncertainty?')
+gc_res = grangercausalitytests(monthlyIndex[['UncertaintyIndex_standardized','BBD_REPU_standardized']], 4)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%---------------------------------Impulse Responses to Aggregate Shocks (VAR)-----------------------------------------
@@ -845,348 +1151,6 @@ fig.text(0.5, 0.08, 'Months', ha='center', fontsize=44)
 plt.subplots_adjust(hspace=0.2)
 
 plt.savefig('Figures/Manuscript Figures - June 2025/AppendixQ4.jpg', bbox_inches='tight')
-plt.close()
-
-#-----------------------------------------------------------------------------------------------------------------------
-#%%-----------------------------------Compare Regulatory Indexes with Other Indexes-------------------------------------
-#-----------------------------------------------------------------------------------------------------------------------
-# Regulatory indexes
-monthlyIndex=pd.read_csv('Data/Aggregate Indexes/RegRelevant_MonthlySentimentIndex_Dec2021.csv')
-print(monthlyIndex.info())
-
-monthlyIndex['Year-Month']=monthlyIndex['Year'].map(str)+'-'+monthlyIndex['Month'].map(str)
-monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
-
-for dict in ['GI','LM','LSD']:
-    monthlyIndex[dict+'index_standardized']=(monthlyIndex[dict+'index']-np.mean(monthlyIndex[dict+'index']))/np.std(monthlyIndex[dict+'index'])
-monthlyIndex['UncertaintyIndex_standardized']=(monthlyIndex['UncertaintyIndex']-np.mean(monthlyIndex['UncertaintyIndex']))/np.std(monthlyIndex['UncertaintyIndex'])
-
-# Economic sentiment (Shapiro et al.)
-newssent=pd.read_excel('Analysis/Economic Data/Shapiro_news_sentiment_data.xlsx', sheet_name='Data')
-print(newssent.info())
-
-newssent['Year']=newssent['date'].dt.year
-newssent['Month']=newssent['date'].dt.month
-newssent_monthly=newssent[['Year','Month','News Sentiment']].groupby(['Year','Month']).agg('mean').reset_index()
-
-monthlyIndex=monthlyIndex.merge(newssent_monthly,on=['Year','Month'],how='left')
-
-# Original BBD EPU
-BBD_EPU=pd.read_excel('Analysis/Economic Data/EPU_BBD.xlsx')
-print(BBD_EPU.info())
-BBD_EPU=BBD_EPU[BBD_EPU['News_Based_Policy_Uncert_Index'].notnull()]
-
-BBD_EPU['Year']=BBD_EPU['Year'].astype(int)
-BBD_EPU['Month']=BBD_EPU['Month'].astype(int)
-monthlyIndex=monthlyIndex.merge(BBD_EPU,on=['Year','Month'],how='left')
-
-# Original BBD REPU
-BBD_REPU=pd.read_excel('Analysis/Economic Data/Categorical_EPU_Data_BBD.xlsx')
-print(BBD_REPU.info())
-BBD_REPU=BBD_REPU[BBD_REPU['8. Regulation'].notnull()]
-BBD_REPU['Year']=BBD_REPU['Date'].astype('datetime64[ns]').dt.year
-BBD_REPU['Month']=BBD_REPU['Date'].astype('datetime64[ns]').dt.month
-monthlyIndex=monthlyIndex.merge(BBD_REPU[['Year','Month','8. Regulation']],on=['Year','Month'],how='left')
-
-# Standardize to mean=0 and variance=1
-def standardize(data_series):
-    standardized_data=(data_series-np.mean(data_series))/np.std(data_series)
-    return standardized_data
-
-monthlyIndex['EconomicSentiment_standardized']=standardize(monthlyIndex['News Sentiment'])
-monthlyIndex['BBD_EPU_standardized']=standardize(monthlyIndex['News_Based_Policy_Uncert_Index'])
-monthlyIndex['BBD_REPU_standardized']=standardize(monthlyIndex['8. Regulation'])
-
-print(monthlyIndex.info())
-
-#%% Granger causality
-from statsmodels.tsa.stattools import grangercausalitytests
-# H0: the time series in the second column, x2, does NOT Granger cause the time series in the first column, x1.
-
-print('Does regulatory sentiment Granger causes economic sentiment?')
-gc_res = grangercausalitytests(monthlyIndex[['EconomicSentiment_standardized','LMindex_standardized']], 4)
-
-print('Does economic sentiment Granger causes regulatory sentiment?')
-gc_res = grangercausalitytests(monthlyIndex[['LMindex_standardized','EconomicSentiment_standardized']], 4)
-
-print('Does regulatory uncertainty Granger causes economic policy uncertainty?')
-gc_res = grangercausalitytests(monthlyIndex[['BBD_EPU_standardized','UncertaintyIndex_standardized']], 4)
-
-print('Does economic policy uncertainty Granger causes regulatory uncertainty?')
-gc_res = grangercausalitytests(monthlyIndex[['UncertaintyIndex_standardized','BBD_EPU_standardized']], 4)
-
-print('Does regulatory uncertainty Granger causes regulatory EPU?')
-gc_res = grangercausalitytests(monthlyIndex[['BBD_REPU_standardized','UncertaintyIndex_standardized']], 4)
-
-print('Does regulatory EPU Granger causes regulatory uncertainty?')
-gc_res = grangercausalitytests(monthlyIndex[['UncertaintyIndex_standardized','BBD_REPU_standardized']], 4)
-
-
-#%% Appendix E1: Compare Regulatory Sentiment Index and Economic Sentiment Index
-x=monthlyIndex['date']
-y1=monthlyIndex['LMindex_standardized']
-y2=monthlyIndex['EconomicSentiment_standardized']
-
-# Correlation
-print('Correlation:',scipy.stats.pearsonr(y1,y2))
-
-fig, ax = plt.subplots(1, figsize=(16,10))
-ax.plot(x,y1,color=colors[0],linewidth=1.5,label='Regulatory Sentiment Index')
-ax.plot(x,y2,color=colors[1],linewidth=1.5,label='Economic Sentiment Index of Shapiro et al. (2020)')
-
-# events
-ax.axvspan(datetime(1991,1,1),datetime(1991,2,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(1991,1,1), -3.3, 'Gulf\nWar I', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(1993,9,1),datetime(1993,10,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(1993,9,1), 3.6, 'Clinton\nHealth Care Plan', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2001,9,1),datetime(2001,10,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2001,9,1), -2.2, '9/11', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2003,3,1),datetime(2003,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2003,3,1), -2.8, 'Gulf\nWar II', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2006,11,1),datetime(2006,12,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2006,11,1), 2.5, 'Bush\nMidterm Election', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2008,9,1),datetime(2008,10,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2008,9,1), -3, 'Lehman\nBrothers', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,3,1),datetime(2010,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,3,1), 2, 'Obamacare', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,4,1),datetime(2010,5,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,4,1), 2.5, 'Deepwater Horizon\nOil Spill', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,7,1),datetime(2010,8,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,7,1), 3.5, 'Dodd-Frank', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2011,8,1),datetime(2011,9,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2011,8,1), -3.3, 'Debt\nCeiling\nDispute', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2012,7,1),datetime(2012,8,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2012,7,1), -4, 'Libor\nScandal', fontsize=13, color=colors[4],horizontalalignment='left')
-
-ax.axvspan(datetime(2016,11,1),datetime(2017,3,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2016,11,1),3.8, '2016 Presidential\nElection', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2020,3,1),datetime(2020,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2020,1,1), -4.4, 'Coronavirus\nOutbreak', fontsize=13, color=colors[4],horizontalalignment='center')
-
-# format the ticks
-years = mdates.YearLocator(2)   # every year
-months = mdates.MonthLocator()  # every month
-years_fmt = mdates.DateFormatter('%Y-%m')
-
-ax.xaxis.set_major_locator(years)
-ax.xaxis.set_major_formatter(years_fmt)
-ax.xaxis.set_minor_locator(months)
-
-# round to nearest years.
-datemin = np.datetime64(x.iloc[0], 'Y')
-datemax = np.datetime64(x.iloc[-1], 'Y') + np.timedelta64(1, 'Y')
-ax.set_xlim(datemin, datemax)
-
-# format the coords message box
-ax.format_xdata = mdates.DateFormatter('%Y-%m-%d')
-ax.format_ydata = lambda x: '$%1.2f' % x
-fig.autofmt_xdate()
-
-# Set tick and label format
-ax.tick_params(axis='both',which='major',labelsize=14,color='#d3d3d3')
-ax.tick_params(axis='both',which='minor',color='#d3d3d3')
-ax.set_ylabel('Standardized Index',fontsize=16)
-ax.set_yticks(np.arange(-6,7,2))
-ax.grid(color='#d3d3d3', which='major', axis='y')
-
-# Borders
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax.spines['left'].set_color('#d3d3d3')
-ax.spines['bottom'].set_color('#d3d3d3')
-
-# Legend
-fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.02), ncol=4, fontsize=14)
-fig.subplots_adjust(bottom=0.15)
-
-plt.savefig('Figures/Manuscript Figures - June 2025/AppendixE1.jpg', bbox_inches='tight')
-plt.close()
-
-#%% Appendix E2: Compare Regulatory Uncertainty Index and Economic Policy Uncertainty Index
-x=monthlyIndex['date']
-y1=monthlyIndex['UncertaintyIndex_standardized']
-y4=monthlyIndex['BBD_EPU_standardized']
-
-# Correlation
-print('Correlation:',scipy.stats.pearsonr(y1,y4))
-
-fig, ax = plt.subplots(1, figsize=(16,10))
-ax.plot(x,y1,color=colors[0],label='Regulatory Uncertainty Index')
-ax.plot(x,y4,color=colors[1],label='Economic Policy Uncertainty Index of Baker et al. (2016)')
-
-# events
-ax.axvspan(datetime(1987,10,1),datetime(1987,11,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(1987,10,1), 2.2, 'Black\nMonday', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(1991,1,1),datetime(1991,2,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(1991,1,1), 2, 'Gulf\nWar I', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(1994,5,1),datetime(1994,6,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(1994,5,1), 2, 'GAO Proposal\nfor Derivative\nRegulations', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2001,9,1),datetime(2001,10,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2001,9,1), 3, '9/11', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2003,3,1),datetime(2003,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2003,3,1), 2.2, 'Gulf\nWar II', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2008,9,1),datetime(2008,10,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2008,9,1), 3, 'Lehman\nBrothers', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,3,1),datetime(2010,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,3,1), 4.2, 'Obamacare', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,4,1),datetime(2010,5,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,4,1), 4.5, 'Deepwater Horizon\nOil Spill', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,7,1),datetime(2010,8,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,7,1), 5.2, 'Dodd-Frank', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2011,8,1),datetime(2011,9,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2011,8,1), 3.1, 'Debt\nCeiling\nDispute', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2016,11,1),datetime(2017,3,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2016,11,1),3.8, '2016 Presidential\nElection', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2020,3,1),datetime(2020,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2020,1,1), 7, 'Coronavirus\nOutbreak', fontsize=13, color=colors[4],horizontalalignment='center')
-
-# format the ticks
-years = mdates.YearLocator(2)   # every year
-months = mdates.MonthLocator()  # every month
-years_fmt = mdates.DateFormatter('%Y-%m')
-
-ax.xaxis.set_major_locator(years)
-ax.xaxis.set_major_formatter(years_fmt)
-ax.xaxis.set_minor_locator(months)
-
-# round to nearest years.
-datemin = np.datetime64(monthlyIndex['date'].iloc[0], 'Y')
-datemax = np.datetime64(monthlyIndex['date'].iloc[-1], 'Y') + np.timedelta64(1, 'Y')
-ax.set_xlim(datemin, datemax)
-
-# format the coords message box
-ax.format_xdata = mdates.DateFormatter('%Y-%m')
-ax.format_ydata = lambda x: '$%1.2f' % x
-fig.autofmt_xdate()
-
-# Set tick and label format
-ax.tick_params(axis='both',which='major',labelsize=14,color='#d3d3d3')
-ax.tick_params(axis='both',which='minor',color='#d3d3d3')
-ax.set_ylabel('Standardized Index',fontsize=16)
-ax.set_yticks(np.arange(-4,9,2))
-ax.set_ylim(bottom=-4)
-ax.grid(color='#d3d3d3', which='major', axis='y')
-
-fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.02), ncol=2, fontsize=14)
-fig.subplots_adjust(bottom=0.15)
-
-# Borders
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-ax.spines['left'].set_color('#d3d3d3')
-ax.spines['bottom'].set_color('#d3d3d3')
-
-plt.savefig('Figures/Manuscript Figures - June 2025/AppendixE2.jpg', bbox_inches='tight')
-plt.close()
-
-#%% Appendix E3: Compare Regulatory Uncertainty Index and Regulatory EPU Index
-x=monthlyIndex['date']
-y1=monthlyIndex['UncertaintyIndex_standardized']
-y3=monthlyIndex['BBD_REPU_standardized']
-
-# Correlation
-print('Correlation:',scipy.stats.pearsonr(y1,y3))
-
-fig, ax = plt.subplots(1, figsize=(16,10))
-ax.plot(x,y1,color=colors[0],label='Regulatory Uncertainty Index')
-ax.plot(x,y3,color=colors[1],label='Regulatory EPU Index of Baker et al. (2016)')
-
-# events
-ax.axvspan(datetime(1987,10,1),datetime(1987,11,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(1987,10,1), 2.2, 'Black\nMonday', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(1991,1,1),datetime(1991,2,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(1991,1,1), 4.5, 'Gulf\nWar I', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(1994,5,1),datetime(1994,6,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(1994,2,1), 2, 'GAO Proposal\nfor Derivative\nRegulations', fontsize=13, color=colors[4],horizontalalignment='left')
-
-ax.axvspan(datetime(2001,9,1),datetime(2001,10,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2001,9,1), 2, '9/11', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2003,3,1),datetime(2003,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2003,3,1), 1.5, 'Gulf\nWar II', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2008,9,1),datetime(2008,10,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2008,9,1), 4.2, 'Lehman\nBrothers', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,3,1),datetime(2010,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,3,1), 5.2, 'Obamacare', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,4,1),datetime(2010,5,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,4,1), 5.6, 'Deepwater Horizon\nOil Spill', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2010,7,1),datetime(2010,8,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2010,7,1), 6.5, 'Dodd-Frank', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2011,8,1),datetime(2011,9,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2011,9,1), 3.5, 'Debt\nCeiling\nDispute', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2016,11,1),datetime(2017,3,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2016,11,1),3.6, '2016 Presidential\nElection', fontsize=13, color=colors[4],horizontalalignment='center')
-
-ax.axvspan(datetime(2020,3,1),datetime(2020,4,1),alpha=0.5, color='#d3d3d3')
-ax.text(datetime(2020,1,1), 4.7, 'Coronavirus\nOutbreak', fontsize=13, color=colors[4],horizontalalignment='center')
-
-# format the ticks
-years = mdates.YearLocator(2)   # every year
-months = mdates.MonthLocator()  # every month
-years_fmt = mdates.DateFormatter('%Y-%m')
-
-ax.xaxis.set_major_locator(years)
-ax.xaxis.set_major_formatter(years_fmt)
-ax.xaxis.set_minor_locator(months)
-
-# round to nearest years.
-datemin = np.datetime64(monthlyIndex['date'].iloc[0], 'Y')
-datemax = np.datetime64(monthlyIndex['date'].iloc[-1], 'Y') + np.timedelta64(1, 'Y')
-ax.set_xlim(datemin, datemax)
-
-# format the coords message box
-ax.format_xdata = mdates.DateFormatter('%Y-%m')
-ax.format_ydata = lambda x: '$%1.2f' % x
-fig.autofmt_xdate()
-
-# Set tick and label format
-ax.tick_params(axis='both',which='major',labelsize=14,color='#d3d3d3')
-ax.tick_params(axis='both',which='minor',color='#d3d3d3')
-ax.set_ylabel('Standardized Index',fontsize=16)
-ax.set_yticks(np.arange(-4,9,2))
-ax.set_ylim(bottom=-4)
-ax.grid(color='#d3d3d3', which='major', axis='y')
-
-fig.legend(loc='lower center', bbox_to_anchor=(0.5, 0.02), ncol=2, fontsize=14)
-fig.subplots_adjust(bottom=0.15)
-
-# Borders
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-ax.spines['left'].set_color('#d3d3d3')
-ax.spines['bottom'].set_color('#d3d3d3')
-
-plt.savefig('Figures/Manuscript Figures - June 2025/AppendixE3.jpg', bbox_inches='tight')
 plt.close()
 
 #-----------------------------------------------------------------------------------------------------------------------
