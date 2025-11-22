@@ -3,41 +3,16 @@ import os
 import re
 import numpy as np
 from datetime import datetime
-import json
-from ast import literal_eval
 
 # Plotting Packages
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-import matplotlib.cbook as cbook
 from matplotlib.ticker import FuncFormatter
-import matplotlib.ticker as ticker
-
-import numpy as np
-from mpl_toolkits.axes_grid1.inset_locator import inset_axes
-from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
-from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 
 from matplotlib import rcParams
 rcParams['font.family'] = "Times New Roman"
-
-from arch.unitroot import ADF
-from arch.unitroot import PhillipsPerron
-from arch.unitroot import KPSS
-
-from statsmodels.tsa.stattools import grangercausalitytests
-
-#%%
-from wordcloud import WordCloud
-from PIL import Image
-
-from sklearn.decomposition import PCA
-import scipy.stats
-
-import spacy
-nlp = spacy.load("en_core_web_sm")
 
 #%%
 # Common variables
@@ -60,32 +35,27 @@ dict_area={'1': 'consumer safety and health',
     '13': 'housing, urban development, and social security',
     '14': 'international relations'}
 
-# %%
 # Set directory
-# directory=os.path.dirname(os.path.realpath(__file__))
-directory='code/visualization'
+directory=os.path.dirname(os.path.realpath(__file__))
+# directory='code/visualization/appendix_figures'
 
 # # Create an output directory if it does not exist
-output_folder=f'{directory}/../../figures/appendix_figures'
+output_folder=f'{directory}/../../../figures/appendix_figures'
 os.makedirs(output_folder, exist_ok=True)
 
+# Determine area classification name
+area='DominantDistinctArea'
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%-------------------------Categorical Regulatory Sentiment and Uncertainty Indexes------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 
-#%% Appendix O: Frequencies of Articles By Regulatory Area
+#%% Appendix Q: Frequencies of Articles By Regulatory Area
 areas=pd.DataFrame()
 areas['area_id']=list(dict_area.keys())
 areas['area_title']=list(dict_area.values())
 
-# Determine which human checking approach to use
-robust='TotalOccurrence'
-# Determine area classification name
-area='DominantDistinctArea'
-
-articles_area=pd.read_csv(f'{directory}/../../data/processed_data/RegArea_MonthlyArticleCountByNewspaper_'+robust+'Filter_Dec2021.csv')
-print(articles_area.info())
+articles_area=pd.read_csv(f'{directory}/../../../data/processed_data/article_counts_by_newspaper_and_area.csv')
 
 col_list=[]
 for i in range(1,15):
@@ -93,7 +63,6 @@ for i in range(1,15):
     col_list.append(new)
 
 monthlyArticleCountByArea=articles_area[['Year','Month']+col_list].groupby(['Year','Month']).agg('sum')
-print((monthlyArticleCountByArea.info()))
 
 totalArticleCountByArea=monthlyArticleCountByArea.sum(axis=0).reset_index().\
     rename(columns={'index':'area',0:'article_count'})
@@ -127,13 +96,13 @@ plt.close()
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Import categorical indexes
-sentiment_area=pd.read_csv(f'{directory}/../../data/processed_data/categorical_sentiment_indexes.csv')
+sentiment_area=pd.read_csv(f'{directory}/../../../data/processed_data/categorical_sentiment_indexes.csv')
 sentiment_area['Year']=sentiment_area['Year'].astype('int64')
 sentiment_area['Month']=sentiment_area['Month'].astype('int64')
 sentiment_area['year-month']=sentiment_area['Year'].map(str)+'-'+sentiment_area['Month'].map(str)
 sentiment_area['date']=sentiment_area['year-month'].astype('datetime64[ns]').dt.date
 
-#%% Appendix P1: Monthly Sentiment Index By Regulatory Policy Area
+#%% Appendix R1: Monthly Sentiment Index By Regulatory Policy Area
 x=sentiment_area['date']
 
 fig, axes = plt.subplots(5, 3, figsize=(50,45), sharex=False, sharey=False)
@@ -181,7 +150,7 @@ plt.subplots_adjust(wspace=0.1,hspace=0.2)
 plt.savefig(f'{output_folder}/AppendixR1.jpg', bbox_inches='tight')
 plt.close()
 
-#%% Appendix P2: Monthly Uncertainty Index By Regulatory Policy Area
+#%% Appendix R2: Monthly Uncertainty Index By Regulatory Policy Area
 x=sentiment_area['date']
 
 fig, axes = plt.subplots(5, 3, figsize=(50,45), sharex=False, sharey=False)
