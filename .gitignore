@@ -9,6 +9,7 @@ figures/
 !data/processed_data/aggregate_sentiment_indexes.csv
 !data/processed_data/categorical_sentiment_indexes.csv
 !data/processed_data/total_article_counts_by_newspaper.xlsx
+!data/processed_data/article_counts_by_newspaper_and_area.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
