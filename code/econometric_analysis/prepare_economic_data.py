@@ -180,11 +180,18 @@ regindex.loc[(regindex['month']>=4) & (regindex['month']<=6), 'quarter']=2
 regindex.loc[(regindex['month']>=7) & (regindex['month']<=9), 'quarter']=3
 regindex.loc[(regindex['month']>=10) & (regindex['month']<=12), 'quarter']=4
 
+# Add quarterly indexes
+quarterly=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes_quarterly.csv')
+quarterly=quarterly[['Year','quarter','LMindex','GIindex','LSDindex','UncertaintyIndex']].\
+        rename(columns={'Year':'year','LMindex':'lm_qr','GIindex':'gi_qr','LSDindex':'lsd_qr','UncertaintyIndex':'rpu_qr'})
+
+regindex=regindex.merge(quarterly,on=['year','quarter'],how='left')
+
 # Export
 regindex.to_stata(f'{directory}/../../data/processed_data/regindex.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
-#%% Categorical indexes
+#%% Categorical regulatory indexes
 regindex_area=pd.read_csv(f'{directory}/../../data/processed_data/categorical_sentiment_indexes.csv')
 
 area_range=15

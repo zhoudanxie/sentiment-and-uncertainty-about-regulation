@@ -1,0 +1,175 @@
+clear
+graph drop _all
+cap drop all
+
+*Basic data set-up
+use data/regindex,clear
+
+*Michigan consumer sentiment data - some robustness test data
+merge 1:1 year month using data/consumer_sentiment_data,keep(1 3) nogen
+ren Month mich
+
+***Merge in NIPA data
+merge m:1 year quarter using data/nipa,keep(1 3) nogen
+
+***Merge in Stock data
+merge m:1 year month using data/sp_500_data, keep(1 3) nogen
+
+***Merge in Macro data 
+merge m:1 year month using data/macro_data, keep(1 3) nogen
+replace vix=. if year<1990
+
+***Merge in BBD EPU 
+merge 1:1 year month using data/epu,keep(1 3) nogen
+
+***Merge in Shapiro sentiment
+merge 1:1 year month using data/newssent,keep(1 3) nogen
+
+***Merge in rule counts
+merge 1:1 year month using data/rulecounts,keep(1 3) nogen
+
+***Transform data
+gen lgdp=log(gdp)
+
+gen ym=year+(month-1)/12
+replace quarter=floor((month+2)/3) if quarter==.
+gen yq=year+(quarter-1)/4
+gen time=ym*12
+tsset time
+gen lemp=log(employment)
+gen lip=log(indus)
+gen lsp=log(sp)
+gen lvix=log(vix)
+gen lgross=log(gross)
+gen lfixed=log(fixed)
+
+ren sp sp
+ren fedfundsrate ffr
+
+ren RegRelevance rri
+ren UncertaintyIndex rpu
+ren GIindex gi
+ren LSDindex lsd
+ren LMindex lm
+ren SentimentPC1_standardized pc1
+sum rpu lm gi lsd
+
+*For Quarterly Collapse the Data
+// Use quarterly estimates
+replace rpu=rpu_qr
+replace lm=lm_qr
+replace gi=gi_qr
+replace lsd=lsd_qr
+
+// Collapse to quarterly means
+collapse rri rpu gi lsd lm epu newssent lsp ffr lemp lgdp lgross lfixed lip vix lvix year mich quarter,by(yq)
+gen time=4*yq
+tsset time
+gen ym=yq 
+
+* Choose impulse response horizon
+local hmax = 12
+
+* Define a shock
+sum rpu
+global ratio=r(sd)	//a positive std shock
+
+/* Generate LHS variables for the LPs */
+
+* levels
+forvalues h = 0/`hmax' {
+	gen lgdp_`h' = f`h'.lgdp 
+}
+
+forvalues h = 0/`hmax' {
+	gen lemp_`h' = f`h'.lemp 
+}
+
+forvalues h = 0/`hmax' {
+	gen lgross_`h' = f`h'.lgross 
+}
+ 
+/* Run the LPs */
+* Levels - lgdp
+eststo clear
+cap drop b u90 d90 u95 d95 Years Zero
+gen Years = _n-1 if _n<=`hmax'+1
+gen Zero =  0    if _n<=`hmax'+1
+gen b=0
+gen u90=0
+gen d90=0
+gen u95=0
+gen d95=0
+forv h = 0/`hmax' {
+	* levels
+	 reg lgdp_`h' l(0/3).rpu l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
+replace b = _b[rpu]*$ratio*100                    if _n == `h'+1
+replace u90 = (_b[rpu] + 1.645* _se[rpu])*$ratio*100  if _n == `h'+1
+replace d90 = (_b[rpu] - 1.645* _se[rpu])*$ratio*100  if _n == `h'+1
+replace u95 = (_b[rpu] + 1.96* _se[rpu])*$ratio*100  if _n == `h'+1
+replace d95 = (_b[rpu] - 1.96* _se[rpu])*$ratio*100  if _n == `h'+1
+eststo
+}
+
+preserve
+keep Years b u90 d90 u95 d95
+keep if Years!=.
+save "Local Projections/robustness/output/rpu_lgdp_quarterly.dta",replace
+restore
+
+* Levels - lemp
+eststo clear
+cap drop b u90 d90 u95 d95 Years Zero
+gen Years = _n-1 if _n<=`hmax'+1
+gen Zero =  0    if _n<=`hmax'+1
+gen b=0
+gen u90=0
+gen d90=0
+gen u95=0
+gen d95=0
+forv h = 0/`hmax' {
+	* levels
+	 reg lemp_`h' l(0/3).rpu l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
+replace b = _b[rpu]*$ratio*100                    if _n == `h'+1
+replace u90 = (_b[rpu] + 1.645* _se[rpu])*$ratio*100  if _n == `h'+1
+replace d90 = (_b[rpu] - 1.645* _se[rpu])*$ratio*100  if _n == `h'+1
+replace u95 = (_b[rpu] + 1.96* _se[rpu])*$ratio*100  if _n == `h'+1
+replace d95 = (_b[rpu] - 1.96* _se[rpu])*$ratio*100  if _n == `h'+1
+eststo
+}
+
+preserve
+keep Years b u90 d90 u95 d95
+keep if Years!=.
+save "Local Projections/robustness/output/rpu_lemp_quarterly.dta",replace
+restore
+
+* Levels - lgross
+eststo clear
+cap drop b u90 d90 u95 d95 Years Zero
+gen Years = _n-1 if _n<=`hmax'+1
+gen Zero =  0    if _n<=`hmax'+1
+gen b=0
+gen u90=0
+gen d90=0
+gen u95=0
+gen d95=0
+forv h = 0/`hmax' {
+	* levels
+	 reg lgross_`h' l(0/3).rpu l(0/3).lsp l(0/3).ffr l(0/3).lgross l(0/3).lgdp, vce(robust)
+replace b = _b[rpu]*$ratio*100                    if _n == `h'+1
+replace u90 = (_b[rpu] + 1.645* _se[rpu])*$ratio*100  if _n == `h'+1
+replace d90 = (_b[rpu] - 1.645* _se[rpu])*$ratio*100  if _n == `h'+1
+replace u95 = (_b[rpu] + 1.96* _se[rpu])*$ratio*100  if _n == `h'+1
+replace d95 = (_b[rpu] - 1.96* _se[rpu])*$ratio*100  if _n == `h'+1
+eststo
+}
+
+preserve
+keep Years b u90 d90 u95 d95
+keep if Years!=.
+save "Local Projections/robustness/output/rpu_lgross_quarterly.dta",replace
+restore
+
+ 
+/* THE END */
