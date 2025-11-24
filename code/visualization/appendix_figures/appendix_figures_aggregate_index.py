@@ -39,7 +39,6 @@ os.makedirs(output_folder, exist_ok=True)
 #-----------------------------------------------------------------------------------------------------------------------
 # Sentiment indexes
 monthlyIndex=pd.read_csv(f'{directory}/../../../data/processed_data/aggregate_sentiment_indexes.csv')
-print(monthlyIndex.info())
 
 monthlyIndex['Year-Month']=monthlyIndex['Year'].map(str)+'-'+monthlyIndex['Month'].map(str)
 monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
@@ -49,7 +48,6 @@ monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
 #-----------------------------------------------------------------------------------------------------------------------
 # Economic sentiment (Shapiro et al.)
 newssent=pd.read_excel(f'{directory}/../../../data/raw_data/Shapiro_news_sentiment_data.xlsx', sheet_name='Data')
-print(newssent.info())
 
 newssent['Year']=newssent['date'].dt.year
 newssent['Month']=newssent['date'].dt.month
@@ -59,7 +57,6 @@ monthlyIndex=monthlyIndex.merge(newssent_monthly,on=['Year','Month'],how='left')
 
 # Original BBD EPU
 BBD_EPU=pd.read_excel(f'{directory}/../../../data/raw_data/EPU_BBD.xlsx')
-print(BBD_EPU.info())
 BBD_EPU=BBD_EPU[BBD_EPU['News_Based_Policy_Uncert_Index'].notnull()]
 
 BBD_EPU['Year']=BBD_EPU['Year'].astype(int)
@@ -68,7 +65,6 @@ monthlyIndex=monthlyIndex.merge(BBD_EPU,on=['Year','Month'],how='left')
 
 # Original BBD REPU
 BBD_REPU=pd.read_excel(f'{directory}/../../../data/raw_data/Categorical_EPU_Data_BBD.xlsx')
-print(BBD_REPU.info())
 BBD_REPU=BBD_REPU[BBD_REPU['8. Regulation'].notnull()]
 BBD_REPU['Year']=BBD_REPU['Date'].astype('datetime64[ns]').dt.year
 BBD_REPU['Month']=BBD_REPU['Date'].astype('datetime64[ns]').dt.month
@@ -82,8 +78,6 @@ def standardize(data_series):
 monthlyIndex['EconomicSentiment_standardized']=standardize(monthlyIndex['News Sentiment'])
 monthlyIndex['BBD_EPU_standardized']=standardize(monthlyIndex['News_Based_Policy_Uncert_Index'])
 monthlyIndex['BBD_REPU_standardized']=standardize(monthlyIndex['8. Regulation'])
-
-print(monthlyIndex.info())
 
 #%% Appendix E1: Compare Regulatory Sentiment Index and Economic Sentiment Index
 x=monthlyIndex['date']
@@ -399,7 +393,7 @@ def pp_test(var):
 # KPSS test (H0: stationary)
 def kpss_test(var):
     x=monthlyIndex[var]
-    kpss = KPSS(x,trend="ct")
+    kpss = KPSS(x,trend="ct",lags=-1)
     print('Results of KPSS Test for '+var)
     print("Test statistic:",'{0:0.6f}'.format(kpss.stat))
     print('p-value:','{0:0.6f}'.format(kpss.pvalue))
