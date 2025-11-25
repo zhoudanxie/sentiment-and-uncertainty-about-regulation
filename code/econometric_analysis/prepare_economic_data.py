@@ -9,6 +9,7 @@ import os
 # %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
+output_folder=f'{directory}/../../data/processed_data/data_for_analysis'
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% S&P 500
@@ -21,7 +22,7 @@ sp500['month']=sp500['Date'].dt.month
 sp500=sp500.rename(columns={' Close':'sp500'})
 sp500_monthly=sp500[['year','month','sp500']].groupby(['year','month']).agg('mean').reset_index()
 
-sp500_monthly.to_stata(f'{directory}/../../data/processed_data/sp_500_data.dta',write_index=False)
+sp500_monthly.to_stata(f'{output_folder}/sp_500_data.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Macro data
@@ -95,7 +96,7 @@ macro_data.loc[(macro_data['month']>=7) & (macro_data['month']<=9), 'quarter']=3
 macro_data.loc[(macro_data['month']>=10) & (macro_data['month']<=12), 'quarter']=4
 macro_data=macro_data.merge(gdpc,on=['year','quarter'],how='outer').reset_index(drop=True)
 
-macro_data.to_stata(f'{directory}/../../data/processed_data/macro_data.dta',write_index=False)
+macro_data.to_stata(f'{output_folder}/macro_data.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% NIPA
@@ -127,14 +128,14 @@ fixedinvest=fixedinvest[['year','quarter','fixedinvestment']]
 
 nipa=grossinvest.merge(fixedinvest,on=['year','quarter'],how='outer').reset_index(drop=True)
 
-nipa.to_stata(f'{directory}/../../data/processed_data/nipa.dta',write_index=False)
+nipa.to_stata(f'{output_folder}/nipa.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Michigan consumer sentiment
 michsent=pd.read_csv(f'{directory}/../../data/raw_data/MICHSENT.csv',skiprows=1)
 michsent=michsent[['Month','Year','Index']].rename(columns={'Month':'month','Year':'year','Index':'MonthlyMichiganIndexofConsume'})
 
-michsent.to_stata(f'{directory}/../../data/processed_data/consumer_sentiment_data.dta',write_index=False)
+michsent.to_stata(f'{output_folder}/consumer_sentiment_data.dta',write_index=False)
 
 #%% BBD EPU
 epu=pd.read_excel(f'{directory}/../../data/raw_data/EPU_BBD.xlsx')
@@ -145,7 +146,7 @@ epu['year']=epu['year'].astype('int64')
 epu['month']=epu['month'].astype('int64')
 epu=epu[['year','month','epu']]
 
-epu.to_stata(f'{directory}/../../data/processed_data/epu.dta',write_index=False)
+epu.to_stata(f'{output_folder}/epu.dta',write_index=False)
 
 #%% Shapiro news sentiment
 newssent=pd.read_excel(f'{directory}/../../data/raw_data/Shapiro_news_sentiment_data.xlsx', sheet_name='Data')
@@ -155,7 +156,7 @@ newssent['month']=newssent['date'].dt.month
 newssent_monthly=newssent[['year','month','News Sentiment']].groupby(['year','month']).agg('mean').reset_index()
 newssent_monthly=newssent_monthly.rename(columns={'News Sentiment':'newssent'})
 
-newssent_monthly.to_stata(f'{directory}/../../data/processed_data/newssent.dta',write_index=False)
+newssent_monthly.to_stata(f'{output_folder}/newssent.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Aggregate regulatory indexes
@@ -188,7 +189,7 @@ quarterly=quarterly[['Year','quarter','LMindex','GIindex','LSDindex','Uncertaint
 regindex=regindex.merge(quarterly,on=['year','quarter'],how='left')
 
 # Export
-regindex.to_stata(f'{directory}/../../data/processed_data/regindex.dta',write_index=False)
+regindex.to_stata(f'{output_folder}/regindex.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Categorical regulatory indexes
@@ -207,7 +208,7 @@ regindex_area.loc[(regindex_area['month']>=4) & (regindex_area['month']<=6), 'qu
 regindex_area.loc[(regindex_area['month']>=7) & (regindex_area['month']<=9), 'quarter']=3
 regindex_area.loc[(regindex_area['month']>=10) & (regindex_area['month']<=12), 'quarter']=4
 
-regindex_area.to_stata(f'{directory}/../../data/processed_data/regindex_area.dta',write_index=False)
+regindex_area.to_stata(f'{output_folder}/regindex_area.dta',write_index=False)
 
 #%% Create an output folder for saving econometric results
 output_folder=f'{directory}/../../output'
