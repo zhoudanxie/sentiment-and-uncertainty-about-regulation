@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------------------------------------------------
-#----------------------------------------Paper Figures, November 7, 2022 Draft------------------------------------------
+#------------------------------------------------------Main Paper Figures-----------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 import pandas as pd
 import os
@@ -10,9 +10,6 @@ from datetime import datetime
 # Plotting Packages
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-import matplotlib.cbook as cbook
-from matplotlib.ticker import FuncFormatter
-import matplotlib.ticker as ticker
 
 from matplotlib import rcParams
 rcParams['font.family'] = "Times New Roman"

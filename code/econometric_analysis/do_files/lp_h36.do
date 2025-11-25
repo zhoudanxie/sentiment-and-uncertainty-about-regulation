@@ -3,27 +3,24 @@ graph drop _all
 cap drop all
 
 *Basic data set-up
-use data/processed_data/regindex_area,clear
-
-***Specify index of interest
-gen index=$index
+use data/processed_data/data_for_analysis/regindex,clear
 
 *Michigan consumer sentiment data - some robustness test data
-merge 1:1 year month using data/processed_data/consumer_sentiment_data,keep(1 3) nogen
+merge 1:1 year month using data/processed_data/data_for_analysis/consumer_sentiment_data,keep(1 3) nogen
 ren Month mich
 
 ***Merge in Stock data
-merge m:1 year month using data/processed_data/sp_500_data, keep(1 3) nogen
+merge m:1 year month using data/processed_data/data_for_analysis/sp_500_data, keep(1 3) nogen
 
 ***Merge in Macro data 
-merge m:1 year month using data/processed_data/macro_data, keep(1 3) nogen
+merge m:1 year month using data/processed_data/data_for_analysis/macro_data, keep(1 3) nogen
 replace vix=. if year<1990
 
 ***Merge in BBD EPU 
-merge 1:1 year month using data/processed_data/epu,keep(1 3) nogen
+merge 1:1 year month using data/processed_data/data_for_analysis/epu,keep(1 3) nogen
 
 ***Merge in Shapiro sentiment
-merge 1:1 year month using data/processed_data/newssent,keep(1 3) nogen
+merge 1:1 year month using data/processed_data/data_for_analysis/newssent,keep(1 3) nogen
 
 ***Transform data
 gen lgdp=log(gdp)
@@ -41,18 +38,34 @@ gen lvix=log(vix)
 ren sp sp
 ren fedfundsrate ffr
 
+ren RegRelevance rri
+ren UncertaintyIndex rpu
+ren GIIndex gi
+ren LSDIndex lsd
+ren LMIndex lm
+ren SentimentPC1_standardized pc
+sum rpu lm gi lsd
+
+***Specify index of interest
+gen index=$index
+
 *For monthly, output is industrial production
 replace lgdp=lip
 
 * Choose impulse response horizon
-local hmax = 12
+local hmax = 36
 
 * Define a shock
 sum index
-global ratio=-r(sd)
+if "$index" == "rpu" {
+    global ratio = r(sd)	//a positive std shock for uncertainty index
+}
+else {
+    global ratio = -r(sd)	//a negative std shock for sentiment index
+}
 
 * Select lags
-varsoc index lsp ffr lemp lgdp, maxlag(10)
+varsoc index lsp ffr lemp lgdp, maxlag(12)
 
 /* Generate LHS variables for the LPs */
 
@@ -78,7 +91,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 qui reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp , vce(robust)
+	 reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp , vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -90,7 +103,7 @@ eststo
 preserve
 keep Years b u90 d90 u95 d95
 keep if Years!=.
-save "output/${index}_lgdp.dta",replace
+save "output/${index}_lgdp_h36.dta",replace
 restore
 
 * Levels - lemp
@@ -105,7 +118,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 qui reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
+	 reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -117,7 +130,7 @@ eststo
 preserve
 keep Years b u90 d90 u95 d95
 keep if Years!=.
-save "output/${index}_lemp.dta",replace
+save "output/${index}_lemp_h36.dta",replace
 restore
  
 /* THE END */
