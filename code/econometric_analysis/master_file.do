@@ -48,3 +48,8 @@ foreach sent of local sent_list {
 	global index="`sent'"
 	do "code/econometric_analysis/do_files/lp_control"
 }
+
+***Interaction
+global index="lm"
+do "code/econometric_analysis/do_files/lp_sent_interaction"
+do "code/econometric_analysis/do_files/lp_rpu_interaction"
