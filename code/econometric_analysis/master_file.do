@@ -41,3 +41,10 @@ foreach sent of local sent_list {
 global months=1
 do "code/econometric_analysis/do_files/var_lm"
 do "code/econometric_analysis/do_files/var_rpu"
+
+***Controlling for other sentiment/uncertainty measures
+local sent_list lm rpu
+foreach sent of local sent_list {
+	global index="`sent'"
+	do "code/econometric_analysis/do_files/lp_control"
+}
