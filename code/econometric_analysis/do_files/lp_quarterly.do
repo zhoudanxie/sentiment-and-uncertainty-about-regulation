@@ -3,27 +3,27 @@ graph drop _all
 cap drop all
 
 *Basic data set-up
-use data/processed_data/regindex,clear
+use data/processed_data/data_for_analysis/regindex,clear
 
 *Michigan consumer sentiment data - some robustness test data
-merge 1:1 year month using data/processed_data/consumer_sentiment_data,keep(1 3) nogen
+merge 1:1 year month using data/processed_data/data_for_analysis/consumer_sentiment_data,keep(1 3) nogen
 ren Month mich
 
 ***Merge in NIPA data
-merge m:1 year quarter using data/processed_data/nipa,keep(1 3) nogen
+merge m:1 year quarter using data/processed_data/data_for_analysis/nipa,keep(1 3) nogen
 
 ***Merge in Stock data
-merge m:1 year month using data/processed_data/sp_500_data, keep(1 3) nogen
+merge m:1 year month using data/processed_data/data_for_analysis/sp_500_data, keep(1 3) nogen
 
 ***Merge in Macro data 
-merge m:1 year month using data/processed_data/macro_data, keep(1 3) nogen
+merge m:1 year month using data/processed_data/data_for_analysis/macro_data, keep(1 3) nogen
 replace vix=. if year<1990
 
 ***Merge in BBD EPU 
-merge 1:1 year month using data/processed_data/epu,keep(1 3) nogen
+merge 1:1 year month using data/processed_data/data_for_analysis/epu,keep(1 3) nogen
 
 ***Merge in Shapiro sentiment
-merge 1:1 year month using data/processed_data/newssent,keep(1 3) nogen
+merge 1:1 year month using data/processed_data/data_for_analysis/newssent,keep(1 3) nogen
 
 ***Transform data
 gen lgdp=log(gdp)
@@ -42,14 +42,6 @@ gen lfixed=log(fixed)
 
 ren sp sp
 ren fedfundsrate ffr
-
-ren RegRelevance rri
-ren UncertaintyIndex rpu
-ren GIIndex gi
-ren LSDIndex lsd
-ren LMIndex lm
-ren SentimentPC1_standardized pc1
-sum rpu lm gi lsd
 
 *For Quarterly Collapse the Data
 // Use quarterly estimates
@@ -72,10 +64,12 @@ local hmax = 12
 
 * Define a shock
 sum index
-global ratio=-r(sd)	//a negative std shock
-
-* Select lags
-varsoc index lsp ffr lemp lgdp, maxlag(10)
+if "$index" == "rpu" {
+    global ratio = r(sd)	//a positive std shock for uncertainty index
+}
+else {
+    global ratio = -r(sd)	//a negative std shock for sentiment index
+}
 
 /* Generate LHS variables for the LPs */
 
