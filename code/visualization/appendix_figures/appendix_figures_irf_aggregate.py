@@ -264,14 +264,14 @@ ylabels=['Industrial Production Response, %','Employment Response, %']
 titles=['Industrial Production', 'Employment']
 
 # IRF - LM
-lm_irf=pd.read_stata(f'{directory}/../../../output/irf_lm.dta')
+lm_irf=pd.read_stata(f'{directory}/../../../output/var_lm.dta')
 print(lm_irf.info())
 
 lm_irf=lm_irf[lm_irf['step']<=steps]
 lm_irf_baseline=lm_irf[lm_irf['irfname']=='baseline'].reset_index(drop=True)
 
 # IRF - RPU
-rpu_irf=pd.read_stata(f'{directory}/../../../output/irf_rpu.dta')
+rpu_irf=pd.read_stata(f'{directory}/../../../output/var_rpu.dta')
 print(rpu_irf.info())
 
 rpu_irf=rpu_irf[rpu_irf['step']<=steps]
