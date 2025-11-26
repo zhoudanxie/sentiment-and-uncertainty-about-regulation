@@ -1,45 +1,12 @@
 import pandas as pd
 import os
-import re
 import numpy as np
-from datetime import datetime
-import json
-from ast import literal_eval
 
 # Plotting Packages
-import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import matplotlib.cbook as cbook
-from matplotlib.ticker import FuncFormatter
-import matplotlib.ticker as ticker
-
-import numpy as np
-from mpl_toolkits.axes_grid1.inset_locator import inset_axes
-from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
-from mpl_toolkits.axes_grid1.inset_locator import mark_inset
-
 from matplotlib import rcParams
 rcParams['font.family'] = "Times New Roman"
 
-from arch.unitroot import ADF
-from arch.unitroot import PhillipsPerron
-from arch.unitroot import KPSS
-
-from statsmodels.tsa.stattools import grangercausalitytests
-
-#%%
-from wordcloud import WordCloud
-from PIL import Image
-
-from sklearn.decomposition import PCA
-import scipy.stats
-
-import spacy
-nlp = spacy.load("en_core_web_sm")
-
-#%%
 # Common variables
 colors=['#033C5A','#AA9868','#0190DB','#FFC72C','#A75523','#008364','#78BE20','#C9102F',
         '#033C5A','#AA9868','#0190DB','#FFC72C','#A75523','#008364','#78BE20','#C9102F']
@@ -60,27 +27,23 @@ dict_area={'1': 'consumer safety and health',
     '13': 'housing, urban development, and social security',
     '14': 'international relations'}
 
-# %%
 # Set directory
-# directory=os.path.dirname(os.path.realpath(__file__))
-directory='code/visualization'
+directory=os.path.dirname(os.path.realpath(__file__))
 
 # # Create an output directory if it does not exist
-output_folder=f'{directory}/../../figures/appendix_figures'
+output_folder=f'{directory}/../../../figures/appendix_figures'
 os.makedirs(output_folder, exist_ok=True)
 
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%----------------------------Impulse Responses to Categorical Shocks (Local Projections)------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
-areas=pd.DataFrame()
-areas['area_id']=list(dict_area.keys())
-areas['area_title']=list(dict_area.values())
+# areas=pd.DataFrame()
+# areas['area_id']=list(dict_area.keys())
+# areas['area_title']=list(dict_area.values())
 
-# Determine which human checking approach to use
-robust='TotalOccurrence'
 # Determine area classification name
-area='DominantDistinctArea'
+# area='DominantDistinctArea'
 
 # Set number of steps for IRF
 steps=12
@@ -92,12 +55,12 @@ titles=['Industrial Production', 'Employment']
 irf_lm_area=pd.DataFrame()
 irf_lm_area['step']=range(0,steps+1)
 for i in range(1, area_range):
-    new=pd.read_stata('Analysis/Local Projections/output/lm_dda'+str(i)+'_lgdp_'+robust.lower()+'.dta')
+    new=pd.read_stata(f'{directory}/../../../output/lm_dda'+str(i)+'_lgdp.dta')
     new=new.rename(columns={'Years':'step','b':'lgdp_'+str(i),'u90':'llgdp90_'+str(i),'d90':'hlgdp90_'+str(i),
                             'u95':'llgdp95_'+str(i),'d95':'hlgdp95_'+str(i)})
     irf_lm_area=irf_lm_area.merge(new,on='step',how='outer')
 
-    new=pd.read_stata('Analysis/Local Projections/output/lm_dda'+str(i)+'_lemp_'+robust.lower()+'.dta')
+    new=pd.read_stata(f'{directory}/../../../output/lm_dda'+str(i)+'_lemp.dta')
     new=new.rename(columns={'Years':'step','b':'lemp_'+str(i),'u90':'llemp90_'+str(i),'d90':'hlemp90_'+str(i),
                             'u95':'llemp95_'+str(i),'d95':'hlemp95_'+str(i)})
     irf_lm_area=irf_lm_area.merge(new,on='step',how='outer')
@@ -106,12 +69,12 @@ for i in range(1, area_range):
 irf_rpu_area=pd.DataFrame()
 irf_rpu_area['step']=range(0,steps+1)
 for i in range(1, area_range):
-    new=pd.read_stata('Analysis/Local Projections/output/rpu_dda'+str(i)+'_lgdp_'+robust.lower()+'.dta')
+    new=pd.read_stata(f'{directory}/../../../output/rpu_dda'+str(i)+'_lgdp.dta')
     new=new.rename(columns={'Years':'step','b':'lgdp_'+str(i),'u90':'llgdp90_'+str(i),'d90':'hlgdp90_'+str(i),
                             'u95':'llgdp95_'+str(i),'d95':'hlgdp95_'+str(i)})
     irf_rpu_area=irf_rpu_area.merge(new,on='step',how='outer')
 
-    new=pd.read_stata('Analysis/Local Projections/output/rpu_dda'+str(i)+'_lemp_'+robust.lower()+'.dta')
+    new=pd.read_stata(f'{directory}/../../../output/rpu_dda'+str(i)+'_lemp.dta')
     new=new.rename(columns={'Years':'step','b':'lemp_'+str(i),'u90':'llemp90_'+str(i),'d90':'hlemp90_'+str(i),
                             'u95':'llemp95_'+str(i),'d95':'hlemp95_'+str(i)})
     irf_rpu_area=irf_rpu_area.merge(new,on='step',how='outer')
