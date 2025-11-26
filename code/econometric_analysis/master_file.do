@@ -53,3 +53,11 @@ foreach sent of local sent_list {
 global index="lm"
 do "code/econometric_analysis/do_files/lp_sent_interaction"
 do "code/econometric_analysis/do_files/lp_rpu_interaction"
+
+***Removing deregulation articles
+local sent_list lm rpu
+foreach sent of local sent_list {
+	global index="`sent'"
+	do "code/econometric_analysis/do_files/lp_nodereg"
+}
+

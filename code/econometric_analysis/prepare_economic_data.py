@@ -183,13 +183,22 @@ regindex.loc[(regindex['month']>=10) & (regindex['month']<=12), 'quarter']=4
 
 # Add quarterly indexes
 quarterly=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes_quarterly.csv')
-quarterly=quarterly[['Year','quarter','LMindex','GIindex','LSDindex','UncertaintyIndex']].\
-        rename(columns={'Year':'year','LMindex':'lm_qr','GIindex':'gi_qr','LSDindex':'lsd_qr','UncertaintyIndex':'rpu_qr'})
+quarterly=quarterly[['Year','quarter','LMIndex','GIIndex','LSDIndex','UncertaintyIndex']].\
+        rename(columns={'Year':'year','LMIndex':'lm_qr','GIIndex':'gi_qr',
+                        'LSDIndex':'lsd_qr','UncertaintyIndex':'rpu_qr'})
 
 regindex=regindex.merge(quarterly,on=['year','quarter'],how='left')
 
 # Export
 regindex.to_stata(f'{output_folder}/regindex.dta',write_index=False)
+
+#-----------------------------------------------------------------------------------------------------------------------
+#%% Aggregate regulatory indexes with deregulation articles removed
+regindex_dereg=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes_nodereg.csv')
+regindex_dereg=regindex_dereg.rename(columns={'Year':'year','Month':'month'})
+
+# Export
+regindex_dereg.to_stata(f'{output_folder}/regindex_nodereg.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Categorical regulatory indexes
