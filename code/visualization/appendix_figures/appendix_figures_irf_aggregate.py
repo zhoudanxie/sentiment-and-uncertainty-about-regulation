@@ -683,4 +683,4 @@ plt.savefig(f'{output_folder}/AppendixM.jpg', bbox_inches='tight')
 plt.close()
 
 #%% End
-print(f"All main figures are saved in the {output_folder} folder.")
+print(f"All appendix figures are saved in the {output_folder} folder.")
