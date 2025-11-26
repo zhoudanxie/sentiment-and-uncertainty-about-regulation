@@ -16,7 +16,6 @@ rcParams['font.family'] = "Times New Roman"
 
 import scipy.stats
 
-#%%
 # Common variables
 colors=['#033C5A','#AA9868','#0190DB','#FFC72C','#A75523','#008364','#78BE20','#C9102F',
         '#033C5A','#AA9868','#0190DB','#FFC72C','#A75523','#008364','#78BE20','#C9102F']
@@ -37,7 +36,6 @@ dict_area={'1': 'consumer safety and health',
     '13': 'housing, urban development, and social security',
     '14': 'international relations'}
 
-# %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
 
@@ -716,4 +714,5 @@ plt.subplots_adjust(hspace=0.5)
 plt.savefig(f'{output_folder}/Figure6.jpg', bbox_inches='tight')
 plt.close()
 
+#%% End
 print(f"All main figures are saved in the {output_folder} folder.")
