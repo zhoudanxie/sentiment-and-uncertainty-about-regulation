@@ -31,7 +31,7 @@ dict_area={'1': 'consumer safety and health',
 directory=os.path.dirname(os.path.realpath(__file__))
 
 # # Create an output directory if it does not exist
-output_folder=f'{directory}/../../../figures/appendix_figures'
+output_folder=f'{directory}/../../figures/appendix_figures'
 os.makedirs(output_folder, exist_ok=True)
 
 
@@ -55,12 +55,12 @@ titles=['Industrial Production', 'Employment']
 irf_lm_area=pd.DataFrame()
 irf_lm_area['step']=range(0,steps+1)
 for i in range(1, area_range):
-    new=pd.read_stata(f'{directory}/../../../output/lm_dda'+str(i)+'_lgdp.dta')
+    new=pd.read_stata(f'{directory}/../../output/lm_dda'+str(i)+'_lgdp.dta')
     new=new.rename(columns={'Years':'step','b':'lgdp_'+str(i),'u90':'llgdp90_'+str(i),'d90':'hlgdp90_'+str(i),
                             'u95':'llgdp95_'+str(i),'d95':'hlgdp95_'+str(i)})
     irf_lm_area=irf_lm_area.merge(new,on='step',how='outer')
 
-    new=pd.read_stata(f'{directory}/../../../output/lm_dda'+str(i)+'_lemp.dta')
+    new=pd.read_stata(f'{directory}/../../output/lm_dda'+str(i)+'_lemp.dta')
     new=new.rename(columns={'Years':'step','b':'lemp_'+str(i),'u90':'llemp90_'+str(i),'d90':'hlemp90_'+str(i),
                             'u95':'llemp95_'+str(i),'d95':'hlemp95_'+str(i)})
     irf_lm_area=irf_lm_area.merge(new,on='step',how='outer')
@@ -69,12 +69,12 @@ for i in range(1, area_range):
 irf_rpu_area=pd.DataFrame()
 irf_rpu_area['step']=range(0,steps+1)
 for i in range(1, area_range):
-    new=pd.read_stata(f'{directory}/../../../output/rpu_dda'+str(i)+'_lgdp.dta')
+    new=pd.read_stata(f'{directory}/../../output/rpu_dda'+str(i)+'_lgdp.dta')
     new=new.rename(columns={'Years':'step','b':'lgdp_'+str(i),'u90':'llgdp90_'+str(i),'d90':'hlgdp90_'+str(i),
                             'u95':'llgdp95_'+str(i),'d95':'hlgdp95_'+str(i)})
     irf_rpu_area=irf_rpu_area.merge(new,on='step',how='outer')
 
-    new=pd.read_stata(f'{directory}/../../../output/rpu_dda'+str(i)+'_lemp.dta')
+    new=pd.read_stata(f'{directory}/../../output/rpu_dda'+str(i)+'_lemp.dta')
     new=new.rename(columns={'Years':'step','b':'lemp_'+str(i),'u90':'llemp90_'+str(i),'d90':'hlemp90_'+str(i),
                             'u95':'llemp95_'+str(i),'d95':'hlemp95_'+str(i)})
     irf_rpu_area=irf_rpu_area.merge(new,on='step',how='outer')

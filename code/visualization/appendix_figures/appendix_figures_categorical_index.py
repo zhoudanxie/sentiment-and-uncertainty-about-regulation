@@ -35,7 +35,7 @@ dict_area={'1': 'consumer safety and health',
 directory=os.path.dirname(os.path.realpath(__file__))
 
 # # Create an output directory if it does not exist
-output_folder=f'{directory}/../../../figures/appendix_figures'
+output_folder=f'{directory}/../../figures/appendix_figures'
 os.makedirs(output_folder, exist_ok=True)
 
 # Determine area classification name
@@ -50,7 +50,7 @@ areas=pd.DataFrame()
 areas['area_id']=list(dict_area.keys())
 areas['area_title']=list(dict_area.values())
 
-articles_area=pd.read_csv(f'{directory}/../../../data/processed_data/article_counts_by_newspaper_and_area.csv')
+articles_area=pd.read_csv(f'{directory}/../../data/processed_data/article_counts_by_newspaper_and_area.csv')
 
 col_list=[]
 for i in range(1,15):
@@ -91,7 +91,7 @@ plt.close()
 
 #-----------------------------------------------------------------------------------------------------------------------
 # Import categorical indexes
-sentiment_area=pd.read_csv(f'{directory}/../../../data/processed_data/categorical_sentiment_indexes.csv')
+sentiment_area=pd.read_csv(f'{directory}/../../data/processed_data/categorical_sentiment_indexes.csv')
 sentiment_area['Year']=sentiment_area['Year'].astype('int64')
 sentiment_area['Month']=sentiment_area['Month'].astype('int64')
 sentiment_area['year-month']=sentiment_area['Year'].map(str)+'-'+sentiment_area['Month'].map(str)

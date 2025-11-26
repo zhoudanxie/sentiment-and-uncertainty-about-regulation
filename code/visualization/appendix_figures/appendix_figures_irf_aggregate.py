@@ -18,23 +18,23 @@ colors=['#033C5A','#AA9868','#0190DB','#FFC72C','#A75523','#008364','#78BE20','#
 directory=os.path.dirname(os.path.realpath(__file__))
 
 # # Create an output directory if it does not exist
-output_folder=f'{directory}/../../../figures/appendix_figures'
+output_folder=f'{directory}/../../figures/appendix_figures'
 os.makedirs(output_folder, exist_ok=True)
 
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%--------------------------Impulse Responses to Aggregate Shocks (Local Projections)----------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
-lm_lgdp=pd.read_stata(f'{directory}/../../../output/lm_lgdp.dta')
-lm_lemp=pd.read_stata(f'{directory}/../../../output/lm_lemp.dta')
-gi_lgdp=pd.read_stata(f'{directory}/../../../output/gi_lgdp.dta')
-gi_lemp=pd.read_stata(f'{directory}/../../../output/gi_lemp.dta')
-lsd_lgdp=pd.read_stata(f'{directory}/../../../output/lsd_lgdp.dta')
-lsd_lemp=pd.read_stata(f'{directory}/../../../output/lsd_lemp.dta')
-pc_lgdp=pd.read_stata(f'{directory}/../../../output/pc_lgdp.dta')
-pc_lemp=pd.read_stata(f'{directory}/../../../output/pc_lemp.dta')
-rpu_lgdp=pd.read_stata(f'{directory}/../../../output/rpu_lgdp.dta')
-rpu_lemp=pd.read_stata(f'{directory}/../../../output/rpu_lemp.dta')
+lm_lgdp=pd.read_stata(f'{directory}/../../output/lm_lgdp.dta')
+lm_lemp=pd.read_stata(f'{directory}/../../output/lm_lemp.dta')
+gi_lgdp=pd.read_stata(f'{directory}/../../output/gi_lgdp.dta')
+gi_lemp=pd.read_stata(f'{directory}/../../output/gi_lemp.dta')
+lsd_lgdp=pd.read_stata(f'{directory}/../../output/lsd_lgdp.dta')
+lsd_lemp=pd.read_stata(f'{directory}/../../output/lsd_lemp.dta')
+pc_lgdp=pd.read_stata(f'{directory}/../../output/pc_lgdp.dta')
+pc_lemp=pd.read_stata(f'{directory}/../../output/pc_lemp.dta')
+rpu_lgdp=pd.read_stata(f'{directory}/../../output/rpu_lgdp.dta')
+rpu_lemp=pd.read_stata(f'{directory}/../../output/rpu_lemp.dta')
 
 # Define a function for subplots
 def ax_plot(y1, y2, y3, y4, y5, title, ylabel, ymin=-1, ymax=0.4, ystep=0.2):
@@ -150,7 +150,7 @@ steps=12
 irf_gdp=pd.DataFrame()
 irf_gdp['step']=range(0,steps+1)
 for index in vars:
-    new=pd.read_stata(f'{directory}/../../../output/'+index+'_lgdp_quarterly.dta')
+    new=pd.read_stata(f'{directory}/../../output/'+index+'_lgdp_quarterly.dta')
     new=new.rename(columns={'Years':'step','b':'lgdp_'+index,'u90':'llgdp_'+index,'d90':'hlgdp_'+index,'u95':'llgdp95_'+index,'d95':'hlgdp95_'+index})
     irf_gdp=irf_gdp.merge(new,on='step').reset_index(drop=True)
 
@@ -185,7 +185,7 @@ steps=12
 irf_investment=pd.DataFrame()
 irf_investment['step']=range(0,steps+1)
 for index in vars:
-    new=pd.read_stata(f'{directory}/../../../output/'+index+'_lgross_quarterly.dta')
+    new=pd.read_stata(f'{directory}/../../output/'+index+'_lgross_quarterly.dta')
     new=new.rename(columns={'Years':'step','b':'lgross_'+index,'u90':'llgross_'+index,'d90':'hlgross_'+index,'u95':'llgross95_'+index,'d95':'hlgross95_'+index})
     irf_investment=irf_investment.merge(new,on='step').reset_index(drop=True)
 
@@ -227,13 +227,13 @@ ylabels=['Industrial Production Response, %','Employment Response, %']
 titles=['Industrial Production', 'Employment']
 
 # IRF - LM
-lm_irf=pd.read_stata(f'{directory}/../../../output/var_lm.dta')
+lm_irf=pd.read_stata(f'{directory}/../../output/var_lm.dta')
 
 lm_irf=lm_irf[lm_irf['step']<=steps]
 lm_irf_baseline=lm_irf[lm_irf['irfname']=='baseline'].reset_index(drop=True)
 
 # IRF - RPU
-rpu_irf=pd.read_stata(f'{directory}/../../../output/var_rpu.dta')
+rpu_irf=pd.read_stata(f'{directory}/../../output/var_rpu.dta')
 
 rpu_irf=rpu_irf[rpu_irf['step']<=steps]
 rpu_irf_baseline=rpu_irf[rpu_irf['irfname']=='baseline'].reset_index(drop=True)
@@ -352,11 +352,11 @@ plt.close()
 #-----------------------------------------------------------------------------------------------------------------------
 #%%------------------Impulse Responses to Aggregate Shocks (Local Projections, Longer Horizon)----------------------
 #-----------------------------------------------------------------------------------------------------------------------
-lm_lgdp=pd.read_stata(f'{directory}/../../../output/lm_lgdp_h36.dta')
-lm_lemp=pd.read_stata(f'{directory}/../../../output/lm_lemp_h36.dta')
+lm_lgdp=pd.read_stata(f'{directory}/../../output/lm_lgdp_h36.dta')
+lm_lemp=pd.read_stata(f'{directory}/../../output/lm_lemp_h36.dta')
 
-rpu_lgdp=pd.read_stata(f'{directory}/../../../output/rpu_lgdp_h36.dta')
-rpu_lemp=pd.read_stata(f'{directory}/../../../output/rpu_lemp_h36.dta')
+rpu_lgdp=pd.read_stata(f'{directory}/../../output/rpu_lgdp_h36.dta')
+rpu_lemp=pd.read_stata(f'{directory}/../../output/rpu_lemp_h36.dta')
 
 # Impulse Responses to a Regulatory Sentiment or Uncertainty Shock
 vars=['lgdp','lemp']
@@ -420,7 +420,7 @@ controls=['mich','newssent','vix','epu']
 irf_gdp = pd.DataFrame()
 irf_gdp['step'] = range(0, steps + 1)
 for c in controls:
-    new = pd.read_stata(f'{directory}/../../../output/lm_lgdp_'+c+'.dta')
+    new = pd.read_stata(f'{directory}/../../output/lm_lgdp_'+c+'.dta')
     new = new.rename(
         columns={'Years': 'step', 'b': 'lgdp_' + c, 'u90': 'llgdp_' + c, 'd90': 'hlgdp_' + c,
                  'u95': 'llgdp95_' + c, 'd95': 'hlgdp95_' + c})
@@ -429,7 +429,7 @@ for c in controls:
 irf_emp = pd.DataFrame()
 irf_emp['step'] = range(0, steps + 1)
 for c in controls:
-    new = pd.read_stata(f'{directory}/../../../output/lm_lemp_'+c+'.dta')
+    new = pd.read_stata(f'{directory}/../../output/lm_lemp_'+c+'.dta')
     new = new.rename(
         columns={'Years': 'step', 'b': 'lemp_' + c, 'u90': 'llemp_' + c, 'd90': 'hlemp_' + c,
                  'u95': 'llemp95_' + c, 'd95': 'hlemp95_' + c})
@@ -466,7 +466,7 @@ controls=['mich','newssent','vix','epu']
 irf_gdp = pd.DataFrame()
 irf_gdp['step'] = range(0, steps + 1)
 for c in controls:
-    new = pd.read_stata(f'{directory}/../../../output/rpu_lgdp_'+c+'.dta')
+    new = pd.read_stata(f'{directory}/../../output/rpu_lgdp_'+c+'.dta')
     new = new.rename(
         columns={'Years': 'step', 'b': 'lgdp_' + c, 'u90': 'llgdp_' + c, 'd90': 'hlgdp_' + c,
                  'u95': 'llgdp95_' + c, 'd95': 'hlgdp95_' + c})
@@ -475,7 +475,7 @@ for c in controls:
 irf_emp = pd.DataFrame()
 irf_emp['step'] = range(0, steps + 1)
 for c in controls:
-    new = pd.read_stata(f'{directory}/../../../output/rpu_lemp_'+c+'.dta')
+    new = pd.read_stata(f'{directory}/../../output/rpu_lemp_'+c+'.dta')
     new = new.rename(
         columns={'Years': 'step', 'b': 'lemp_' + c, 'u90': 'llemp_' + c, 'd90': 'hlemp_' + c,
                  'u95': 'llemp95_' + c, 'd95': 'hlemp95_' + c})
@@ -520,7 +520,7 @@ steps=12
 lm_irf = pd.DataFrame()
 lm_irf['step'] = range(0, steps + 1)
 for v in vars:
-    new = pd.read_stata(f'{directory}/../../../output/lm_'+v+'_interaction.dta')
+    new = pd.read_stata(f'{directory}/../../output/lm_'+v+'_interaction.dta')
     new = new.rename(columns={'Years': 'step'})
     for c in [c for c in new.columns if c!='step']:
         new=new.rename(columns={c:c+'_'+v})
@@ -529,7 +529,7 @@ for v in vars:
 rpu_irf = pd.DataFrame()
 rpu_irf['step'] = range(0, steps + 1)
 for v in vars:
-    new = pd.read_stata(f'{directory}/../../../output/rpu_'+v+'_interaction.dta')
+    new = pd.read_stata(f'{directory}/../../output/rpu_'+v+'_interaction.dta')
     new = new.rename(columns={'Years': 'step'})
     for c in [c for c in new.columns if c!='step']:
         new=new.rename(columns={c:c+'_'+v})
@@ -616,12 +616,12 @@ steps=12
 lm_irf = pd.DataFrame()
 lm_irf['step'] = range(0, steps + 1)
 for v in vars:
-    new = pd.read_stata(f'{directory}/../../../output/lm_'+v+'.dta')
+    new = pd.read_stata(f'{directory}/../../output/lm_'+v+'.dta')
     new = new.rename(
         columns={'Years': 'step', 'b': v, 'u90': 'l'+v, 'd90': 'h' + v,
                  'u95': 'l' + v+'95', 'd95': 'h' + v+'95'})
     lm_irf = lm_irf.merge(new, on='step').reset_index(drop=True)
-    new = pd.read_stata(f'{directory}/../../../output/lm_'+v+'_nodereg.dta')
+    new = pd.read_stata(f'{directory}/../../output/lm_'+v+'_nodereg.dta')
     new = new.rename(
         columns={'Years': 'step', 'b': v+'_nodereg', 'u90': 'l'+v+'_nodereg', 'd90': 'h' + v+'_nodereg',
                  'u95': 'l' + v+'95_nodereg', 'd95': 'h' + v+'95_nodereg'})
@@ -630,12 +630,12 @@ for v in vars:
 rpu_irf = pd.DataFrame()
 rpu_irf['step'] = range(0, steps + 1)
 for v in vars:
-    new = pd.read_stata(f'{directory}/../../../output/rpu_'+v+'.dta')
+    new = pd.read_stata(f'{directory}/../../output/rpu_'+v+'.dta')
     new = new.rename(
         columns={'Years': 'step', 'b': v, 'u90': 'l'+v, 'd90': 'h' + v,
                  'u95': 'l' + v+'95', 'd95': 'h' + v+'95'})
     rpu_irf = rpu_irf.merge(new, on='step').reset_index(drop=True)
-    new = pd.read_stata(f'{directory}/../../../output/rpu_'+v+'_nodereg.dta')
+    new = pd.read_stata(f'{directory}/../../output/rpu_'+v+'_nodereg.dta')
     new = new.rename(
         columns={'Years': 'step', 'b': v+'_nodereg', 'u90': 'l'+v+'_nodereg', 'd90': 'h' + v+'_nodereg',
                  'u95': 'l' + v+'95_nodereg', 'd95': 'h' + v+'95_nodereg'})

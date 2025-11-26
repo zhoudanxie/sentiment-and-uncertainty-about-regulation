@@ -25,14 +25,14 @@ colors=['#033C5A','#AA9868','#0190DB','#FFC72C','#A75523','#008364','#78BE20','#
 directory=os.path.dirname(os.path.realpath(__file__))
 
 # # Create an output directory if it does not exist
-output_folder=f'{directory}/../../../figures/appendix_figures'
+output_folder=f'{directory}/../../figures/appendix_figures'
 os.makedirs(output_folder, exist_ok=True)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%----------------------------Aggregate Regulatory Sentiment and Uncertainty Indexes-----------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 # Sentiment indexes
-monthlyIndex=pd.read_csv(f'{directory}/../../../data/processed_data/aggregate_sentiment_indexes.csv')
+monthlyIndex=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes.csv')
 
 monthlyIndex['Year-Month']=monthlyIndex['Year'].map(str)+'-'+monthlyIndex['Month'].map(str)
 monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
@@ -41,7 +41,7 @@ monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
 #%%-----------------------------------Compare Regulatory Indexes with Other Indexes-------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 # Economic sentiment (Shapiro et al.)
-newssent=pd.read_excel(f'{directory}/../../../data/raw_data/Shapiro_news_sentiment_data.xlsx', sheet_name='Data')
+newssent=pd.read_excel(f'{directory}/../../data/raw_data/Shapiro_news_sentiment_data.xlsx', sheet_name='Data')
 
 newssent['Year']=newssent['date'].dt.year
 newssent['Month']=newssent['date'].dt.month
@@ -50,7 +50,7 @@ newssent_monthly=newssent[['Year','Month','News Sentiment']].groupby(['Year','Mo
 monthlyIndex=monthlyIndex.merge(newssent_monthly,on=['Year','Month'],how='left')
 
 # Original BBD EPU
-BBD_EPU=pd.read_excel(f'{directory}/../../../data/raw_data/EPU_BBD.xlsx')
+BBD_EPU=pd.read_excel(f'{directory}/../../data/raw_data/EPU_BBD.xlsx')
 BBD_EPU=BBD_EPU[BBD_EPU['News_Based_Policy_Uncert_Index'].notnull()]
 
 BBD_EPU['Year']=BBD_EPU['Year'].astype(int)
@@ -58,7 +58,7 @@ BBD_EPU['Month']=BBD_EPU['Month'].astype(int)
 monthlyIndex=monthlyIndex.merge(BBD_EPU,on=['Year','Month'],how='left')
 
 # Original BBD REPU
-BBD_REPU=pd.read_excel(f'{directory}/../../../data/raw_data/Categorical_EPU_Data_BBD.xlsx')
+BBD_REPU=pd.read_excel(f'{directory}/../../data/raw_data/Categorical_EPU_Data_BBD.xlsx')
 BBD_REPU=BBD_REPU[BBD_REPU['8. Regulation'].notnull()]
 BBD_REPU['Year']=BBD_REPU['Date'].astype('datetime64[ns]').dt.year
 BBD_REPU['Month']=BBD_REPU['Date'].astype('datetime64[ns]').dt.month
