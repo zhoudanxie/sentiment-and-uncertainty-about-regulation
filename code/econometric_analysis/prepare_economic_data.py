@@ -1,15 +1,15 @@
 import pandas as pd
 import datetime
-from datetime import timedelta
 import numpy as np
-import re
-import pickle
 import os
 
 # %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
+
+# Create an output directory if it does not exist
 output_folder=f'{directory}/../../data/processed_data/data_for_analysis'
+os.makedirs(output_folder, exist_ok=True)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% S&P 500
