@@ -3,15 +3,10 @@
 #-----------------------------------------------------------------------------------------------------------------------
 import pandas as pd
 import os
-import re
 import numpy as np
-from datetime import datetime
 
 # Plotting Packages
 import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import matplotlib.ticker as ticker
-
 from matplotlib import rcParams
 rcParams['font.family'] = "Times New Roman"
 

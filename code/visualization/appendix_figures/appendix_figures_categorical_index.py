@@ -1,12 +1,9 @@
 import pandas as pd
 import os
-import re
 import numpy as np
 from datetime import datetime
 
 # Plotting Packages
-import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from matplotlib.ticker import FuncFormatter
@@ -14,7 +11,6 @@ from matplotlib.ticker import FuncFormatter
 from matplotlib import rcParams
 rcParams['font.family'] = "Times New Roman"
 
-#%%
 # Common variables
 colors=['#033C5A','#AA9868','#0190DB','#FFC72C','#A75523','#008364','#78BE20','#C9102F',
         '#033C5A','#AA9868','#0190DB','#FFC72C','#A75523','#008364','#78BE20','#C9102F']
@@ -37,7 +33,6 @@ dict_area={'1': 'consumer safety and health',
 
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
-# directory='code/visualization/appendix_figures'
 
 # # Create an output directory if it does not exist
 output_folder=f'{directory}/../../../figures/appendix_figures'
