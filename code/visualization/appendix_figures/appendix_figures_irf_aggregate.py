@@ -681,6 +681,3 @@ plt.subplots_adjust(hspace=0.7)
 
 plt.savefig(f'{output_folder}/AppendixM.jpg', bbox_inches='tight')
 plt.close()
-
-#%% End
-print(f"All appendix figures are saved in the {output_folder} folder.")
