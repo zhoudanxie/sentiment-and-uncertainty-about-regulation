@@ -11,12 +11,15 @@ from ast import literal_eval
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
 
+# Set output directory
+output_folder=f'{directory}/../../data/raw_data/text_sample_data/sample_output'
+
 # %% [markdown]
 # ## 1. Import Regulatory Sections and Noun Chunks with Areas
 
 # %%
 # Noun chunks with areas
-nounchunks_area=pd.read_csv(f'{directory}/supplementary_data/DictionaryOfRegulatoryNounChunks.csv')
+nounchunks_area=pd.read_csv(f'{directory}/../../data/raw_data/supplementary_data/DictionaryOfRegulatoryNounChunks.csv')
 
 # Convert to dictionary
 nounchunks_area=nounchunks_area[nounchunks_area['area_no']>0].set_index('noun_chunks')
@@ -24,7 +27,7 @@ nounchunks_area_dict=nounchunks_area.to_dict()['area']
 
 # %%
 # Regulatory sections with matched noun chunks
-df_regSentsExpand=pd.read_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
+df_regSentsExpand=pd.read_pickle(f'{output_folder}/sentiment_scores.pkl')
 
 # Refine to reg relevant articles
 df_regSentsExpandRelevant=df_regSentsExpand[df_regSentsExpand['RegRelevance']==1].reset_index(drop=True)
@@ -88,7 +91,7 @@ for i in range(1,area_range):
 
 # %%
 # Save data
-df_regSentsExpandRelevant.to_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
+df_regSentsExpandRelevant.to_pickle(f'{output_folder}/sentiment_scores.pkl')
 
 # %% [markdown]
 # ## 4. Monthly article counts by area
@@ -119,12 +122,12 @@ monthlyAreaCount=df_regSentsExpandRelevant[['Newspaper','Year','Month']+col_list
 
 # %%
 # Save data
-monthlyAreaCount.to_csv(f'{directory}/sample_data/sample_output/RegArea_MonthlyArticleCountByNewspaper.csv',index=False)
+monthlyAreaCount.to_csv(f'{output_folder}/RegArea_MonthlyArticleCountByNewspaper.csv',index=False)
 
 # %% [markdown]
 # ## 5. Filtered Noun Chunk Occurences by Area
 # Filtered noun chunk occurences across regulation-related articles
-df_nounchunk_occurrences=pd.read_csv(f'{directory}/sample_data/sample_output/RegSections_FilteredNounChunkOccurrences.csv')
+df_nounchunk_occurrences=pd.read_csv(f'{output_folder}/RegSections_FilteredNounChunkOccurrences.csv')
 
 # %%
 # Filtered noun chunks across regulation-related articles by area
@@ -139,7 +142,7 @@ for i in range(1,15):
 
 # %%
 # Save data
-df_nounchunk_occurrences.to_csv(f'{directory}/sample_data/sample_output/RegArea_FilteredNounChunkOccurrences.csv',index=False)
+df_nounchunk_occurrences.to_csv(f'{output_folder}/RegArea_FilteredNounChunkOccurrences.csv',index=False)
 
 
 

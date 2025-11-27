@@ -12,9 +12,12 @@ nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
 
+# Set output directory
+output_folder=f'{directory}/../../data/raw_data/text_sample_data/sample_output'
+
 # %%
 # Import regulatory sections
-df=pd.read_pickle(f'{directory}/sample_data/sample_output/reg_sections.pkl')
+df=pd.read_pickle(f'{output_folder}/reg_sections.pkl')
 
 # %%
 # Negation words
@@ -53,7 +56,7 @@ def lemmatizer(text):
 
 # %%
 # LM dictionary
-LMlist=pd.read_csv(f'{directory}/supplementary_data/LoughranMcDonald_SentimentList.csv')
+LMlist=pd.read_csv(f'{directory}/../../data/raw_data/supplementary_data/LoughranMcDonald_SentimentList.csv')
 
 # %%
 # LM uncertainty dictionary
@@ -230,9 +233,9 @@ df['LMnegWords']=LMnegativeWords
 
 # %%
 # Harvard GI sentiment dictionary
-with open(f"{directory}/supplementary_data/GIposWords.txt", "rb") as fp:   # Unpickling
+with open(f"{directory}/../../data/raw_data/supplementary_data/GIposWords.txt", "rb") as fp:   # Unpickling
     GIposWords = pickle.load(fp)
-with open(f"{directory}/supplementary_data/GInegWords.txt", "rb") as fp:   # Unpickling
+with open(f"{directory}/../../data/raw_data/supplementary_data/GInegWords.txt", "rb") as fp:   # Unpickling
     GInegWords = pickle.load(fp)
 
 # %%
@@ -265,7 +268,7 @@ df['GInegWords']=GInegativeWords
 
 # %%
 # Lexicoder Sentiment Dictionary (LSD)
-LSDlist=pd.read_csv(f'{directory}/supplementary_data/LSDsentimentWords_wStar.csv')
+LSDlist=pd.read_csv(f'{directory}/../../data/raw_data/supplementary_data/LSDsentimentWords_wStar.csv')
 
 # %%
 LSDneg=LSDlist[LSDlist['LSDnegative'].notnull()]['LSDnegative'].tolist()
@@ -415,7 +418,7 @@ for dic in ['GI','LSD','LM']:
 
 # %%
 # Export data
-df.to_pickle(f'{directory}/sample_data/sample_output/sentiment_scores.pkl')
+df.to_pickle(f'{output_folder}/sentiment_scores.pkl')
 
 
 

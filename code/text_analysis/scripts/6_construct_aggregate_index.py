@@ -10,12 +10,14 @@ import scipy.stats
 # %%
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
-output_folder='data/processed_data'
+
+# Set output directory
+output_folder=f'{directory}/../../data/processed_data'
 
 # %%
 # Import data
 # Sentiment score data
-df=pd.read_csv(f'{directory}/../../data/processed_data/sentiment_scores.csv')
+df=pd.read_csv(f'{output_folder}/sentiment_scores.csv')
 
 # %%
 # Change variable types
@@ -111,7 +113,7 @@ print('LSDstandardized & GIstandardized',
 
 # %%
 # Export indexes
-sentimentIndex.to_csv(f'{directory}/../../{output_folder}/aggregate_sentiment_indexes.csv',index=False)
+sentimentIndex.to_csv(f'{output_folder}/aggregate_sentiment_indexes.csv',index=False)
 print(f'Aggregate sentiment indexes are saved in the {output_folder} folder.')
 
 #%%
@@ -124,7 +126,7 @@ df_monthly=df_monthly.sort_values(['Newspaper','Year','Month']).reset_index(drop
 
 #%%
 # Total news article counts by publication
-df_all=pd.read_excel(f'{directory}/../../data/processed_data/total_article_counts_by_newspaper.xlsx')
+df_all=pd.read_excel(f'{output_folder}/total_article_counts_by_newspaper.xlsx')
 
 # Total article counts by newspaper
 df_all=df_all.groupby(['Year','Month','Newspaper']).agg({'Count':'sum'}).reset_index()
@@ -164,7 +166,7 @@ df_index['RegRelevance']=calulate_index('RegRelevantCount','Count')
 
 #%%
 # Export index
-df_index.drop('Z',axis=1).to_csv(f'{directory}/../../{output_folder}/news_attention_index.csv',index=False)
+df_index.drop('Z',axis=1).to_csv(f'{output_folder}/news_attention_index.csv',index=False)
 print(f'Index of news attention to regulation is saved in the {output_folder} folder.')
 
 

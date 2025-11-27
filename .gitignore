@@ -1,6 +1,6 @@
 # Ignore processed data and output
-code/text_analysis/sample_data/sample_output/
-data/processed_data/data_for_analysis
+data/raw_data/text_sample_data/sample_output/
+data/processed_data/data_for_analysis/
 output/
 figures/
 

@@ -13,6 +13,9 @@ nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
 
+# Set output directory
+output_folder=f'{directory}/../../data/raw_data/text_sample_data/sample_output'
+
 # %% [markdown]
 # ## 3.1 Match regulatory noun chunks
 
@@ -26,14 +29,14 @@ def my_preprocessor(text):
 
 # %%
 # Use the dictionary of regulatory noun chunks
-df_nounchunks=pd.read_csv(f'{directory}/supplementary_data/DictionaryOfRegulatoryNounChunks.csv')
+df_nounchunks=pd.read_csv(f'{directory}/../../data/raw_data/supplementary_data/DictionaryOfRegulatoryNounChunks.csv')
 
 nounchunks=df_nounchunks['noun_chunks'].tolist()
 print('Number of regulatory noun chunks:', len(nounchunks),nounchunks[0:20])
 
 # %%
 # Import expanded reg sentences
-df_regSentsExpand=pd.read_pickle(f'{directory}/sample_data/sample_output/reg_sections.pkl')
+df_regSentsExpand=pd.read_pickle(f'{output_folder}/reg_sections.pkl')
 # print(df_regSentsExpand.info())
 
 # %%
@@ -76,7 +79,7 @@ df_regSentsExpand['NounChunkMatchWordsFiltered']=nounchunk_match_words
 print('# of reg relevant articles:',df_regSentsExpand[df_regSentsExpand['NounChunkMatchFiltered']>0]['ID'].nunique())
 
 # %%
-df_regSentsExpand.to_pickle(f'{directory}/sample_data/sample_output/reg_sections.pkl')
+df_regSentsExpand.to_pickle(f'{output_folder}/reg_sections.pkl')
 
 # %% [markdown]
 # ## 3.2 Noun Chunk Occurences acorss Regulation-related Articles
@@ -103,4 +106,4 @@ df_MatchWords=df_MatchWords.sort_values('Occurences',ascending=False).reset_inde
 
 # %%
 # Export noun chunk occurences
-df_MatchWords.to_csv(f'{directory}/sample_data/sample_output/RegSections_FilteredNounChunkOccurrences.csv',index=False)
+df_MatchWords.to_csv(f'{output_folder}/RegSections_FilteredNounChunkOccurrences.csv',index=False)

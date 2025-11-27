@@ -23,12 +23,20 @@ nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
 
+# Set output directory
+output_folder=f'{directory}/../../data/raw_data/text_sample_data/sample_output'
+# If folder exists, delete it
+if os.path.exists(output_folder):
+    shutil.rmtree(output_folder)
+# Create output folder
+os.makedirs(output_folder)
+
 # %% [markdown]
 # ## 1. Parse XML
 
 # %%
 # Import updated data
-filePath=f'{directory}/sample_data/'
+filePath=f'{directory}/../../data/raw_data/text_sample_data/'
 files=[]
 for file in os.listdir(filePath):
     if file.endswith(".xml"):
@@ -290,15 +298,6 @@ for title in df_nodup.sort_values('Newspaper')['Newspaper'].unique():
 
 # %%
 # Save cleaned data
-output_folder=f'{directory}/sample_data/sample_output'
-# If folder exists, delete it
-if os.path.exists(output_folder):
-    shutil.rmtree(output_folder)
-
-# Create output folder
-os.makedirs(output_folder)
-
-# Export output
 df_nodup.to_pickle(f'{output_folder}/parsed_xml.pkl')
 
 

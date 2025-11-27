@@ -11,8 +11,11 @@ from spacy.lang.en import English
 # Set directory
 directory=os.path.dirname(os.path.realpath(__file__))
 
+# Set output directory
+output_folder=f'{directory}/../../data/raw_data/text_sample_data/sample_output'
+
 # %%
-df=pd.read_pickle(f'{directory}/sample_data/sample_output/parsed_xml.pkl')
+df=pd.read_pickle(f'{output_folder}/parsed_xml.pkl')
 
 # %%
 # Function to remove multiple spaces
@@ -70,7 +73,7 @@ print('# of articles with no "*regulat*" in full text:',df[df['RegSectionLength'
 df=df.sort_values(['Newspaper','StartDate','Title']).reset_index(drop=True)
 
 # Export data
-df.drop(['TextLemmatized','Text'],axis=1).to_pickle(f'{directory}/sample_data/sample_output/reg_sections.pkl')
+df.drop(['TextLemmatized','Text'],axis=1).to_pickle(f'{output_folder}/reg_sections.pkl')
 
 
 
