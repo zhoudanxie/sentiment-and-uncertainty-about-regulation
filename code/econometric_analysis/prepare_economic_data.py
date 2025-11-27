@@ -13,7 +13,7 @@ os.makedirs(output_folder, exist_ok=True)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% S&P 500
-sp500=pd.read_csv(f'{directory}/../../data/raw_data/S&P500.csv')
+sp500=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/S&P500.csv')
 
 sp500['Date']=sp500['Date'].astype('datetime64[ns]')
 sp500['year']=sp500['Date'].dt.year
@@ -27,7 +27,7 @@ sp500_monthly.to_stata(f'{output_folder}/sp_500_data.dta',write_index=False)
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Macro data
 # Industrial production
-indus_prod=pd.read_csv(f'{directory}/../../data/raw_data/INDPRO.csv')
+indus_prod=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/INDPRO.csv')
 
 indus_prod['DATE']=indus_prod['DATE'].astype('datetime64[ns]')
 indus_prod['year']=indus_prod['DATE'].dt.year
@@ -36,7 +36,7 @@ indus_prod=indus_prod.rename(columns={'INDPRO':'indus_prod'})
 indus_prod=indus_prod[['year','month','indus_prod']]
 
 # Federal funds rate
-fedfunds=pd.read_csv(f'{directory}/../../data/raw_data/FEDFUNDS.csv')
+fedfunds=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/FEDFUNDS.csv')
 
 fedfunds['DATE']=fedfunds['DATE'].astype('datetime64[ns]')
 fedfunds['year']=fedfunds['DATE'].dt.year
@@ -45,7 +45,7 @@ fedfunds=fedfunds.rename(columns={'FEDFUNDS':'fedfundsrate'})
 fedfunds=fedfunds[['year','month','fedfundsrate']]
 
 # Employment
-employment=pd.read_csv(f'{directory}/../../data/raw_data/PAYEMS.csv')
+employment=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/PAYEMS.csv')
 
 employment['DATE']=employment['DATE'].astype('datetime64[ns]')
 employment['year']=employment['DATE'].dt.year
@@ -54,7 +54,7 @@ employment=employment.rename(columns={'PAYEMS':'employment'})
 employment=employment[['year','month','employment']]
 
 # Real GDP
-gdpc=pd.read_csv(f'{directory}/../../data/raw_data/GDPC1.csv')
+gdpc=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/GDPC1.csv')
 
 gdpc['DATE']=gdpc['DATE'].astype('datetime64[ns]')
 gdpc['year']=gdpc['DATE'].dt.year
@@ -67,14 +67,14 @@ gdpc=gdpc.rename(columns={'GDPC1':'gdp'})
 gdpc=gdpc[['year','quarter','gdp']]
 
 # VIX
-vix=pd.read_csv(f'{directory}/../../data/raw_data/VIX1990-2021.csv')
+vix=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/VIX1990-2021.csv')
 vix['Date']=vix['DATE'].astype('datetime64[ns]')
 vix['year']=vix['Date'].dt.year
 vix['month']=vix['Date'].dt.month
 vix_monthly=vix[['year','month','CLOSE']].groupby(['year','month']).agg('mean').reset_index()
 vix_monthly=vix_monthly.rename(columns={'CLOSE':'vix'})
 
-vxo1=pd.read_excel(f'{directory}/../../data/raw_data/VXO1986-2003.xls',skiprows=2)
+vxo1=pd.read_excel(f'{directory}/../../data/raw_data/economic_data/VXO1986-2003.xls',skiprows=2)
 vxo1.loc[vxo1['Close']=='32.50  1.01','Close']=32.5     # Correct a data error
 vxo1['Close']=vxo1['Close'].astype('float64')
 
@@ -101,7 +101,7 @@ macro_data.to_stata(f'{output_folder}/macro_data.dta',write_index=False)
 #-----------------------------------------------------------------------------------------------------------------------
 #%% NIPA
 # Real Gross Private Domestic Investment
-grossinvest=pd.read_csv(f'{directory}/../../data/raw_data/GPDIC1.csv')
+grossinvest=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/GPDIC1.csv')
 
 grossinvest['DATE']=grossinvest['DATE'].astype('datetime64[ns]')
 grossinvest['year']=grossinvest['DATE'].dt.year
@@ -114,7 +114,7 @@ grossinvest=grossinvest.rename(columns={'GPDIC1':'grossinvestment'})
 grossinvest=grossinvest[['year','quarter','grossinvestment']]
 
 # Real Gross Fixed Capital Formation
-fixedinvest=pd.read_csv(f'{directory}/../../data/raw_data/USAGFCFQDSNAQ.csv')
+fixedinvest=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/USAGFCFQDSNAQ.csv')
 
 fixedinvest['DATE']=fixedinvest['DATE'].astype('datetime64[ns]')
 fixedinvest['year']=fixedinvest['DATE'].dt.year
@@ -132,13 +132,13 @@ nipa.to_stata(f'{output_folder}/nipa.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Michigan consumer sentiment
-michsent=pd.read_csv(f'{directory}/../../data/raw_data/MICHSENT.csv',skiprows=1)
+michsent=pd.read_csv(f'{directory}/../../data/raw_data/economic_data/MICHSENT.csv',skiprows=1)
 michsent=michsent[['Month','Year','Index']].rename(columns={'Month':'month','Year':'year','Index':'MonthlyMichiganIndexofConsume'})
 
 michsent.to_stata(f'{output_folder}/consumer_sentiment_data.dta',write_index=False)
 
 #%% BBD EPU
-epu=pd.read_excel(f'{directory}/../../data/raw_data/EPU_BBD.xlsx')
+epu=pd.read_excel(f'{directory}/../../data/raw_data/economic_data/EPU_BBD.xlsx')
 
 epu=epu[epu['Month'].notnull()]
 epu=epu.rename(columns={'Year':'year','Month':'month','News_Based_Policy_Uncert_Index':'epu'})
@@ -149,7 +149,7 @@ epu=epu[['year','month','epu']]
 epu.to_stata(f'{output_folder}/epu.dta',write_index=False)
 
 #%% Shapiro news sentiment
-newssent=pd.read_excel(f'{directory}/../../data/raw_data/Shapiro_news_sentiment_data.xlsx', sheet_name='Data')
+newssent=pd.read_excel(f'{directory}/../../data/raw_data/economic_data/Shapiro_news_sentiment_data.xlsx', sheet_name='Data')
 
 newssent['year']=newssent['date'].dt.year
 newssent['month']=newssent['date'].dt.month
