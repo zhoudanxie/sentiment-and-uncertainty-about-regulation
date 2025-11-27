@@ -29,7 +29,7 @@ def my_preprocessor(text):
 
 # %%
 # Use the dictionary of regulatory noun chunks
-df_nounchunks=pd.read_csv(f'{directory}/../../data/raw_data/supplementary_data/DictionaryOfRegulatoryNounChunks.csv')
+df_nounchunks=pd.read_csv(f'{directory}/../../data/processed_data/dictionary_of_regulatory_noun_chunks.csv')
 
 nounchunks=df_nounchunks['noun_chunks'].tolist()
 print('Number of regulatory noun chunks:', len(nounchunks),nounchunks[0:20])

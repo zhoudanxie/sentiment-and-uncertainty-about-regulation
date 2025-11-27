@@ -19,7 +19,7 @@ output_folder=f'{directory}/../../data/raw_data/text_sample_data/sample_output'
 
 # %%
 # Noun chunks with areas
-nounchunks_area=pd.read_csv(f'{directory}/../../data/raw_data/supplementary_data/DictionaryOfRegulatoryNounChunks.csv')
+nounchunks_area=pd.read_csv(f'{directory}/../../data/processed_data/dictionary_of_regulatory_noun_chunks.csv')
 
 # Convert to dictionary
 nounchunks_area=nounchunks_area[nounchunks_area['area_no']>0].set_index('noun_chunks')

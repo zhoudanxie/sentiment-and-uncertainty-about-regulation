@@ -56,7 +56,7 @@ def lemmatizer(text):
 
 # %%
 # LM dictionary
-LMlist=pd.read_csv(f'{directory}/../../data/raw_data/supplementary_data/LoughranMcDonald_SentimentList.csv')
+LMlist=pd.read_csv(f'{directory}/../../data/raw_data/LoughranMcDonald_SentimentList.csv')
 
 # %%
 # LM uncertainty dictionary
@@ -233,9 +233,9 @@ df['LMnegWords']=LMnegativeWords
 
 # %%
 # Harvard GI sentiment dictionary
-with open(f"{directory}/../../data/raw_data/supplementary_data/GIposWords.txt", "rb") as fp:   # Unpickling
+with open(f"{directory}/../../data/raw_data/GIposWords.txt", "rb") as fp:   # Unpickling
     GIposWords = pickle.load(fp)
-with open(f"{directory}/../../data/raw_data/supplementary_data/GInegWords.txt", "rb") as fp:   # Unpickling
+with open(f"{directory}/../../data/raw_data/GInegWords.txt", "rb") as fp:   # Unpickling
     GInegWords = pickle.load(fp)
 
 # %%
@@ -268,7 +268,7 @@ df['GInegWords']=GInegativeWords
 
 # %%
 # Lexicoder Sentiment Dictionary (LSD)
-LSDlist=pd.read_csv(f'{directory}/../../data/raw_data/supplementary_data/LSDsentimentWords_wStar.csv')
+LSDlist=pd.read_csv(f'{directory}/../../data/raw_data/LSDsentimentWords_wStar.csv')
 
 # %%
 LSDneg=LSDlist[LSDlist['LSDnegative'].notnull()]['LSDnegative'].tolist()
