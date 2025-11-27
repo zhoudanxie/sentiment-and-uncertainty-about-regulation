@@ -31,9 +31,9 @@ Other economic data were obtained from publicly available data sources. See deta
 
 The `data` directory contains two folders:
 
-- `data/raw_data`: contains data obtained from publicly available sources.
-  - `data/raw_data/text_sample_data`: contains XML files for 10 sample news articles and their metadata obtained from ProQuest.
-- `data/processed_data`: contains data generated from the raw data or collected manually from external sources.
+- `raw_data`: contains data obtained from publicly available sources.
+  - `raw_data/text_sample_data`: contains XML files for 10 sample news articles and their metadata obtained from ProQuest.
+- `processed_data`: contains data generated from the raw data or collected manually from external sources.
 
 **Table D1.1** lists all raw data files and sources. **Table D1.2** lists all processed data files and the name of the script that generated the data.
 
@@ -42,9 +42,9 @@ The `data` directory contains two folders:
 ## Programs and Code
 
 The `code` directory contains three folders:
-- `code/text_analysis`: contains Python code for text analysis that estimates the regulatory sentiment and uncertainty indexes.
-- `code/econometric_analysis`: contains Python code for preparing data for econometric analysis and Stata code for implementing econometric analysis.
-- `code/visualization`: contains Python code for creating main and appendix figures in the paper.
+- `text_analysis`: contains Python code for text analysis that estimates the regulatory sentiment and uncertainty indexes.
+- `econometric_analysis`: contains Python code for preparing data for econometric analysis and Stata code for implementing econometric analysis.
+- `visualization`: contains Python code for creating main and appendix figures in the paper.
 
 ---
 
