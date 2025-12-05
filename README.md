@@ -37,6 +37,28 @@ The `data` directory contains two folders:
 
 **Table D1.1** lists all raw data files and sources. **Table D1.2** lists all processed data files and the name of the script that generated the data.
 
+### Table D1.1: Raw Data and Sources (`data/raw_data`)
+
+| Data Name                                            | File Name | Source                                                  |
+|------------------------------------------------------|--------------------|---------------------------------------------------------|
+| Sample news article text data                        | All XML files in `text_sample_data` | ProQuest (2022)                                         |
+| Sample news article meta data                        | `text_sample_data/metadata.csv` | ProQuest (2022)                                         |
+| Loughran and McDonald (LM) dictionary (2018 version) | `LoughranMcDonald_SentimentList.csv` | Loughran and McDonald (2011)                            |
+| Lexicoder Sentiment Dictionary （LSD）                 | `LSDsentimentWords_wStar.csv` | Young and Soroka (2012)                                 |
+| Harvard General Inquirer (GI) dictionary             | `GIposWords.txt` and `GInegWords.txt` | Stone et al. (1966)                                     |
+| S&P 500 index                                        | `S&P500.csv` | S&P Dow Jones Indices LLC (2022)                        |
+| Federal funds effective rate                         | `FEDFUNDS.csv` | Board of Governors of the Federal Reserve System (2022) |
+| Employment                                           | `PAYEMS.csv` | U.S. Bureau of Labor Statistics (2022)                  |
+| Industrial production                                | `INDPRO.csv` | Board of Governors of the Federal Reserve System (2022) |
+| Real gross domestic product                          | `GDPC1.csv` | U.S. Bureau of Economic Analysis (2022)                 |
+| Real gross private domestic investment               | `GPDIC1.csv` | U.S. Bureau of Economic Analysis (2022)                 |
+| Economic policy uncertainty (EPU) index              | `EPU_BBD.xlsx` | Baker et al. (2016)                                     |
+| Categorical EPU indexes                              | `Categorical_EPU_Data_BBD.xlsx` | Baker et al. (2016)                                     |
+| Economic sentiment index                             | `Shapiro_news_sentiment_data.xlsx` | Shapiro et al. (2022)                                   |
+| Michigan Consumer Sentiment Index                    | `MICHSENT.csv` | University of Michigan (2022)                           |
+| CBOE volatility index (VIX)                          | `VXO1986-2003.xls` and `VIX1990-2021.csv` | Cboe Exchange, Inc. (2022) |
+
+
 ---
 
 ## Programs and Code
