@@ -48,7 +48,6 @@ gen lip=log(indus)
 ren sp sp
 gen lsp=log(sp)
 gen lgross=log(gross)
-gen lfixed=log(fixed)
 gen lvix=log(vix)
 
 ren fedfundsrate ffr
@@ -75,7 +74,6 @@ lab var lgdp "Log real gdp"
 lab var lip "Log industrial production"
 lab var lsp "Log stock index"
 lab var lgross "Log gross investment"
-lab var lfixed "Log fixed investment"
 
 *For Quarterly Collapse the Data
 if $months==3 {
@@ -86,7 +84,7 @@ if $months==3 {
 	replace lsd=lsd_qr
 
 	// Collapse to quarterly means
-	collapse rri rpu gi lsd lm epu newssent lsp ffr lemp lgdp lgross lfixed lip vix lvix year mich quarter,by(yq)
+	collapse rri rpu gi lsd lm epu newssent lsp ffr lemp lgdp lgross lip vix lvix year mich quarter,by(yq)
 	gen time=4*yq
 	tsset time
 	gen ym=yq 

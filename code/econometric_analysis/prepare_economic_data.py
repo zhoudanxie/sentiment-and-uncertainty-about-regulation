@@ -116,22 +116,7 @@ grossinvest.loc[grossinvest['month']==10,'quarter']=4
 grossinvest=grossinvest.rename(columns={'GPDIC1':'grossinvestment'})
 grossinvest=grossinvest[['year','quarter','grossinvestment']]
 
-# Real Gross Fixed Capital Formation
-fixedinvest=pd.read_csv(f'{directory}/../../data/raw_data/USAGFCFQDSNAQ.csv')
-
-fixedinvest['DATE']=fixedinvest['DATE'].astype('datetime64[ns]')
-fixedinvest['year']=fixedinvest['DATE'].dt.year
-fixedinvest['month']=fixedinvest['DATE'].dt.month
-fixedinvest.loc[fixedinvest['month']==1,'quarter']=1
-fixedinvest.loc[fixedinvest['month']==4,'quarter']=2
-fixedinvest.loc[fixedinvest['month']==7,'quarter']=3
-fixedinvest.loc[fixedinvest['month']==10,'quarter']=4
-fixedinvest=fixedinvest.rename(columns={'USAGFCFQDSNAQ':'fixedinvestment'})
-fixedinvest=fixedinvest[['year','quarter','fixedinvestment']]
-
-nipa=grossinvest.merge(fixedinvest,on=['year','quarter'],how='outer').reset_index(drop=True)
-
-nipa.to_stata(f'{output_folder}/nipa.dta',write_index=False)
+grossinvest.to_stata(f'{output_folder}/nipa.dta',write_index=False)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Michigan consumer sentiment

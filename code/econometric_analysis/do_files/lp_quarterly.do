@@ -38,7 +38,6 @@ gen lip=log(indus)
 gen lsp=log(sp)
 gen lvix=log(vix)
 gen lgross=log(gross)
-gen lfixed=log(fixed)
 
 ren sp sp
 ren fedfundsrate ffr
@@ -54,7 +53,7 @@ replace lsd=lsd_qr
 gen index=$index
 
 // Collapse to quarterly means
-collapse index epu newssent lsp ffr lemp lgdp lgross lfixed lip vix lvix year mich quarter,by(yq)
+collapse index epu newssent lsp ffr lemp lgdp lgross lip vix lvix year mich quarter,by(yq)
 gen time=4*yq
 tsset time
 gen ym=yq
