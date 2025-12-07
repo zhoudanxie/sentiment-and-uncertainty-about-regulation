@@ -39,39 +39,157 @@ The `data` directory contains two folders:
 
 ### Table D1.1: Raw Data and Sources (`data/raw_data`)
 
-| Data Name                                            | File Name | Source                                                  |
-|------------------------------------------------------|--------------------|---------------------------------------------------------|
-| Sample news article text data                        | All XML files in `text_sample_data` | ProQuest (2022)                                         |
-| Sample news article meta data                        | `text_sample_data/metadata.csv` | ProQuest (2022)                                         |
-| Loughran and McDonald (LM) dictionary (2018 version) | `LoughranMcDonald_SentimentList.csv` | Loughran and McDonald (2011)                            |
-| Lexicoder Sentiment Dictionary (LSD)                 | `LSDsentimentWords_wStar.csv` | Young and Soroka (2012)                                 |
-| Harvard General Inquirer (GI) dictionary             | `GIposWords.txt` and `GInegWords.txt` | Stone et al. (1966)                                     |
-| S&P 500 index                                        | `S&P500.csv` | S&P Dow Jones Indices LLC (2022)                        |
-| Federal funds effective rate                         | `FEDFUNDS.csv` | Board of Governors of the Federal Reserve System (2022) |
-| Employment                                           | `PAYEMS.csv` | U.S. Bureau of Labor Statistics (2022)                  |
-| Industrial production                                | `INDPRO.csv` | Board of Governors of the Federal Reserve System (2022) |
-| Real gross domestic product                          | `GDPC1.csv` | U.S. Bureau of Economic Analysis (2022)                 |
-| Real gross private domestic investment               | `GPDIC1.csv` | U.S. Bureau of Economic Analysis (2022)                 |
-| Economic policy uncertainty (EPU) index              | `EPU_BBD.xlsx` | Baker et al. (2016)                                     |
-| Categorical EPU indexes                              | `Categorical_EPU_Data_BBD.xlsx` | Baker et al. (2016)                                     |
-| Economic sentiment index                             | `Shapiro_news_sentiment_data.xlsx` | Shapiro et al. (2022)                                   |
-| Michigan consumer sentiment index                    | `MICHSENT.csv` | University of Michigan (2022)                           |
-| CBOE volatility index (VIX)                          | `VXO1986-2003.xls` and `VIX1990-2021.csv` | Cboe Exchange, Inc. (2022) |
+<table style="width:100%;">
+  <thead>
+    <tr>
+      <th style="width:40%;">Data Name</th>
+      <th style="width:20%;">File Name</th>
+      <th style="width:40%;">Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width:40%;">Sample news article text data</td>
+      <td style="width:20%;">All XML files in <code>text_sample_data</code></td>
+      <td style="width:40%;">ProQuest (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Sample news article meta data</td>
+      <td style="width:20%;"><code>text_sample_data/metadata.csv</code></td>
+      <td style="width:40%;">ProQuest (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Loughran and McDonald (LM) dictionary (2018 version)</td>
+      <td style="width:20%;"><code>LoughranMcDonald_SentimentList.csv</code></td>
+      <td style="width:40%;">Loughran and McDonald (2011)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Lexicoder Sentiment Dictionary (LSD)</td>
+      <td style="width:20%;"><code>LSDsentimentWords_wStar.csv</code></td>
+      <td style="width:40%;">Young and Soroka (2012)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Harvard General Inquirer (GI) dictionary</td>
+      <td style="width:20%;"><code>GIposWords.txt</code> and <code>GInegWords.txt</code></td>
+      <td style="width:40%;">Stone et al. (1966)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">S&amp;P 500 index</td>
+      <td style="width:20%;"><code>S&amp;P500.csv</code></td>
+      <td style="width:40%;">S&amp;P Dow Jones Indices LLC (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Federal funds effective rate</td>
+      <td style="width:20%;"><code>FEDFUNDS.csv</code></td>
+      <td style="width:40%;">Board of Governors of the Federal Reserve System (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Employment</td>
+      <td style="width:20%;"><code>PAYEMS.csv</code></td>
+      <td style="width:40%;">U.S. Bureau of Labor Statistics (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Industrial production</td>
+      <td style="width:20%;"><code>INDPRO.csv</code></td>
+      <td style="width:40%;">Board of Governors of the Federal Reserve System (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Real gross domestic product</td>
+      <td style="width:20%;"><code>GDPC1.csv</code></td>
+      <td style="width:40%;">U.S. Bureau of Economic Analysis (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Real gross private domestic investment</td>
+      <td style="width:20%;"><code>GPDIC1.csv</code></td>
+      <td style="width:40%;">U.S. Bureau of Economic Analysis (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Economic policy uncertainty (EPU) index</td>
+      <td style="width:20%;"><code>EPU_BBD.xlsx</code></td>
+      <td style="width:40%;">Baker et al. (2016)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Categorical EPU indexes</td>
+      <td style="width:20%;"><code>Categorical_EPU_Data_BBD.xlsx</code></td>
+      <td style="width:40%;">Baker et al. (2016)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Economic sentiment index</td>
+      <td style="width:20%;"><code>Shapiro_news_sentiment_data.xlsx</code></td>
+      <td style="width:40%;">Shapiro et al. (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Michigan consumer sentiment index</td>
+      <td style="width:20%;"><code>MICHSENT.csv</code></td>
+      <td style="width:40%;">University of Michigan (2022)</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">CBOE volatility index (VIX)</td>
+      <td style="width:20%;"><code>VXO1986-2003.xls</code> and <code>VIX1990-2021.csv</code></td>
+      <td style="width:40%;">Cboe Exchange, Inc. (2022)</td>
+    </tr>
+  </tbody>
+</table>
 
 
 ### Table D1.2: Processed Data (`data/processed_data`)
 
-| Data Name                                                                                            | File Name                                    | How Created                                                                                                                                                                                                |
-|------------------------------------------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Sentiment and uncertainty scores | `sentiment_scores.csv` | Estimated using sentiment analysis of all regulation-related news articles in the sample.                                                                                                                  |
-| Aggregate monthly indexes of regulatory sentiment and regulatory uncertainty                         | `aggregate_sentiment_indexes.csv`            | Estimated using sentiment and uncertainty scores in `sentiment_scores.csv` (see code in `code/text_analysis/scripts/6_construct_aggregate_index.py`).                                                                            |
-| Categorical monthly indexes of regulatory sentiment and regulatory uncertainty                       | `categorical_sentiment_indexes.csv` | Estimated using sentiment and uncertainty scores in `sentiment_scores.csv` (see code in `code/text_analysis/scripts/7_construct_categorical_index.py`). |
-| Monthly Index of Regulatory Uncertainty                                                              | `news_attention_index.csv` | Estimated using the number of regulation-related news articles in the sample (see code in `code/text_analysis/scripts/6_construct_aggregate_index.py`).                                                    |
-| Aggregate quarterly indexes of regulatory sentiment and regulatory uncertainty                       | `aggregate_sentiment_indexes_quarterly.csv` | Estimated using sentiment and uncertainty scores in `sentiment_scores.csv`.                                                                            |
-| Aggregate monthly indexes of regulatory sentiment and regulatory uncertainty (removing deregulation) | `aggregate_sentiment_indexes_nodereg.csv` | Estimated using sentiment and uncertainty scores from sentiment analysis of regulation-related news articles excluding those that mention deregulation in the sample.                                      |
-| Dictionary of Regulatory Noun Chunks                                                                 | `dictionary_of_regulatory_noun_chunks.csv` | Extracted from federal rule titles and filtered through human checking.                                                                                                                                    |
-| Total monthly number of news articles by newspaper                                                   | `total_article_counts_by_newspaper.xlsx` | Manually collected from ProQuest.                                                                                                                                                                          |
-| Monthly number of news articles by newspaper and regulatory policy area                              | `article_counts_by_newspaper_and_area.csv` | Calculated using identified and categorized regulation-related news articles.                                                                                                                              |
+<table style="width:100%;">
+  <thead>
+    <tr>
+      <th style="width:40%;">Data Name</th>
+      <th style="width:20%;">File Name</th>
+      <th style="width:40%;">How Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="width:40%;">Sentiment and uncertainty scores</td>
+      <td style="width:20%;"><code>sentiment_scores.csv</code></td>
+      <td style="width:40%;">Estimated using sentiment analysis of all regulation-related news articles in the sample.</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Aggregate monthly indexes of regulatory sentiment and regulatory uncertainty</td>
+      <td style="width:20%;"><code>aggregate_sentiment_indexes.csv</code></td>
+      <td style="width:40%;">Estimated using sentiment and uncertainty scores in <code>sentiment_scores.csv</code> (see code in <code>code/text_analysis/scripts/6_construct_aggregate_index.py</code>).</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Categorical monthly indexes of regulatory sentiment and regulatory uncertainty</td>
+      <td style="width:20%;"><code>categorical_sentiment_indexes.csv</code></td>
+      <td style="width:40%;">Estimated using sentiment and uncertainty scores in <code>sentiment_scores.csv</code> (see code in <code>code/text_analysis/scripts/7_construct_categorical_index.py</code>).</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Monthly Index of Regulatory Uncertainty</td>
+      <td style="width:20%;"><code>news_attention_index.csv</code></td>
+      <td style="width:40%;">Estimated using the number of regulation-related news articles in the sample (see code in <code>code/text_analysis/scripts/6_construct_aggregate_index.py</code>).</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Aggregate quarterly indexes of regulatory sentiment and regulatory uncertainty</td>
+      <td style="width:20%;"><code>aggregate_sentiment_indexes_quarterly.csv</code></td>
+      <td style="width:40%;">Estimated using sentiment and uncertainty scores in <code>sentiment_scores.csv</code>.</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Aggregate monthly indexes of regulatory sentiment and regulatory uncertainty (removing deregulation)</td>
+      <td style="width:20%;"><code>aggregate_sentiment_indexes_nodereg.csv</code></td>
+      <td style="width:40%;">Estimated using sentiment and uncertainty scores from sentiment analysis of regulation-related news articles excluding those mentioning deregulation.</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Dictionary of Regulatory Noun Chunks</td>
+      <td style="width:20%;"><code>dictionary_of_regulatory_noun_chunks.csv</code></td>
+      <td style="width:40%;">Extracted from federal rule titles and filtered through human checking.</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Total monthly number of news articles by newspaper</td>
+      <td style="width:20%;"><code>total_article_counts_by_newspaper.xlsx</code></td>
+      <td style="width:40%;">Manually collected from ProQuest.</td>
+    </tr>
+    <tr>
+      <td style="width:40%;">Monthly number of news articles by newspaper and regulatory policy area</td>
+      <td style="width:20%;"><code>article_counts_by_newspaper_and_area.csv</code></td>
+      <td style="width:40%;">Calculated using identified and categorized regulation-related news articles.</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
