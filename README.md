@@ -35,9 +35,9 @@ The `data` directory contains two folders:
   - `raw_data/text_sample_data`: contains XML files for 10 sample news articles and their metadata obtained from ProQuest.
 - `processed_data`: contains data generated from the raw data or collected manually from external sources.
 
-**Table D1.1** lists all raw data files and sources. **Table D1.2** lists all processed data files and the name of the script that generated the data.
+**Table D1.1** lists all raw data files and sources. **Table D1.2** lists all processed data files and description of how each was created.
 
-### Table D1.1: Raw Data and Sources (`data/raw_data`)
+### Table D1.1: Raw Data (`data/raw_data`)
 
 | Data Name                                            | File Name | Source                                                  |
 |------------------------------------------------------|--------------------|---------------------------------------------------------|
@@ -61,17 +61,17 @@ The `data` directory contains two folders:
 
 ### Table D1.2: Processed Data (`data/processed_data`)
 
-| Data Name | File Name | How Created |
-|----------|-----------|-------------|
-| Sentiment and uncertainty scores | `sentiment_scores.csv` | <details><summary>Details</summary>Estimated using sentiment analysis of all regulation-related news articles in the sample.</details> |
-| Aggregate monthly indexes of regulatory sentiment and regulatory uncertainty | `aggregate_sentiment_indexes.csv` | <details><summary>Details</summary>Estimated using sentiment and uncertainty scores in `sentiment_scores.csv` (see `code/text_analysis/scripts/6_construct_aggregate_index.py`).</details> |
-| Categorical monthly indexes of regulatory sentiment and regulatory uncertainty | `categorical_sentiment_indexes.csv` | <details><summary>Details</summary>Estimated using sentiment and uncertainty scores in `sentiment_scores.csv` (see `code/text_analysis/scripts/7_construct_categorical_index.py`).</details> |
-| Monthly Index of Regulatory Uncertainty | `news_attention_index.csv` | <details><summary>Details</summary>Estimated using the number of regulation-related news articles in the sample (see `code/text_analysis/scripts/6_construct_aggregate_index.py`).</details> |
-| Aggregate quarterly indexes of regulatory sentiment and regulatory uncertainty | `aggregate_sentiment_indexes_quarterly.csv` | <details><summary>Details</summary>Estimated using sentiment and uncertainty scores in `sentiment_scores.csv`.</details> |
+| Data Name                                                                                            | File Name | How Created                                                                                                                                                                                        |
+|------------------------------------------------------------------------------------------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Sentiment and uncertainty scores                                                                     | `sentiment_scores.csv` | <details><summary>Details</summary>Estimated using sentiment analysis of all regulation-related news articles in the sample.</details>                                                             |
+| Aggregate monthly indexes of regulatory sentiment and regulatory uncertainty                         | `aggregate_sentiment_indexes.csv` | <details><summary>Details</summary>Estimated using sentiment and uncertainty scores in `sentiment_scores.csv` (see `code/text_analysis/scripts/6_construct_aggregate_index.py`).</details>         |
+| Categorical monthly indexes of regulatory sentiment and regulatory uncertainty                       | `categorical_sentiment_indexes.csv` | <details><summary>Details</summary>Estimated using sentiment and uncertainty scores in `sentiment_scores.csv` (see `code/text_analysis/scripts/7_construct_categorical_index.py`).</details>       |
+| Monthly index of regulatory news attention to regulation                                             | `news_attention_index.csv` | <details><summary>Details</summary>Estimated using the number of regulation-related news articles in the sample (see `code/text_analysis/scripts/6_construct_aggregate_index.py`).</details>       |
+| Aggregate quarterly indexes of regulatory sentiment and regulatory uncertainty                       | `aggregate_sentiment_indexes_quarterly.csv` | <details><summary>Details</summary>Estimated using sentiment and uncertainty scores in `sentiment_scores.csv`.</details>                                                                           |
 | Aggregate monthly indexes of regulatory sentiment and regulatory uncertainty (removing deregulation) | `aggregate_sentiment_indexes_nodereg.csv` | <details><summary>Details</summary>Estimated using sentiment and uncertainty scores from sentiment analysis of regulation-related news articles excluding those mentioning deregulation.</details> |
-| Dictionary of Regulatory Noun Chunks | `dictionary_of_regulatory_noun_chunks.csv` | <details><summary>Details</summary>Extracted from federal rule titles and filtered through human checking.</details> |
-| Total monthly number of news articles by newspaper | `total_article_counts_by_newspaper.xlsx` | <details><summary>Details</summary>Manually collected from ProQuest.</details> |
-| Monthly number of news articles by newspaper and regulatory policy area | `article_counts_by_newspaper_and_area.csv` | <details><summary>Details</summary>Calculated using identified and categorized regulation-related news articles.</details> |
+| Dictionary of regulatory noun chunks                                                                 | `dictionary_of_regulatory_noun_chunks.csv` | <details><summary>Details</summary>Extracted from federal rule titles and filtered through human checking.</details>                                                                               |
+| Total monthly number of news articles by newspaper                                                   | `total_article_counts_by_newspaper.xlsx` | <details><summary>Details</summary>Manually collected from ProQuest.</details>                                                                                                                     |
+| Monthly number of news articles by newspaper and regulatory policy area                              | `article_counts_by_newspaper_and_area.csv` | <details><summary>Details</summary>Calculated using identified and categorized regulation-related news articles (see `code/text_analysis/scripts/5_categorize_articles.py`).</details>             |
 
 ---
 
@@ -81,6 +81,24 @@ The `code` directory contains three folders:
 - `text_analysis`: contains Python code for text analysis that estimates the regulatory sentiment and uncertainty indexes.
 - `econometric_analysis`: contains Python code for preparing data for econometric analysis and Stata code for implementing econometric analysis.
 - `visualization`: contains Python code for creating main and appendix figures in the paper.
+
+**Table D2.1-3** list the scripts in each folder and their outputs.
+
+### Table D2.1: Text Analysis Code (`code/text_analysis`)
+| Script Name | Description                                                                                                               | Output                                                                                                                        |
+|----------|---------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| `text_analysis_master.py` | A master file to execute all Python scripts in `code/text_analysis/scripts`.                                              | See outputs of individual scripts                                                                                             |
+| `1_parse_xml.py` | Parses the full text and metadata of each news article from XML files (executed on demo data).                            | `data/raw_data/text_sample_data/sample_output/parsed_xml.pkl`                                                                 |
+| `2_extract_reg_sections.py` | Extracts “regulatory sections” from news articles (executed on demo data).                                                | `data/raw_data/text_sample_data/sample_output/reg_sections.pkl`                                                               |
+| `3_identify_relevance.py` | Refines regulatory sections using human-checked dictionary of regulatory noun chunks (executed on demo data).             | `reg_sections.pkl` and `noun_chunk_occurrences.csv` in `data/raw_data/text_sample_data/sample_output`                         |
+| `4_sentiment_analysis.py` | Calculates sentiment and uncertainty scores from regulation sections in news articles (executed on demo data).            | `data/raw_data/text_sample_data/sample_output/sentiment_scores.pkl`                                                           |
+| `5_categorize_articles.py` | Categorizes regulatory-related news articles by regulatory policy area (executed on demo data).                           | `article_counts_by_newspaper_and_area.csv` and `noun_chunk_occurrences.csv` in `data/raw_data/text_sample_data/sample_output` |
+| `6_construct_aggregate_index.py` | Estimates aggregate indexes of regulatory sentiment and regulatory uncertainty and index of news attention to regulation. | `aggregate_sentiment_indexes.csv` and `news_attention_index.csv` in `data/processed_data`                                                               |
+| `7_construct_categorical_index.py` | Estimates categorical indexes of regulatory sentiment and regulatory uncertainty.                                         | `data/processed_data/categorical_sentiment_indexes.csv`                                                                       |
+
+### Table D2.2: Econometric Analysis Code (`code/econometric_analysis`)
+
+### Table D2.3: Visualization Code (`code/visualization`)
 
 ---
 
