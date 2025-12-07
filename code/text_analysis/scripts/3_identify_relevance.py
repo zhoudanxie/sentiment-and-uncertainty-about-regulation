@@ -106,4 +106,4 @@ df_MatchWords=df_MatchWords.sort_values('Occurences',ascending=False).reset_inde
 
 # %%
 # Export noun chunk occurences
-df_MatchWords.to_csv(f'{output_folder}/RegSections_FilteredNounChunkOccurrences.csv',index=False)
+df_MatchWords.to_csv(f'{output_folder}/noun_chunk_occurrences.csv',index=False)

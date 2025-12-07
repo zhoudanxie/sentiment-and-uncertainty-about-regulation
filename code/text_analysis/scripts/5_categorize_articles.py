@@ -122,12 +122,12 @@ monthlyAreaCount=df_regSentsExpandRelevant[['Newspaper','Year','Month']+col_list
 
 # %%
 # Save data
-monthlyAreaCount.to_csv(f'{output_folder}/RegArea_MonthlyArticleCountByNewspaper.csv',index=False)
+monthlyAreaCount.to_csv(f'{output_folder}/article_counts_by_newspaper_and_area.csv',index=False)
 
 # %% [markdown]
 # ## 5. Filtered Noun Chunk Occurences by Area
 # Filtered noun chunk occurences across regulation-related articles
-df_nounchunk_occurrences=pd.read_csv(f'{output_folder}/RegSections_FilteredNounChunkOccurrences.csv')
+df_nounchunk_occurrences=pd.read_csv(f'{output_folder}/noun_chunk_occurrences.csv')
 
 # %%
 # Filtered noun chunks across regulation-related articles by area
@@ -142,7 +142,7 @@ for i in range(1,15):
 
 # %%
 # Save data
-df_nounchunk_occurrences.to_csv(f'{output_folder}/RegArea_FilteredNounChunkOccurrences.csv',index=False)
+df_nounchunk_occurrences.to_csv(f'{output_folder}/noun_chunk_occurrences.csv',index=False)
 
 
 
