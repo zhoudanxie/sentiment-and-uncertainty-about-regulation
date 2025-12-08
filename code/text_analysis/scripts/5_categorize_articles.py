@@ -134,7 +134,8 @@ df_nounchunk_occurrences=pd.read_csv(f'{output_folder}/noun_chunk_occurrences.cs
 for i in range(1,15):
     allMatchWords=[]
     for nc_list in df_regSentsExpandRelevant[df_regSentsExpandRelevant['DominantDistinctArea'+str(i)]==1]['NounChunkMatchWordsFiltered']:
-        allMatchWords=allMatchWords+nc_list
+        nc_list_lower = [nc.lower() for nc in nc_list]
+        allMatchWords=allMatchWords+nc_list_lower
     allMatchWordsCount=Counter(allMatchWords)
     var_name='OccurrencesArea'+str(i)
     df_MatchWords = pd.DataFrame(allMatchWordsCount.items(),columns = ['Noun Chunks',var_name])
