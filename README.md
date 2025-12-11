@@ -97,6 +97,21 @@ The `code` directory contains three folders:
 | `7_construct_categorical_index.py` | Estimates categorical indexes of regulatory sentiment and regulatory uncertainty.                                         | `data/processed_data/categorical_sentiment_indexes.csv`                                                                       |
 
 ### Table D2.2: Econometric Analysis Code (`code/econometric_analysis`)
+| Script Name                | Description                                                                                                                                                   | Output                                                       |
+|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| `prepare_economic_data.py` | Cleans and merges raw and processed data to create Stata data files for econometric analysis.                                                                 | All files in `data/processed_data/data_for_analysis`         |
+| `econometric_master.do`    | A master file to execute all Stata code (.do files) in `code/econometric_analysis/do_files`.                                                                  | See outputs of individual scripts                            |
+| `lp_aggregate.do`          | Runs local projections using aggregate monthly indexes of regulatory sentiment and regulatory uncertainty.                                                    | `output/[lm/gi/lsd/pc/rpu]_[lgdp/lemp].dta`                  |
+| `lp_area.do`               | Runs local projections using categorical monthly indexes of regulatory sentiment and regulatory uncertainty.                                                  | `output/[lm/gi/lsd/pc/rpu]_dda[1-14]_[lgdp/lemp].dta`        |
+| `lp_control.do`            | Runs local projections using aggregate regulatory indexes while controlling for other sentiment or uncertainty indexes.                                       | `output/[lm/rpu]_[lgdp/lemp]_[mich/newssent/vix/epu].dta`    |
+| `lp_quarterly.do`          | Runs local projections using aggregate quarterly indexes of regulatory sentiment and regulatory uncertainty.                                                  | `output/[lm/gi/lsd/pc/rpu]_[lgdp/lemp/lgross]_quarterly.dta` |
+| `lp_nodereg.do`            | Runs local projections using aggregate regulatory indexes constructed from articles that exclude deregulation.                                                | `output/[lm/rpu]_[lgdp/lemp]_nodereg.dta`                    |
+| `lp_h36.do`                | Runs local projections using aggregate regulatory indexes over a 36-month horizon.                                                                            | `output/[lm/gi/lsd/pc/rpu]_[lgdp/lemp]_h36.dta`              |
+| `lp_sent_interaction.do`   | Runs local projections using aggregate regulatory uncertainty index while adding an interaction term between regulatory sentiment and regulatory uncertainty. | `output/lm_[lgdp/lemp]_interaction.dta`                      |
+| `lp_rpu_interaction.do`    | Runs local projections using aggregate regulatory uncertainty index while adding an interaction term between regulatory sentiment and regulatory uncertainty. | `output/rpu_[lgdp/lemp]_interaction.dta`                     |
+| `var_lm.do`                | Runs VAR using aggregate regulatory sentiment index.                                                                                                          | `output/var_lm.dta` |
+| `var_rpu.do`               | Runs VAR using aggregate regulatory uncertainty index.                                                                                                        | `output/var_rpu.dta` |
+
 
 ### Table D2.3: Visualization Code (`code/visualization`)
 
