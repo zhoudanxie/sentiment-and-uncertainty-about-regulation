@@ -157,7 +157,7 @@ The `code` directory contains three folders:
 ## References
 
 - Baker, S. R., Bloom, N., & Davis, S. J. (2016). Measuring economic policy uncertainty. *Quarterly Journal of Economics*, 131(4), 1593–1636.
-- Board of Governors of the Federal Reserve System (2022). *Effective Federal Funds Rate*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/FEDFUNDS
+- Board of Governors of the Federal Reserve System (2022). *Federal Funds Effective Rate*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/FEDFUNDS
 - Board of Governors of the Federal Reserve System (2022). *Industrial Production*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/INDPRO
 - Cboe Exchange, Inc. (2022). *CBOE Volatility Index (VIX)*. Retrieved February 10, 2022, from https://www.cboe.com/tradable_products/vix/vix_historical_data/
 - Loughran, T., & McDonald, B. (2011). When is a liability not a liability? Textual analysis, dictionaries, and 10-Ks. *The Journal of Finance*, 66(1), 35–65.
@@ -168,6 +168,6 @@ The `code` directory contains three folders:
 - University of Michigan (2022). *Surveys of Consumers: Index of Consumer Sentiment*. Retrieved February 10, 2022, from https://data.sca.isr.umich.edu/
 - U.S. Bureau of Economic Analysis (2022). *Real Gross Domestic Product*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/GDPC1
 - U.S. Bureau of Economic Analysis (2022). *Real Gross Private Domestic Investment*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/GPDIC1
-- U.S. Bureau of Labor Statistics (2022). *Consumer Price Index for All Urban Consumers*. Retrieved April 11, 2022, from https://fred.stlouisfed.org/series/CPIAUCSL
-- U.S. Bureau of Labor Statistics (2022). *Employment (PAYEMS)*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/PAYEMS
+- U.S. Bureau of Labor Statistics (2022). *Consumer Price Index for All Urban Consumers: All Items in U.S. City Average*. Retrieved April 11, 2022, from https://fred.stlouisfed.org/series/CPIAUCSL
+- U.S. Bureau of Labor Statistics (2022). *All Employees, Total Nonfarm*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/PAYEMS
 - Young, L., & Soroka, S. (2012). Affective news: The automated coding of sentiment in political texts. *Political Communication*, 29(2), 205–231.
