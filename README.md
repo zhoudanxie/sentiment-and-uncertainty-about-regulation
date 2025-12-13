@@ -128,6 +128,47 @@ The `code` directory contains three folders:
 
 ## Computational Requirements
 
+### Software Requirements
+
+- The replication package contains one or more programs to install all dependencies and set up the necessary directory structure.  
+- **Python 3.11+**  
+  - A virtual Python environment should be created using `requirements.txt` in the home directory.  
+  - Please run:  
+    ```bash
+    pip install -r requirements.txt
+    ```  
+  - See the [pip user guide on ensuring repeatability](https://pip.pypa.io/en/stable/user_guide/#ensuring-repeatability) for further instructions on creating and using the `requirements.txt` file.  
+- **Stata (last run with version 14)**
+
 ---
 
 ## Instructions to Replicators
+
+1. Download the replication package. 
+2. Set up environment (see above).
+3. Run `code/text_analysis/text_analysis_master.py` to reproduce indexes (optional).
+4. Run `code/econometric_analysis/prepare_economic_data.py` to prepare data for econometric analysis.
+5. Run `code/econometric_analysis/econometric_master.do` to implement econometric analysis.
+6. Run `code/visualization/main_figures.py` to produce main figures.
+7. Run `code/visualization/appendix_figures.py` to produce appendix figures.
+
+---
+
+## References
+
+- Baker, S. R., Bloom, N., & Davis, S. J. (2016). Measuring economic policy uncertainty. *Quarterly Journal of Economics*, 131(4), 1593–1636.
+- Baker, S. R., Bloom, N., & Davis, S. J. (2016). *Categorical U.S. EPU Indexes*. Retrieved July 24, 2024, from https://www.policyuncertainty.com/categorical_epu.html
+- Board of Governors of the Federal Reserve System (2022). *Effective Federal Funds Rate*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/FEDFUNDS
+- Board of Governors of the Federal Reserve System (2022). *Industrial Production*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/INDPRO
+- Cboe Exchange, Inc. (2022). *CBOE Volatility Index (VIX)*. Retrieved February 10, 2022, from https://www.cboe.com/tradable_products/vix/vix_historical_data/
+- Loughran, T., & McDonald, B. (2011). When is a liability not a liability? Textual analysis, dictionaries, and 10-Ks. *The Journal of Finance*, 66(1), 35–65.
+- ProQuest (2022). Database accessed through ProQuest TDM Studio. Retrieved February 10, 2022, from [https://tdmstudio.proquest.com/home](https://tdmstudio.proquest.com/home). 
+- Shapiro, A. H., Sudhof, M., & Wilson, D. J. (2022). Measuring news sentiment. *Journal of Econometrics*, 228(2), 221–243.
+- S&P Dow Jones Indices LLC (2022). *S&P 500 Index, Monthly Close Price*. Retrieved February 10, 2022, from https://finance.yahoo.com/quote/%5EGSPC/history/?frequency=1mo
+- Stone, P. J., Dunphy, D. C., Smith, M. S., & Ogilvie, D. M. (1966). *The General Inquirer: A Computer Approach to Content Analysis*. MIT Press.
+- University of Michigan (2022). *Surveys of Consumers: Index of Consumer Sentiment*. Retrieved February 10, 2022, from https://data.sca.isr.umich.edu/
+- U.S. Bureau of Economic Analysis (2022). *Real Gross Domestic Product*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/GDPC1
+- U.S. Bureau of Economic Analysis (2022). *Real Gross Private Domestic Investment*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/GPDIC1
+- U.S. Bureau of Labor Statistics (2022). *Consumer Price Index for All Urban Consumers*. Retrieved April 11, 2022, from https://fred.stlouisfed.org/series/CPIAUCSL
+- U.S. Bureau of Labor Statistics (2022). *Employment (PAYEMS)*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/PAYEMS
+- Young, L., & Soroka, S. (2012). Affective news: The automated coding of sentiment in political texts. *Political Communication*, 29(2), 205–231.
