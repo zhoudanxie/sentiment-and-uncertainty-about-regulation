@@ -157,7 +157,6 @@ The `code` directory contains three folders:
 ## References
 
 - Baker, S. R., Bloom, N., & Davis, S. J. (2016). Measuring economic policy uncertainty. *Quarterly Journal of Economics*, 131(4), 1593–1636.
-- Baker, S. R., Bloom, N., & Davis, S. J. (2016). *Categorical U.S. EPU Indexes*. Retrieved July 24, 2024, from https://www.policyuncertainty.com/categorical_epu.html
 - Board of Governors of the Federal Reserve System (2022). *Effective Federal Funds Rate*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/FEDFUNDS
 - Board of Governors of the Federal Reserve System (2022). *Industrial Production*. Retrieved February 10, 2022, from https://fred.stlouisfed.org/series/INDPRO
 - Cboe Exchange, Inc. (2022). *CBOE Volatility Index (VIX)*. Retrieved February 10, 2022, from https://www.cboe.com/tradable_products/vix/vix_historical_data/
