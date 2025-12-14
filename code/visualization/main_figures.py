@@ -484,12 +484,6 @@ plt.close()
 #-----------------------------------------------------------------------------------------------------------------------
 lm_lgdp=pd.read_stata(f'{directory}/../../output/lm_lgdp.dta')
 lm_lemp=pd.read_stata(f'{directory}/../../output/lm_lemp.dta')
-gi_lgdp=pd.read_stata(f'{directory}/../../output/gi_lgdp.dta')
-gi_lemp=pd.read_stata(f'{directory}/../../output/gi_lemp.dta')
-lsd_lgdp=pd.read_stata(f'{directory}/../../output/lsd_lgdp.dta')
-lsd_lemp=pd.read_stata(f'{directory}/../../output/lsd_lemp.dta')
-pc_lgdp=pd.read_stata(f'{directory}/../../output/pc_lgdp.dta')
-pc_lemp=pd.read_stata(f'{directory}/../../output/pc_lemp.dta')
 rpu_lgdp=pd.read_stata(f'{directory}/../../output/rpu_lgdp.dta')
 rpu_lemp=pd.read_stata(f'{directory}/../../output/rpu_lemp.dta')
 
