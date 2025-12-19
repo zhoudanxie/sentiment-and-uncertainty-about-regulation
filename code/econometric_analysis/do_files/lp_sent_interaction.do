@@ -99,7 +99,7 @@ gen u95_low=0
 gen d95_low=0
 forv h = 0/`hmax' {
 	* levels
-	reg lgdp_`h' l(0/3).sentXrpu l(0/3).index l(0/3).rpu l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
+	reg lgdp_`h' l(0/3).sentXrpu l(0/3).index l(0/3).rpu l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp, vce(robust)
 
 	lincom index+sentXrpu*$highstate, level(90)
 	replace b_high = r(estimate)*$ratio*100 if _n == `h'+1
@@ -144,7 +144,7 @@ gen u95_low=0
 gen d95_low=0
 forv h = 0/`hmax' {
 	* levels
-	reg lemp_`h' l(0/3).sentXrpu l(0/3).index l(0/3).rpu l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
+	reg lemp_`h' l(0/3).sentXrpu l(0/3).index l(0/3).rpu l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp, vce(robust)
 
 	lincom index+sentXrpu*$highstate, level(90)
 	replace b_high = r(estimate)*$ratio*100 if _n == `h'+1

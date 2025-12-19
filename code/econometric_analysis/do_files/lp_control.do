@@ -91,7 +91,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp l(0/3).mich, vce(robust)
+	 reg lgdp_`h' l(0/3).index l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp l(1/3).mich, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -118,7 +118,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp l(0/3).newssent, vce(robust)
+	 reg lgdp_`h' l(0/3).index l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp l(1/3).newssent, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -145,7 +145,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp l(0/3).epu, vce(robust)
+	 reg lgdp_`h' l(0/3).index l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp l(1/3).epu, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -172,7 +172,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp l(0/3).vix, vce(robust)
+	 reg lgdp_`h' l(0/3).index l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp l(1/3).vix, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -200,7 +200,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp l(0/3).mich, vce(robust)
+	 reg lemp_`h' l(0/3).index l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp l(1/3).mich, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -227,7 +227,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp l(0/3).newssent, vce(robust)
+	 reg lemp_`h' l(0/3).index l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp l(1/3).newssent, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -254,7 +254,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp l(0/3).epu, vce(robust)
+	 reg lemp_`h' l(0/3).index l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp l(1/3).epu, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
@@ -281,7 +281,7 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp l(0/3).vix, vce(robust)
+	 reg lemp_`h' l(0/3).index l(1/3).lsp l(1/3).ffr l(1/3).lemp l(1/3).lgdp l(1/3).vix, vce(robust)
 replace b = _b[index]*$ratio*100                    if _n == `h'+1
 replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
 replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
