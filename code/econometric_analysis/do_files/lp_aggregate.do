@@ -101,12 +101,12 @@ forv h = 0/`hmax' {
 		qui reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
 	}
 
-replace b = _b[index]*$ratio*100                    if _n == `h'+1
-replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
-replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
-replace u95 = (_b[index] + 1.96* _se[index])*$ratio*100  if _n == `h'+1
-replace d95 = (_b[index] - 1.96* _se[index])*$ratio*100  if _n == `h'+1
-eststo
+	replace b = _b[index]*$ratio*100                    if _n == `h'+1
+	replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
+	replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
+	replace u95 = (_b[index] + 1.96* _se[index])*$ratio*100  if _n == `h'+1
+	replace d95 = (_b[index] - 1.96* _se[index])*$ratio*100  if _n == `h'+1
+	eststo
 }
 
 preserve
@@ -135,12 +135,12 @@ forv h = 0/`hmax' {
 		qui reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
 	}
 
-replace b = _b[index]*$ratio*100                    if _n == `h'+1
-replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
-replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
-replace u95 = (_b[index] + 1.96* _se[index])*$ratio*100  if _n == `h'+1
-replace d95 = (_b[index] - 1.96* _se[index])*$ratio*100  if _n == `h'+1
-eststo
+	replace b = _b[index]*$ratio*100                    if _n == `h'+1
+	replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
+	replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
+	replace u95 = (_b[index] + 1.96* _se[index])*$ratio*100  if _n == `h'+1
+	replace d95 = (_b[index] - 1.96* _se[index])*$ratio*100  if _n == `h'+1
+	eststo
 }
 
 preserve

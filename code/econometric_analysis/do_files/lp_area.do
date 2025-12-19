@@ -83,13 +83,21 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 qui reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp , vce(robust)
-replace b = _b[index]*$ratio*100                    if _n == `h'+1
-replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
-replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
-replace u95 = (_b[index] + 1.96* _se[index])*$ratio*100  if _n == `h'+1
-replace d95 = (_b[index] - 1.96* _se[index])*$ratio*100  if _n == `h'+1
-eststo
+	if `h' == 0 {
+		* Horizon 0: do NOT put y_t on RHS
+		qui reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(1/3).lgdp, vce(robust)
+	}
+	else {
+		* Horizons 1,...,H
+		qui reg lgdp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
+	}
+
+	replace b = _b[index]*$ratio*100                    if _n == `h'+1
+	replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
+	replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
+	replace u95 = (_b[index] + 1.96* _se[index])*$ratio*100  if _n == `h'+1
+	replace d95 = (_b[index] - 1.96* _se[index])*$ratio*100  if _n == `h'+1
+	eststo
 }
 
 preserve
@@ -110,13 +118,19 @@ gen u95=0
 gen d95=0
 forv h = 0/`hmax' {
 	* levels
-	 qui reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
-replace b = _b[index]*$ratio*100                    if _n == `h'+1
-replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
-replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
-replace u95 = (_b[index] + 1.96* _se[index])*$ratio*100  if _n == `h'+1
-replace d95 = (_b[index] - 1.96* _se[index])*$ratio*100  if _n == `h'+1
-eststo
+	if `h' == 0 {
+		qui reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(1/3).lemp l(0/3).lgdp, vce(robust)
+	}
+	else {
+		qui reg lemp_`h' l(0/3).index l(0/3).lsp l(0/3).ffr l(0/3).lemp l(0/3).lgdp, vce(robust)
+	}
+
+	replace b = _b[index]*$ratio*100                    if _n == `h'+1
+	replace u90 = (_b[index] + 1.645* _se[index])*$ratio*100  if _n == `h'+1
+	replace d90 = (_b[index] - 1.645* _se[index])*$ratio*100  if _n == `h'+1
+	replace u95 = (_b[index] + 1.96* _se[index])*$ratio*100  if _n == `h'+1
+	replace d95 = (_b[index] - 1.96* _se[index])*$ratio*100  if _n == `h'+1
+	eststo
 }
 
 preserve

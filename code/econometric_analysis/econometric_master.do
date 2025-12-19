@@ -29,7 +29,6 @@ foreach sent of local sent_list {
 	do "code/econometric_analysis/do_files/lp_quarterly"
 }
 
-
 ***Longer horizon
 local sent_list lm gi lsd pc rpu
 foreach sent of local sent_list {
