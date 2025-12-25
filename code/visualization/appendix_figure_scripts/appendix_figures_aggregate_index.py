@@ -9,12 +9,6 @@ import matplotlib.dates as mdates
 from matplotlib import rcParams
 rcParams['font.family'] = "Times New Roman"
 
-# Stats packages
-from arch.unitroot import ADF
-from arch.unitroot import PhillipsPerron
-from arch.unitroot import KPSS
-
-from statsmodels.tsa.stattools import grangercausalitytests
 import scipy.stats
 
 # Common variables
@@ -342,59 +336,3 @@ ax.spines['bottom'].set_color('#d3d3d3')
 
 plt.savefig(f'{output_folder}/AppendixE3.jpg', bbox_inches='tight')
 plt.close()
-
-#%% Appendix E4: Granger causality
-# H0: the time series in the second column, x2, does NOT Granger cause the time series in the first column, x1.
-
-print('Does regulatory sentiment Granger causes economic sentiment?')
-gc_res = grangercausalitytests(monthlyIndex[['EconomicSentiment_standardized','LMIndex_standardized']], 4)
-
-print('Does economic sentiment Granger causes regulatory sentiment?')
-gc_res = grangercausalitytests(monthlyIndex[['LMIndex_standardized','EconomicSentiment_standardized']], 4)
-
-print('Does regulatory uncertainty Granger causes economic policy uncertainty?')
-gc_res = grangercausalitytests(monthlyIndex[['BBD_EPU_standardized','UncertaintyIndex_standardized']], 4)
-
-print('Does economic policy uncertainty Granger causes regulatory uncertainty?')
-gc_res = grangercausalitytests(monthlyIndex[['UncertaintyIndex_standardized','BBD_EPU_standardized']], 4)
-
-print('Does regulatory uncertainty Granger causes regulatory EPU?')
-gc_res = grangercausalitytests(monthlyIndex[['BBD_REPU_standardized','UncertaintyIndex_standardized']], 4)
-
-print('Does regulatory EPU Granger causes regulatory uncertainty?')
-gc_res = grangercausalitytests(monthlyIndex[['UncertaintyIndex_standardized','BBD_REPU_standardized']], 4)
-
-#%% Appendix F: Stationarity Tests for the Regulatory Sentiment and Uncertainty Indexes
-# Augmented Dickey-Fuller test (H0: non-stationary)
-def adf_test(var):
-    x=monthlyIndex[var]
-    adf = ADF(x,trend="ct")
-    print('Results of Augmented Dickey-Fuller Test for '+var)
-    print("Test statistic:",'{0:0.6f}'.format(adf.stat))
-    print('p-value:','{0:0.6f}'.format(adf.pvalue))
-    print('Lags:',adf.lags)
-    #print(adf.summary())
-
-# Phillips-Perron test (H0: non-stationary)
-def pp_test(var):
-    x=monthlyIndex[var]
-    pp = PhillipsPerron(x,trend="ct")
-    print('Results of Phillips-Perron Test for '+var)
-    print("Test statistic:",'{0:0.6f}'.format(pp.stat))
-    print('p-value:','{0:0.6f}'.format(pp.pvalue))
-    print('Lags:',pp.lags)
-
-# KPSS test (H0: stationary)
-def kpss_test(var):
-    x=monthlyIndex[var]
-    kpss = KPSS(x,trend="ct",lags=-1)
-    print('Results of KPSS Test for '+var)
-    print("Test statistic:",'{0:0.6f}'.format(kpss.stat))
-    print('p-value:','{0:0.6f}'.format(kpss.pvalue))
-    print('Lags:',kpss.lags)
-
-# Tests for all indexes
-for var in ['UncertaintyIndex','LMIndex','GIIndex','LSDIndex','SentimentPC1_standardized']:
-    adf_test(var)
-    pp_test(var)
-    kpss_test(var)

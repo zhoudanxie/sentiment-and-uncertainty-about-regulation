@@ -131,7 +131,7 @@ fig.text(0.5, 0.33, '(b) Estimates Using the First Principal Component of the Se
 
 plt.subplots_adjust(hspace=0.5)
 
-plt.savefig(f'{output_folder}/AppendixG.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixF.jpg', bbox_inches='tight')
 plt.close()
 
 
@@ -145,7 +145,7 @@ titles=['Regulatory Sentiment Shock (LM)',
         'Regulatory Sentiment Shock (PC)',
         'Regulatory Uncertainty Shock']
 
-#%% Appendix H1: GDP Responses to Regulatory Sentiment and Uncertainty Shocks (Quarterly)
+#%% Appendix G1: GDP Responses to Regulatory Sentiment and Uncertainty Shocks (Quarterly)
 steps=12
 irf_gdp=pd.DataFrame()
 irf_gdp['step']=range(0,steps+1)
@@ -177,10 +177,10 @@ for i in range(5):
 
 plt.subplots_adjust(hspace=0.4,wspace=0.2)
 
-plt.savefig(f'{output_folder}/AppendixH1.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixG1.jpg', bbox_inches='tight')
 plt.close()
 
-#%% Appendix H2: Investment Responses to Regulatory Sentiment and Uncertainty Shocks (Quarterly)
+#%% Appendix G2: Investment Responses to Regulatory Sentiment and Uncertainty Shocks (Quarterly)
 steps=12
 irf_investment=pd.DataFrame()
 irf_investment['step']=range(0,steps+1)
@@ -212,7 +212,7 @@ for i in range(5):
 
 plt.subplots_adjust(hspace=0.4,wspace=0.2)
 
-plt.savefig(f'{output_folder}/AppendixH2.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixG2.jpg', bbox_inches='tight')
 plt.close()
 
 
@@ -238,7 +238,7 @@ rpu_irf=pd.read_stata(f'{directory}/../../output/var_rpu.dta')
 rpu_irf=rpu_irf[rpu_irf['step']<=steps]
 rpu_irf_baseline=rpu_irf[rpu_irf['irfname']=='baseline'].reset_index(drop=True)
 
-#%% Appendix I1: Impulse Responses to a Regulatory Sentiment or Uncertainty Shock
+#%% Appendix H1: Impulse Responses to a Regulatory Sentiment or Uncertainty Shock
 # Plot
 x=lm_irf_baseline['step']
 
@@ -266,10 +266,10 @@ fig.text(0.5, 0.93, '(a) Impulse Responses to a Regulatory Sentiment Shock', ha=
 fig.text(0.5, 0.47, '(b) Impulse Responses to a Regulatory Uncertainty Shock', ha='center', fontsize=24,fontweight='bold')
 plt.subplots_adjust(hspace=0.5)
 
-plt.savefig(f'{output_folder}/AppendixI1.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixH1.jpg', bbox_inches='tight')
 plt.close()
 
-#%% Appendix I2: Impulse Responses to a Regulatory Sentiment/Uncertainty Shock (Alternative VAR Specifications)
+#%% Appendix H2: Impulse Responses to a Regulatory Sentiment/Uncertainty Shock (Alternative VAR Specifications)
 tests=['baseline', 'reverse', 'timetrend', 'vix', 'nsp', 'bi_output', 'rbi_output', 'bi_emp', 'rbi_emp']
 tests_labels=['baseline','reverse','timetrend','vix','no s&p','bivariate','bivariate reverse']
 
@@ -345,7 +345,7 @@ fig.text(0.5, 0.93, '(a) Impulse Responses to a Regulatory Sentiment Shock', ha=
 fig.text(0.5, 0.44, '(b) Impulse Responses to a Regulatory Uncertainty Shock', ha='center', fontsize=24,fontweight='bold')
 plt.subplots_adjust(hspace=0.7)
 
-plt.savefig(f'{output_folder}/AppendixI2.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixH2.jpg', bbox_inches='tight')
 plt.close()
 
 
@@ -404,7 +404,7 @@ fig.text(0.5, 0.93, '(a) Impulse Responses to a Regulatory Sentiment Shock', ha=
 fig.text(0.5, 0.47, '(b) Impulse Responses to a Regulatory Uncertainty Shock', ha='center', fontsize=24,fontweight='bold')
 plt.subplots_adjust(hspace=0.5)
 
-plt.savefig(f'{output_folder}/AppendixJ.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixI.jpg', bbox_inches='tight')
 plt.close()
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ vars=['lgdp','lemp']
 ylabels=['Industrial Production Response, %','Employment Response, %']
 titles=['Industrial Production', 'Employment']
 
-#%% Appendix K1: Impulse Responses to a Regulatory Sentiment Shock (Controlling for Economic Sentiment and Policy Uncertainty)
+#%% Appendix J1: Impulse Responses to a Regulatory Sentiment Shock (Controlling for Economic Sentiment and Policy Uncertainty)
 # Import IRF output
 controls=['mich','newssent','vix','epu']
 irf_gdp = pd.DataFrame()
@@ -458,7 +458,7 @@ fig.text(0.5, 0.48, '(c) Controlling for VIX', ha='center', fontsize=24)
 fig.text(0.5, 0.27, '(d) Controlling for Economic Policy Uncertainty', ha='center', fontsize=24)
 plt.subplots_adjust(hspace=0.55)
 
-plt.savefig(f'{output_folder}/AppendixK1.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixJ1.jpg', bbox_inches='tight')
 
 #%% Appendix J2: Impulse Responses to a Regulatory Uncertainty Shock (Controlling for Economic Sentiment and Policy Uncertainty)
 # Import IRF output
@@ -504,13 +504,13 @@ fig.text(0.5, 0.48, '(c) Controlling for VIX', ha='center', fontsize=24)
 fig.text(0.5, 0.27, '(d) Controlling for Economic Policy Uncertainty', ha='center', fontsize=24)
 plt.subplots_adjust(hspace=0.55)
 
-plt.savefig(f'{output_folder}/AppendixK2.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixJ2.jpg', bbox_inches='tight')
 
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%----------------------------------------------------Interaction------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
-# Appendix L: Impulse Responses to a Regulatory Sentiment or Uncertainty Shock
+# Appendix K: Impulse Responses to a Regulatory Sentiment or Uncertainty Shock
 vars=['lgdp','lemp']
 ylabels=['Industrial Production Response, %','Employment Response, %']
 titles=['Industrial Production', 'Employment']
@@ -599,14 +599,14 @@ fig.text(0.5, 0.93, '(a) Impulse Responses to a Regulatory Sentiment Shock', ha=
 fig.text(0.5, 0.44, '(b) Impulse Responses to a Regulatory Uncertainty Shock', ha='center', fontsize=24,fontweight='bold')
 plt.subplots_adjust(hspace=0.7)
 
-plt.savefig(f'{output_folder}/AppendixL.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixK.jpg', bbox_inches='tight')
 plt.close()
 
 
 #-----------------------------------------------------------------------------------------------------------------------
 #%%----------------------------------------Removing Deregulation Articles-----------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
-#%% Appendix M: Impulse Responses to a Regulatory Sentiment or Uncertainty Shock
+#%% Appendix L: Impulse Responses to a Regulatory Sentiment or Uncertainty Shock
 vars=['lgdp','lemp']
 ylabels=['Industrial Production Response, %','Employment Response, %']
 titles=['Industrial Production', 'Employment']
@@ -674,5 +674,5 @@ fig.text(0.5, 0.93, '(a) Impulse Responses to a Regulatory Sentiment Shock', ha=
 fig.text(0.5, 0.44, '(b) Impulse Responses to a Regulatory Uncertainty Shock', ha='center', fontsize=24,fontweight='bold')
 plt.subplots_adjust(hspace=0.7)
 
-plt.savefig(f'{output_folder}/AppendixM.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixL.jpg', bbox_inches='tight')
 plt.close()

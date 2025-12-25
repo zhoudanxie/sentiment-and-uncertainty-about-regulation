@@ -79,7 +79,7 @@ for i in range(1, area_range):
                             'u95':'llemp95_'+str(i),'d95':'hlemp95_'+str(i)})
     irf_rpu_area=irf_rpu_area.merge(new,on='step',how='outer')
 
-#%% Appendix S1: Industrial Production Responses to a Negative Sentiment Shock By Regulatory Area
+#%% Appendix R1: Industrial Production Responses to a Negative Sentiment Shock By Regulatory Area
 x=irf_lm_area['step']
 
 fig, axes = plt.subplots(5, 3, figsize=(40,35), sharex=True, sharey=False)
@@ -124,10 +124,10 @@ fig.text(0.08, 0.5, ylabels[0], va='center', rotation='vertical', fontsize=44)
 fig.text(0.5, 0.08, 'Months', ha='center', fontsize=44)
 plt.subplots_adjust(hspace=0.2)
 
-plt.savefig(f'{output_folder}/AppendixS1.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixR1.jpg', bbox_inches='tight')
 plt.close()
 
-#%% Appendix S2: Employment Responses to a Negative Sentiment Shock By Regulatory Area
+#%% Appendix R2: Employment Responses to a Negative Sentiment Shock By Regulatory Area
 x=irf_lm_area['step']
 
 fig, axes = plt.subplots(5, 3, figsize=(40,35), sharex=True, sharey=False)
@@ -172,10 +172,10 @@ fig.text(0.08, 0.5, ylabels[1], va='center', rotation='vertical', fontsize=44)
 fig.text(0.5, 0.08, 'Months', ha='center', fontsize=44)
 plt.subplots_adjust(hspace=0.2)
 
-plt.savefig(f'{output_folder}/AppendixS2.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixR2.jpg', bbox_inches='tight')
 plt.close()
 
-#%% Appendix S3: Industrial Production Responses to an Uncertainty Shock By Regulatory Area
+#%% Appendix R3: Industrial Production Responses to an Uncertainty Shock By Regulatory Area
 x=irf_rpu_area['step']
 
 fig, axes = plt.subplots(5, 3, figsize=(40,35), sharex=True, sharey=False)
@@ -220,10 +220,10 @@ fig.text(0.08, 0.5, ylabels[0], va='center', rotation='vertical', fontsize=44)
 fig.text(0.5, 0.08, 'Months', ha='center', fontsize=44)
 plt.subplots_adjust(hspace=0.2)
 
-plt.savefig(f'{output_folder}/AppendixS3.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixR3.jpg', bbox_inches='tight')
 plt.close()
 
-#%% Appendix S4: Employment Responses to an Uncertainty Shock By Regulatory Area
+#%% Appendix R4: Employment Responses to an Uncertainty Shock By Regulatory Area
 x=irf_rpu_area['step']
 
 fig, axes = plt.subplots(5, 3, figsize=(40,35), sharex=True, sharey=False)
@@ -268,5 +268,5 @@ fig.text(0.08, 0.5, ylabels[1], va='center', rotation='vertical', fontsize=44)
 fig.text(0.5, 0.08, 'Months', ha='center', fontsize=44)
 plt.subplots_adjust(hspace=0.2)
 
-plt.savefig(f'{output_folder}/AppendixS4.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixR4.jpg', bbox_inches='tight')
 plt.close()

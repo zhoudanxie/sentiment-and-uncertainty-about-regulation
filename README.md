@@ -120,9 +120,9 @@ The `code` directory contains three folders:
 | `main_figures.py`      | Plots all figures in the main body of the paper.                                             | `figures/Figure[1-6].jpg`                                 |
 | `appendix_figures.py`  | A master file to execute all Python scripts in `code/visualization/appendix_figure_scripts`. | See outputs of individual scripts below.                  |
 | `appendix_figures_aggregate_index.py` | Plots appendix figures using aggregate indexes.                                              | `figures/appendix_figures/Appendix[E*].jpg`               |
-| `appendix_figures_irf_aggregate.py` | Plots appendix figures using impulses responses from aggregate indexes.                      | `figures/appendix_figures/Appendix[G/H*/I*/J/K*/L/M].jpg` |
-| `appendix_figures_categorical_index.py` | Plots appendix figures using categorical indexes.                                            | `figures/appendix_figures/Appendix[Q/R*].jpg`             |
-| `appendix_figures_irf_categorical.py.py` | Plots appendix figures using impulses responses from categorical indexes.                    | `figures/appendix_figures/Appendix[S*].jpg`               |
+| `appendix_figures_irf_aggregate.py` | Plots appendix figures using impulses responses from aggregate indexes.                      | `figures/appendix_figures/Appendix[F/G*/H*/I/J*/K/L].jpg` |
+| `appendix_figures_categorical_index.py` | Plots appendix figures using categorical indexes.                                            | `figures/appendix_figures/Appendix[P/Q*].jpg`             |
+| `appendix_figures_irf_categorical.py.py` | Plots appendix figures using impulses responses from categorical indexes.                    | `figures/appendix_figures/Appendix[R*].jpg`               |
 
 ---
 

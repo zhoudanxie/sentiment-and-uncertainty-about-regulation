@@ -45,7 +45,7 @@ area='DominantDistinctArea'
 #%%-------------------------Categorical Regulatory Sentiment and Uncertainty Indexes------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 
-#%% Appendix Q: Frequencies of Articles By Regulatory Area
+#%% Appendix P: Frequencies of Articles By Regulatory Area
 areas=pd.DataFrame()
 areas['area_id']=list(dict_area.keys())
 areas['area_title']=list(dict_area.values())
@@ -86,7 +86,7 @@ ax.spines['right'].set_visible(False)
 ax.spines['left'].set_color('#d3d3d3')
 ax.spines['bottom'].set_color('#d3d3d3')
 
-plt.savefig(f'{output_folder}/AppendixQ.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixP.jpg', bbox_inches='tight')
 plt.close()
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -97,7 +97,7 @@ sentiment_area['Month']=sentiment_area['Month'].astype('int64')
 sentiment_area['year-month']=sentiment_area['Year'].map(str)+'-'+sentiment_area['Month'].map(str)
 sentiment_area['date']=sentiment_area['year-month'].astype('datetime64[ns]').dt.date
 
-#%% Appendix R1: Monthly Sentiment Index By Regulatory Policy Area
+#%% Appendix Q1: Monthly Sentiment Index By Regulatory Policy Area
 x=sentiment_area['date']
 
 fig, axes = plt.subplots(5, 3, figsize=(50,45), sharex=False, sharey=False)
@@ -142,10 +142,10 @@ fig.delaxes(axes[4,2])
 fig.text(0.09, 0.55, 'Regulatory Sentiment Index', va='center', rotation='vertical', fontsize=42)
 plt.subplots_adjust(wspace=0.1,hspace=0.2)
 
-plt.savefig(f'{output_folder}/AppendixR1.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixQ1.jpg', bbox_inches='tight')
 plt.close()
 
-#%% Appendix R2: Monthly Uncertainty Index By Regulatory Policy Area
+#%% Appendix Q2: Monthly Uncertainty Index By Regulatory Policy Area
 x=sentiment_area['date']
 
 fig, axes = plt.subplots(5, 3, figsize=(50,45), sharex=False, sharey=False)
@@ -190,5 +190,5 @@ fig.delaxes(axes[4,2])
 fig.text(0.09, 0.55, 'Regulatory Uncertainty Index', va='center', rotation='vertical', fontsize=42)
 plt.subplots_adjust(wspace=0.1,hspace=0.2)
 
-plt.savefig(f'{output_folder}/AppendixR2.jpg', bbox_inches='tight')
+plt.savefig(f'{output_folder}/AppendixQ2.jpg', bbox_inches='tight')
 plt.close()
