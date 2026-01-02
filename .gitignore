@@ -2,7 +2,6 @@
 data/raw_data/text_sample_data/sample_output/
 data/processed_data/data_for_analysis/
 output/
-figures/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
