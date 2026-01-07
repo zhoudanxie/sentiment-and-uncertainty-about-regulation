@@ -23,7 +23,7 @@ foreach sent of local sent_list {
 }
 
 ***Quarterly analysis
-local sent_list lm gi lsd rpu
+local sent_list lm gi lsd pc rpu
 foreach sent of local sent_list {
 	global index="`sent'"
 	do "code/econometric_analysis/do_files/lp_quarterly"

@@ -48,6 +48,7 @@ replace rpu=rpu_qr
 replace lm=lm_qr
 replace gi=gi_qr
 replace lsd=lsd_qr
+replace pc=pc_qr
 
 *Specify index of interest
 gen index=$index

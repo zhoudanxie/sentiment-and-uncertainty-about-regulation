@@ -2,6 +2,7 @@ import pandas as pd
 import datetime
 import numpy as np
 import os
+from sklearn.decomposition import PCA
 
 # %%
 # Set directory
@@ -171,10 +172,26 @@ regindex.loc[(regindex['month']>=10) & (regindex['month']<=12), 'quarter']=4
 
 # Add quarterly indexes
 quarterly=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes_quarterly.csv')
-quarterly=quarterly[['Year','quarter','LMIndex','GIIndex','LSDIndex','UncertaintyIndex']].\
-        rename(columns={'Year':'year','LMIndex':'lm_qr','GIIndex':'gi_qr',
-                        'LSDIndex':'lsd_qr','UncertaintyIndex':'rpu_qr'})
 
+# Get PC of quarterly indexes
+for dict in ['Uncertainty','GI','LM','LSD']:
+    quarterly[dict+'Index_standardized']=(quarterly[dict+'Index']-np.mean(quarterly[dict+'Index']))/np.std(quarterly[dict+'Index'])
+
+# PCA of standardized monthly sentiment indexes
+features = ['GIIndex_standardized', 'LMIndex_standardized', 'LSDIndex_standardized']
+x = quarterly.loc[:, features].values
+pca = PCA(n_components=2)
+principalComponents = pca.fit_transform(x)
+principalDf = pd.DataFrame(data = principalComponents, columns = ['SentimentPC1_standardized', 'SentimentPC2_standardized'])
+quarterly = pd.concat([quarterly, principalDf], axis = 1)
+
+# Rename
+quarterly=quarterly[['Year','quarter','LMIndex','GIIndex','LSDIndex','UncertaintyIndex','SentimentPC1_standardized']].\
+        rename(columns={'Year':'year','LMIndex':'lm_qr','GIIndex':'gi_qr',
+                        'LSDIndex':'lsd_qr','UncertaintyIndex':'rpu_qr',
+                        'SentimentPC1_standardized':'pc_qr'})
+
+# Merge
 regindex=regindex.merge(quarterly,on=['year','quarter'],how='left')
 
 # Export
