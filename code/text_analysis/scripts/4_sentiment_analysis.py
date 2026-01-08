@@ -19,6 +19,12 @@ output_folder=f'{directory}/../../data/raw_data/text_sample_data/sample_output'
 # Import regulatory sections
 df=pd.read_pickle(f'{output_folder}/reg_sections.pkl')
 
+# Refine by regulatory noun chunks
+df=df[df['NounChunkMatchFiltered']>0].reset_index(drop=True)
+
+# # (Optional) Remove "deregulation"
+# df=df[df['Dereg']!=1].reset_index(drop=True)
+
 # %%
 # Negation words
 negate = ["aint", "arent", "cannot", "cant", "couldnt", "darent", "didnt", "doesnt", "ain't", "aren't", "can't",

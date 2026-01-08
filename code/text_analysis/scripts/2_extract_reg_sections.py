@@ -1,4 +1,5 @@
 # %%
+import numpy as np
 import pandas as pd
 import os
 import re
@@ -67,6 +68,20 @@ df['RegSection']=regsents_expand
 # Length of regulatory sections
 df['RegSectionLength']=df['RegSection'].str.len()
 print('# of articles with no "*regulat*" in full text:',df[df['RegSectionLength']==0]['ID'].nunique())
+
+# %%
+# Identify regulatory sections with "deregulat*"
+dereg=[]
+for text in df['RegSection']:
+    if text!='':
+        if len(re.findall(r'\bderegulat[a-zA-Z]+\b', text, flags=re.IGNORECASE)) > 0:
+            dereg.append(1)
+        else:
+            dereg.append(0)
+    else:
+        dereg.append(np.nan)
+
+df['Dereg']=dereg
 
 # %%
 # Sort DF
