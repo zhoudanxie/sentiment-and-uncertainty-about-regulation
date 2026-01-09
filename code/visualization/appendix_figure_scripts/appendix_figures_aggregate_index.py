@@ -31,6 +31,10 @@ monthlyIndex=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_senti
 monthlyIndex['Year-Month']=monthlyIndex['Year'].map(str)+'-'+monthlyIndex['Month'].map(str)
 monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
 
+# Standardize monthly indexes
+for dict in ['Uncertainty','GI','LM','LSD']:
+    monthlyIndex[dict+'Index_standardized']=(monthlyIndex[dict+'Index']-np.mean(monthlyIndex[dict+'Index']))/np.std(monthlyIndex[dict+'Index'])
+
 #-----------------------------------------------------------------------------------------------------------------------
 #%%-----------------------------------Compare Regulatory Indexes with Other Indexes-------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------

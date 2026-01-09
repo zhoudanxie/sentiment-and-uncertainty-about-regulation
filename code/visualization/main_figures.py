@@ -135,6 +135,10 @@ monthlyIndex=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_senti
 monthlyIndex['Year-Month']=monthlyIndex['Year'].map(str)+'-'+monthlyIndex['Month'].map(str)
 monthlyIndex['date']=monthlyIndex['Year-Month'].astype('datetime64[ns]').dt.date
 
+# Standardize monthly indexes
+for dict in ['Uncertainty','GI','LM','LSD']:
+    monthlyIndex[dict+'Index_standardized']=(monthlyIndex[dict+'Index']-np.mean(monthlyIndex[dict+'Index']))/np.std(monthlyIndex[dict+'Index'])
+
 #%% Correlations between sentiment indexes
 print('LM & GI:',scipy.stats.pearsonr(monthlyIndex['LMIndex'], monthlyIndex['GIIndex']))
 print('LM & LSD:',scipy.stats.pearsonr(monthlyIndex['LMIndex'], monthlyIndex['LSDIndex']))
@@ -149,7 +153,7 @@ x=monthlyIndex['date']
 y1=monthlyIndex['GIIndex_standardized']
 y2=monthlyIndex['LSDIndex_standardized']
 y3=monthlyIndex['LMIndex_standardized']
-y4=monthlyIndex['SentimentPC1_standardized']
+y4=monthlyIndex['StandardizedSentimentPC1']
 
 fig, ax = plt.subplots(1, figsize=(16,10))
 ax.plot(x,y3,color=colors[2],linewidth=0.8,label='LM Sentiment Index')

@@ -38,14 +38,6 @@ gen lvix=log(vix)
 ren sp sp
 ren fedfundsrate ffr
 
-ren RegRelevance rri
-ren UncertaintyIndex rpu
-ren GIIndex gi
-ren LSDIndex lsd
-ren LMIndex lm
-ren SentimentPC1_standardized pc
-sum rpu lm gi lsd
-
 *For monthly, output is industrial production
 replace lgdp=lip
 

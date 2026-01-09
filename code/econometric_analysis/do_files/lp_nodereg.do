@@ -38,12 +38,6 @@ gen lvix=log(vix)
 ren sp sp
 ren fedfundsrate ffr
 
-ren UncertaintyIndex rpu
-ren GIIndex gi
-ren LSDIndex lsd
-ren LMIndex lm
-sum rpu lm gi lsd
-
 ***Specify index of interest
 gen index=$index
 

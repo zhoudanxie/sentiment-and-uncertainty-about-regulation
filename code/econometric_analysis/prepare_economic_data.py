@@ -151,18 +151,17 @@ newssent_monthly.to_stata(f'{output_folder}/newssent.dta',write_index=False)
 #%% Aggregate regulatory indexes
 # News attention index
 regrelevance=pd.read_csv(f'{directory}/../../data/processed_data/news_attention_index.csv')
-
-regrelevance[['year','month']]=regrelevance['year-month'].str.split('-',expand=True)
-regrelevance['year']=regrelevance['year'].astype('int64')
-regrelevance['month']=regrelevance['month'].astype('int64')
-regrelevance=regrelevance[['year','month','RegRelevance']].copy()
+regrelevance.rename(columns={'Year':'year','Month':'month','RegRelevance':'rri'}, inplace=True)
 
 # Sentiment indexes
 regindex=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes.csv')
-regindex=regindex.rename(columns={'Year':'year','Month':'month'})
+regindex.rename(columns={'Year':'year','Month':'month',
+                         'LMIndex':'lm','GIIndex':'gi',
+                         'LSDIndex':'lsd','UncertaintyIndex':'rpu',
+                         'StandardizedSentimentPC1':'pc'}, inplace=True)
 
 # Merge
-regindex=regrelevance.merge(regindex,on=['year','month'],how='outer').reset_index(drop=True)
+regindex=regrelevance[['year','month','rri']].merge(regindex,on=['year','month'],how='outer').reset_index(drop=True)
 
 # Quarter
 regindex.loc[regindex['month']<=3, 'quarter']=1
@@ -172,24 +171,9 @@ regindex.loc[(regindex['month']>=10) & (regindex['month']<=12), 'quarter']=4
 
 # Add quarterly indexes
 quarterly=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes_quarterly.csv')
-
-# Get PC of quarterly indexes
-for dict in ['Uncertainty','GI','LM','LSD']:
-    quarterly[dict+'Index_standardized']=(quarterly[dict+'Index']-np.mean(quarterly[dict+'Index']))/np.std(quarterly[dict+'Index'])
-
-# PCA of standardized monthly sentiment indexes
-features = ['GIIndex_standardized', 'LMIndex_standardized', 'LSDIndex_standardized']
-x = quarterly.loc[:, features].values
-pca = PCA(n_components=2)
-principalComponents = pca.fit_transform(x)
-principalDf = pd.DataFrame(data = principalComponents, columns = ['SentimentPC1_standardized', 'SentimentPC2_standardized'])
-quarterly = pd.concat([quarterly, principalDf], axis = 1)
-
-# Rename
-quarterly=quarterly[['Year','quarter','LMIndex','GIIndex','LSDIndex','UncertaintyIndex','SentimentPC1_standardized']].\
-        rename(columns={'Year':'year','LMIndex':'lm_qr','GIIndex':'gi_qr',
-                        'LSDIndex':'lsd_qr','UncertaintyIndex':'rpu_qr',
-                        'SentimentPC1_standardized':'pc_qr'})
+quarterly.rename(columns={'Year':'year','LMIndex':'lm_qr','GIIndex':'gi_qr',
+                          'LSDIndex':'lsd_qr','UncertaintyIndex':'rpu_qr',
+                          'StandardizedSentimentPC1':'pc_qr'}, inplace=True)
 
 # Merge
 regindex=regindex.merge(quarterly,on=['year','quarter'],how='left')
@@ -200,7 +184,9 @@ regindex.to_stata(f'{output_folder}/regindex.dta',write_index=False)
 #-----------------------------------------------------------------------------------------------------------------------
 #%% Aggregate regulatory indexes with deregulation articles removed
 regindex_dereg=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes_nodereg.csv')
-regindex_dereg=regindex_dereg.rename(columns={'Year':'year','Month':'month'})
+regindex_dereg=regindex_dereg.rename(columns={'Year':'year','Month':'month',
+                                              'LMIndex': 'lm', 'GIIndex': 'gi',
+                                              'LSDIndex': 'lsd', 'UncertaintyIndex': 'rpu'})
 
 # Export
 regindex_dereg.to_stata(f'{output_folder}/regindex_nodereg.dta',write_index=False)

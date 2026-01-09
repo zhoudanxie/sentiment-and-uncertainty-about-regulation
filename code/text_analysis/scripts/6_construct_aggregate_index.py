@@ -27,7 +27,7 @@ df['Month']=df['StartDate'].dt.month
 df['Newspaper']=df['Newspaper'].astype('category')
 
 #%%
-# Estimate sentiment indexes
+# Estimate monthly sentiment and uncertainty indexes
 
 # %%
 # Specify index start date and end date
@@ -46,10 +46,9 @@ df=df.merge(df_ym[['Year','Month','YM']],on=['Year','Month'],how='left').sort_va
 
 # %%
 # Define a function to estimate index (suppressing constant)
-def estimate_index(var_name):
+def estimate_monthly_index(var_name):
     FE_OLS=sm.ols(formula=var_name + ' ~ 0+C(YM)+C(Newspaper)',
         data=df).fit()
-    # print(FE_OLS.summary())
 
     FE_estimates=pd.DataFrame()
     FE_estimates[var_name+'Index']=FE_OLS.params[0:max(df_ym['YM'])]
@@ -60,18 +59,17 @@ def estimate_index(var_name):
 
 # %%
 # Uncertainty index
-UncertaintyIndex=estimate_index('UncertaintyScore')
+UncertaintyIndex=estimate_monthly_index('UncertaintyScore')
 
 # LM index
-LMindex=estimate_index('LMscore')
+LMindex=estimate_monthly_index('LMscore')
 
 # GI index
-GIindex=estimate_index('GIscore')
+GIindex=estimate_monthly_index('GIscore')
 
 # LSD index
-LSDindex=estimate_index('LSDscore')
+LSDindex=estimate_monthly_index('LSDscore')
 
-# %%
 # Merge indexes
 sentimentIndex=df_ym.\
         merge(UncertaintyIndex.drop('FE',axis=1),on='YM',how='outer').\
@@ -84,37 +82,101 @@ sentimentIndex=sentimentIndex.\
         rename(columns={'UncertaintyScoreIndex':'UncertaintyIndex','LMscoreIndex':'LMIndex',
                         'GIscoreIndex':'GIIndex','LSDscoreIndex':'LSDIndex'})
 
-#%% Standardize indexes
+# %%
+# Standardize monthly indexes
+sentimentIndex_copy=sentimentIndex.copy()
 for dict in ['Uncertainty','GI','LM','LSD']:
-    sentimentIndex[dict+'Index_standardized']=(sentimentIndex[dict+'Index']-np.mean(sentimentIndex[dict+'Index']))/np.std(sentimentIndex[dict+'Index'])
+    sentimentIndex_copy[dict+'Index_standardized']=(sentimentIndex_copy[dict+'Index']-np.mean(sentimentIndex_copy[dict+'Index']))/np.std(sentimentIndex_copy[dict+'Index'])
 
 # PCA of standardized monthly sentiment indexes
 features = ['GIIndex_standardized', 'LMIndex_standardized', 'LSDIndex_standardized']
-x = sentimentIndex.loc[:, features].values
+x = sentimentIndex_copy.loc[:, features].values
 pca = PCA(n_components=2)
 principalComponents = pca.fit_transform(x)
 # print("Variance explained by PC1 and PC2:", pca.explained_variance_ratio_)
 # print("PC1 feature weights [GI, LM, LSD]:", pca.components_[0])
 
-principalDf = pd.DataFrame(data = principalComponents, columns = ['SentimentPC1_standardized', 'SentimentPC2_standardized'])
-sentimentIndex = pd.concat([sentimentIndex, principalDf], axis = 1)
-
-#%% Correlations between sentiment indexes
-print('LM & GI:',scipy.stats.pearsonr(sentimentIndex['LMIndex'], sentimentIndex['GIIndex']))
-print('LM & LSD:',scipy.stats.pearsonr(sentimentIndex['LMIndex'], sentimentIndex['LSDIndex']))
-print('LSD & GI',scipy.stats.pearsonr(sentimentIndex['LSDIndex'], sentimentIndex['GIIndex']))
-
-print('LMstandardized & GIstandardized:',
-      scipy.stats.pearsonr(sentimentIndex['LMIndex_standardized'], sentimentIndex['GIIndex_standardized']))
-print('LMstandardized & LSDstandardized:',
-      scipy.stats.pearsonr(sentimentIndex['LMIndex_standardized'], sentimentIndex['LSDIndex_standardized']))
-print('LSDstandardized & GIstandardized',
-      scipy.stats.pearsonr(sentimentIndex['LSDIndex_standardized'], sentimentIndex['GIIndex_standardized']))
+principalDf = pd.DataFrame(data = principalComponents, columns = ['StandardizedSentimentPC1', 'StandardizedSentimentPC2'])
+sentimentIndex = pd.concat([sentimentIndex, principalDf[['StandardizedSentimentPC1']]], axis = 1)
 
 # %%
 # Export indexes
 sentimentIndex.to_csv(f'{output_folder}/aggregate_sentiment_indexes.csv',index=False)
-print(f'Aggregate sentiment indexes are saved in the {output_folder} folder.')
+print(f'Aggregate monthly sentiment indexes are saved in the {output_folder} folder.')
+
+
+#%%
+# Estimate quarterly sentiment and uncertainty indexes
+
+# %%
+# Index quarter
+df.loc[df['Month']<=3, 'quarter']=1
+df.loc[(df['Month']>=4) & (df['Month']<=6), 'quarter']=2
+df.loc[(df['Month']>=7) & (df['Month']<=9), 'quarter']=3
+df.loc[(df['Month']>=10) & (df['Month']<=12), 'quarter']=4
+df['QuarterIndex']=df.groupby(['Year','quarter']).ngroup()+1
+
+# %%
+# Revised function to estimate index (suppressing constant)
+def estimate_quarterly_index(var_name):
+    FE_OLS = sm.ols(formula=var_name + ' ~ 0+C(QuarterIndex)+C(Newspaper)',
+                    data=df).fit()
+
+    FE_estimates = pd.DataFrame()
+    FE_estimates[var_name + 'Index'] = FE_OLS.params[0:max(df['QuarterIndex'])]
+    FE_estimates = FE_estimates.reset_index().rename(columns={'index': 'FE'})
+    FE_estimates['QuarterIndex'] = FE_estimates['FE'].str.split("[", expand=True)[1].str.split("]", expand=True)[
+        0].astype('int64')
+    FE_estimates = FE_estimates.drop('FE', axis=1)
+
+    return FE_estimates
+
+# %%
+# Uncertainty index
+UncertaintyIndexQ=estimate_quarterly_index('UncertaintyScore')
+
+# LM index
+LMindexQ=estimate_quarterly_index('LMscore')
+
+# GI index
+GIindexQ=estimate_quarterly_index('GIscore')
+
+# LSD index
+LSDindexQ=estimate_quarterly_index('LSDscore')
+
+# Merge indexes
+df_quarter=df[['Year','quarter','QuarterIndex']].groupby(['Year','quarter']).first().reset_index()
+sentimentIndexQ=df_quarter.merge(UncertaintyIndexQ,on='QuarterIndex',how='outer').\
+        merge(LMindexQ,on='QuarterIndex',how='outer').\
+        merge(GIindexQ,on='QuarterIndex',how='outer').\
+        merge(LSDindexQ,on='QuarterIndex',how='outer').\
+        sort_values('QuarterIndex').reset_index(drop=True)
+
+# Rename columns
+sentimentIndexQ=sentimentIndexQ.\
+        rename(columns={'UncertaintyScoreIndex':'UncertaintyIndex','LMscoreIndex':'LMIndex',
+                        'GIscoreIndex':'GIIndex','LSDscoreIndex':'LSDIndex'})
+
+# %%
+# Standardize quarterly indexes
+sentimentIndexQ_copy=sentimentIndexQ.copy()
+for dict in ['Uncertainty','GI','LM','LSD']:
+    sentimentIndexQ_copy[dict+'Index_standardized']=(sentimentIndexQ_copy[dict+'Index']-np.mean(sentimentIndexQ_copy[dict+'Index']))/np.std(sentimentIndexQ_copy[dict+'Index'])
+
+# PCA of standardized monthly sentiment indexes
+features = ['GIIndex_standardized', 'LMIndex_standardized', 'LSDIndex_standardized']
+x = sentimentIndexQ_copy.loc[:, features].values
+pca = PCA(n_components=2)
+principalComponents = pca.fit_transform(x)
+
+principalDf = pd.DataFrame(data = principalComponents, columns = ['StandardizedSentimentPC1', 'StandardizedSentimentPC2'])
+sentimentIndexQ = pd.concat([sentimentIndexQ, principalDf[['StandardizedSentimentPC1']]], axis = 1)
+
+# %%
+# Export indexes
+sentimentIndexQ.to_csv(f'{output_folder}/aggregate_sentiment_indexes_quarterly.csv',index=False)
+print(f'Aggregate quarterly sentiment indexes are saved in the {output_folder} folder.')
+
 
 #%%
 # Estimate news attention index
@@ -138,7 +200,7 @@ df_monthly['year-month']=df_monthly['Year'].astype(int).map(str)+'-'+df_monthly[
 
 # Function to calculate index
 newspapers=df_monthly['Newspaper'].unique()
-df_index=df_monthly[['year-month']].drop_duplicates().reset_index(drop=True)
+df_index=df_monthly[['Year','Month','year-month']].drop_duplicates().reset_index(drop=True)
 
 T1_start="1985-1"
 T1_end="2009-12"

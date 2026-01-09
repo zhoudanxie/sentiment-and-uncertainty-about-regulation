@@ -51,14 +51,6 @@ gen lvix=log(vix)
 
 ren fedfundsrate ffr
 
-ren RegRelevance rri
-ren UncertaintyIndex rpu
-ren GIIndex gi
-ren LSDIndex lsd
-ren LMIndex lm
-ren SentimentPC1_standardized pc1
-sum rpu lm gi lsd
-
 ***Label variables
 lab var sp "Closing value of S&P500 index"
 lab var gdp "Real Gross Domestic Product (GDP)"
