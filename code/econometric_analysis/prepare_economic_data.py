@@ -171,7 +171,8 @@ regindex.loc[(regindex['month']>=10) & (regindex['month']<=12), 'quarter']=4
 
 # Add quarterly indexes
 quarterly=pd.read_csv(f'{directory}/../../data/processed_data/aggregate_sentiment_indexes_quarterly.csv')
-quarterly.rename(columns={'Year':'year','LMIndex':'lm_qr','GIIndex':'gi_qr',
+quarterly.rename(columns={'Year':'year','Quarter':'quarter',
+                          'LMIndex':'lm_qr','GIIndex':'gi_qr',
                           'LSDIndex':'lsd_qr','UncertaintyIndex':'rpu_qr',
                           'StandardizedSentimentPC1':'pc_qr'}, inplace=True)
 

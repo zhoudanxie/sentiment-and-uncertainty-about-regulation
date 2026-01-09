@@ -110,11 +110,11 @@ print(f'Aggregate monthly sentiment indexes are saved in the {output_folder} fol
 
 # %%
 # Index quarter
-df.loc[df['Month']<=3, 'quarter']=1
-df.loc[(df['Month']>=4) & (df['Month']<=6), 'quarter']=2
-df.loc[(df['Month']>=7) & (df['Month']<=9), 'quarter']=3
-df.loc[(df['Month']>=10) & (df['Month']<=12), 'quarter']=4
-df['QuarterIndex']=df.groupby(['Year','quarter']).ngroup()+1
+df.loc[df['Month']<=3, 'Quarter']=1
+df.loc[(df['Month']>=4) & (df['Month']<=6), 'Quarter']=2
+df.loc[(df['Month']>=7) & (df['Month']<=9), 'Quarter']=3
+df.loc[(df['Month']>=10) & (df['Month']<=12), 'Quarter']=4
+df['QuarterIndex']=df.groupby(['Year','Quarter']).ngroup()+1
 
 # %%
 # Revised function to estimate index (suppressing constant)
@@ -145,7 +145,7 @@ GIindexQ=estimate_quarterly_index('GIscore')
 LSDindexQ=estimate_quarterly_index('LSDscore')
 
 # Merge indexes
-df_quarter=df[['Year','quarter','QuarterIndex']].groupby(['Year','quarter']).first().reset_index()
+df_quarter=df[['Year','Quarter','QuarterIndex']].groupby(['Year','Quarter']).first().reset_index()
 sentimentIndexQ=df_quarter.merge(UncertaintyIndexQ,on='QuarterIndex',how='outer').\
         merge(LMindexQ,on='QuarterIndex',how='outer').\
         merge(GIindexQ,on='QuarterIndex',how='outer').\
