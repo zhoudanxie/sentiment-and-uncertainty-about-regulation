@@ -131,7 +131,7 @@ The `code` directory contains three folders:
 ### Software Requirements
 
 - The replication package contains one or more programs to install all dependencies and set up the necessary directory structure.  
-- **Python 3.11+**  
+- **Python 3.11–3.13**
   - A virtual Python environment should be created using `requirements.txt` in the home directory.  
   - Please run:  
     ```bash
