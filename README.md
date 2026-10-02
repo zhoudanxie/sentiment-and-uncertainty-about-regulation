@@ -2,6 +2,7 @@
 
 **Authors:** Tara Sinclair & Zhoudan Xie  
 
+**Cite:** Sinclair T.M., & Xie Z. (2026) Sentiment and uncertainty about regulation. \textit{Macroeconomic Dynamics}. 30. [https://doi.org/10.1017/S1365100526101394](https://doi.org/10.1017/S1365100526101394).
 ---
 
 ## Overview
